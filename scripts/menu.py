@@ -6,18 +6,7 @@ from PokemonDisplay_class import PokemonDisplay
 from PixelButton_class import PixelButton
 from colors import * 
 
-pygame.init()
-FPS = 60
-CLOCK = pygame.time.Clock()
-WIDTH, HEIGHT = 800, 600
-SCREEN = pygame.display.set_mode((WIDTH, HEIGHT))
-TITLE_FONT = load_font("../assets/font/Pokemon_GB.ttf", 48)
-
-pygame.display.set_caption("Menu Pokémon Pixel")
-
-pikachu_display = PokemonDisplay(pikachu, scale=2.0, is_front=True)
-pikachu_display.set_position(WIDTH // 2, 200)
-
+# Buttons functions 
 def new_game():
     print("Nouvelle partie !")
 
@@ -28,21 +17,39 @@ def quit_game():
     pygame.quit()
     sys.exit()
 
-buttons = [PixelButton("NOUVELLE PARTIE", WIDTH//2 - 175, 300, 350, 60, RED, new_game),
-        PixelButton("REPRENDRE", WIDTH//2 - 175, 380, 350, 60, BLUE, resume_game),
-        PixelButton("QUITTER", WIDTH//2 - 175, 460, 350, 60, GREEN, quit_game)]
+# Pygame initialisation    
+pygame.init()
+pygame.display.set_caption("Menu Pokémon Pixel")
+
+# Pygame variables
+fps = 60
+clock = pygame.time.Clock()
+width, height = 800, 600
+screen = pygame.display.set_mode((width, height))
+title_font = load_font("../assets/font/Pokemon_GB.ttf", 48)
+
+# Animated pikachu
+pikachu_display = PokemonDisplay(pikachu, scale=2.0, is_front=True)
+pikachu_display.set_position(width // 2, 200)
+
+buttons = [PixelButton("NEW GAME", width//2 - 175, 300, 350, 60, RED, new_game),
+        PixelButton("RESUME GAME", width//2 - 175, 380, 350, 60, BLUE, resume_game),
+        PixelButton("QUIT", width//2 - 175, 460, 350, 60, GREEN, quit_game)]
 
 def main_menu():
     while True:
-        SCREEN.fill(BEIGE)
+        screen.fill(BEIGE)
 
-        title = TITLE_FONT.render("POKEMON", True, BLACK)
-        title_rect = title.get_rect(center=(WIDTH//2, 100))
-        SCREEN.blit(title, title_rect)
+        # Title
+        title = title_font.render("POKEMON", True, BLACK)
+        title_rect = title.get_rect(center=(width//2, 100))
+        screen.blit(title, title_rect)
 
+        # Animate pikachu on screen 
         pikachu_display.update()
-        pikachu_display.draw(SCREEN)
+        pikachu_display.draw(screen)
 
+        # Events
         mouse_pos = pygame.mouse.get_pos()
         mouse_click = False
 
@@ -54,9 +61,9 @@ def main_menu():
 
         for btn in buttons:
             btn.update(mouse_pos, mouse_click)
-            btn.draw(SCREEN, mouse_pos)
+            btn.draw(screen, mouse_pos)
 
         pygame.display.flip()
-        CLOCK.tick(FPS)
+        clock.tick(fps)
 
 main_menu()
