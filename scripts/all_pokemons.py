@@ -1,5 +1,5 @@
-from pokemon_class import Pokemon
-from types import normal, fire, water, grass, electric, ice, fighting, poison, ground, flying, psychic, bug, rock, ghost, dragon, dark, steel, fairy
+from Pokemon_class import Pokemon
+from all_types import normal, fire, water, grass, electric, ice, fighting, poison, ground, flying, psychic, bug, rock, ghost, dragon, dark, steel, fairy
 
 # ---------------------------------------------------------------------------
 # Helper: stats per role

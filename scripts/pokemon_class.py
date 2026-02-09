@@ -1,5 +1,5 @@
 import pygame
-from scripts.type_class import Type
+from PokemonType_class import PokemonType
 from assets_management import load_gif
 
 class Pokemon : 
@@ -119,7 +119,7 @@ class Pokemon :
     def set_types(self, new_types):
         if not isinstance(new_types, list):
             raise TypeError("Types must be a list.")
-        if not all(isinstance(t, Type) for t in new_types):
+        if not all(isinstance(t, PokemonType) for t in new_types):
             raise ValueError("Each type must be a Type object.")
         if len(new_types) == 0:
             raise ValueError("A Pokémon must have at least one type.")
