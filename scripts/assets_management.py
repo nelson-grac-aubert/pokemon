@@ -1,7 +1,7 @@
+from PIL import Image
 import os
 import sys
 import pygame
-
 
 def resource_path(relative_path: str) -> str:
     """ Returns absolute path to an asset, PyInstaller compatible.
@@ -24,6 +24,28 @@ def load_image(path: str) -> pygame.Surface:
         return image.convert_alpha()
     except Exception as e:
         raise FileNotFoundError(f"Can't load image : {full_path}\n{e}")
+
+
+def load_gif(path: str) -> list[pygame.Surface]:
+    full_path = resource_path(path)
+    pil_img = Image.open(full_path)
+
+    frames = []
+    try:
+        while True:
+            frame = pil_img.convert("RGBA")
+            mode = frame.mode
+            size = frame.size
+            data = frame.tobytes()
+
+            surface = pygame.image.fromstring(data, size, mode)
+            frames.append(surface)
+
+            pil_img.seek(pil_img.tell() + 1)
+    except EOFError:
+        pass
+
+    return frames
 
 
 def load_music(path: str) -> None:
