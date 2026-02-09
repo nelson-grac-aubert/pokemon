@@ -35,7 +35,9 @@ class Pokemon :
         self.front_frames = []
         self.back_frames = []
         self.frame_index = 0
-        self.frame_speed = 0.15
+        self.frame_timer = 0
+        self.frame_speed = 3 
+        self.scale = 1.0      
 
     # Getters and setters -----------------------------------------------------------------------------------------------
 
@@ -131,20 +133,10 @@ class Pokemon :
         """ Returns a list of pygame.Surface objects, that are the frames of the animated gif
         of the pokemon, facing the player """
 
-        return load_gif(f"../assets/sprites{self.get_id()}.gif")
+        return load_gif(f"../assets/sprites/{self.get_id()}.gif")
     
-    def load_back_sprite(self) -> pygame.Surface : 
+    def load_back_sprite(self) -> list : 
         """ Returns a list of pygame.Surface objects, that are the frames of the animated gif 
         of the pokemon, with its back turned from the player"""
 
-        return load_gif(f"../assets/sprites{self.get_id()}.gif")
-    
-    def load_sprites(self):
-        """ Loads all gif sprites, and assign them to Pokemon object attributes """
-        self.front_frames = self.load_front_sprite()
-        self.back_frames = self.load_back_sprite()
-
-    def update_animation(self):
-        if not self.front_frames:
-            return
-        self.frame_index = (self.frame_index + self.frame_speed) % len(self.front_frames)
+        return load_gif(f"../assets/sprites/{self.get_id()}.gif")
