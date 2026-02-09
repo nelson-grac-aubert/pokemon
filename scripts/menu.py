@@ -1,6 +1,8 @@
 import pygame
 import sys
 from assets_management import load_font
+from all_pokemons import pikachu
+from PokemonDisplay_class import PokemonDisplay
 
 pygame.init()
 
@@ -100,7 +102,7 @@ def main_menu():
         title = TITLE_FONT.render("POKÉMON", True, BLACK)
         title_rect = title.get_rect(center=(WIDTH//2, 100))
         SCREEN.blit(title, title_rect)
-
+       
         mouse_pos = pygame.mouse.get_pos()
         mouse_click = False
 
