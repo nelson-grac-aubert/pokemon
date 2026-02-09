@@ -1,7 +1,8 @@
-from class_type import Type
+import pygame
+from scripts.type_class import Type
 
 class Pokemon : 
-    def __init__(self, name : str, hp : int, attack : int, defense : int, types : list, id : str) : 
+    def __init__(self, name : str, hp : int, attack : int, defense : int, speed : int, precision : int, types : list, id : str) : 
         """
         Docstring for __init__
         
@@ -24,9 +25,12 @@ class Pokemon :
         self.__hp = hp
         self.__attack = attack
         self.__defense = defense
+        self.__speed = speed
+        self.__precision = precision
         self.__level = 1
         self.__types = types 
-        
+
+
     # Getters and setters -----------------------------------------------------------------------------------------------
 
     def get_id(self):
@@ -76,6 +80,23 @@ class Pokemon :
             raise ValueError("Defense cannot be negative.")
         self.__defense = new_defense
 
+    def get_speed(self):
+        return self.__speed
+    def set_speed(self, new_speed):
+        if not isinstance(new_speed, int):
+            raise TypeError("speed must be an integer.")
+        if new_speed < 0:
+            raise ValueError("speed cannot be negative.")
+        self.__speed = new_speed
+
+    def get_precision(self):
+        return self.__precision
+    def set_precision(self, new_precision):
+        if not isinstance(new_precision, int):
+            raise TypeError("precision must be an integer.")
+        if new_precision < 0:
+            raise ValueError("precision cannot be negative.")
+        self.__precision = new_precision
 
     def get_level(self):
         return self.__level
@@ -99,3 +120,7 @@ class Pokemon :
         self.__types = new_types
 
     # End of getters and setters ---------------------------------------------------------------------------------------
+
+    def load_front_sprite(self) -> pygame.Surface : 
+        """ Returns the pygame surface of the pokemon, facing the player """
+        pass
