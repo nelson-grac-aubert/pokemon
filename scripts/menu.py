@@ -19,7 +19,7 @@ BEIGE = (230, 220, 180)
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
 
-FONT = load_font("../assets/font/Pokemon_GB.tff", 32)
+FONT = load_font("../assets/font/Pokemon_GB.ttf", 32)
 
 class PixelButton:
     def __init__(self, text, x, y, w, h, color, callback):
