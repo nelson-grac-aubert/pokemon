@@ -1,4 +1,4 @@
-class Type : 
+class PokemonType : 
     def __init__(self, name : str, weaknesses : list, strenghts : list, useless : list) : 
         """
         Docstring for __init__
@@ -34,7 +34,7 @@ class Type :
     def set_weaknesses(self, new_weaknesses) :
         if not isinstance(new_weaknesses, list):
             raise TypeError("Weaknesses must be a list.")
-        if not all(isinstance(t, Type) for t in new_weaknesses):
+        if not all(isinstance(t, PokemonType) for t in new_weaknesses):
             raise ValueError("Each type must be a Type object.")
 
     
@@ -43,7 +43,7 @@ class Type :
     def set_strenghts(self, new_strenghts) :
         if not isinstance(new_strenghts, list):
             raise TypeError("strenghts must be a list.")
-        if not all(isinstance(t, Type) for t in new_strenghts):
+        if not all(isinstance(t, PokemonType) for t in new_strenghts):
             raise ValueError("Each type must be a Type object.")
     
     
@@ -52,7 +52,7 @@ class Type :
     def set_useless(self, new_useless) :
         if not isinstance(new_useless, list):
             raise TypeError("useless must be a list.")
-        if not all(isinstance(t, Type) for t in new_useless):
+        if not all(isinstance(t, PokemonType) for t in new_useless):
             raise ValueError("Each type must be a Type object.")
 
     # End of getters and setters ---------------------------------------------------------------------------------------

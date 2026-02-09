@@ -1,4 +1,5 @@
-from pokemon_class import Pokemon
+from Pokemon_class import Pokemon
+from all_types import *
 
 ROLE_STATS = {
     "base_weak":   (45, 45, 45, 45, 85),

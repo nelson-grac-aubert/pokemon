@@ -99,7 +99,7 @@ def main_menu():
     while True:
         SCREEN.fill(BEIGE)
 
-        title = TITLE_FONT.render("POKÉMON", True, BLACK)
+        title = TITLE_FONT.render("POKEMON", True, BLACK)
         title_rect = title.get_rect(center=(WIDTH//2, 100))
         SCREEN.blit(title, title_rect)
        

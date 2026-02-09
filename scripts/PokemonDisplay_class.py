@@ -17,6 +17,8 @@ class PokemonDisplay:
 
         self.load_sprites()
 
+    # Load sprites
+
     def load_sprites(self):
         pid = self.pokemon.get_id()
 
@@ -40,7 +42,6 @@ class PokemonDisplay:
             self.frame_index = (self.frame_index + 1) % len(self.frames)
 
     # Display
- 
     def draw(self, surface):
         if not self.frames:
             return
