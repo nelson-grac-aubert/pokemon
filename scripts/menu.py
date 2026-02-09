@@ -1,6 +1,28 @@
 import pygame
 import sys
 from assets_management import load_font
+from PIL import Image
+
+def load_gif_frames(path, scale=1.0):
+    gif = Image.open(path)
+    frames = []
+
+    try:
+        while True:
+            frame = gif.copy().convert("RGBA")
+
+            new_size = (int(frame.width * scale), int(frame.height * scale))
+            frame = frame.resize(new_size, Image.NEAREST)  # NEAREST = pixel art propre
+
+            pygame_frame = pygame.image.fromstring(frame.tobytes(), frame.size, "RGBA")
+            frames.append(pygame_frame)
+
+            gif.seek(gif.tell() + 1)
+    except EOFError:
+        pass
+
+    return frames
+
 
 pygame.init()
 
@@ -18,6 +40,12 @@ BEIGE = (230, 220, 180)
 
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
+
+GIF_PATH = "../assets/sprites/025.gif"
+gif_frames = load_gif_frames(GIF_PATH, scale=2.0)
+gif_index = 0
+gif_timer = 0
+
 
 TITLE_FONT = load_font("../assets/font/Pokemon_GB.ttf", 48)
 FONT = load_font("../assets/font/Pokemon_GB.ttf", 22)
@@ -97,10 +125,23 @@ def main_menu():
     while True:
         SCREEN.fill(BEIGE)
 
-        title = TITLE_FONT.render("POKÉMON", True, BLACK)
+        title = TITLE_FONT.render("POKEMON", True, BLACK)
         title_rect = title.get_rect(center=(WIDTH//2, 100))
         SCREEN.blit(title, title_rect)
 
+        global gif_index, gif_timer
+
+        gif_timer += 1
+        if  gif_timer >= 3:  
+            gif_timer = 0
+            gif_index = (gif_index + 1) % len(gif_frames)
+
+        gif_frame = gif_frames[gif_index]
+        gif_rect = gif_frame.get_rect(center=(WIDTH//2, 200))
+
+        SCREEN.blit(gif_frame, gif_rect)
+
+       
         mouse_pos = pygame.mouse.get_pos()
         mouse_click = False
 
