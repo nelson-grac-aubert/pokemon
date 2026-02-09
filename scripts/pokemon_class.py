@@ -1,7 +1,7 @@
 from class_type import Type
 
 class Pokemon : 
-    def __init__(self, name : str, hp : int, attack : int, defense : int, types : list, id : str ) : 
+    def __init__(self, name : str, hp : int, attack : int, defense : int, types : list, id : str) : 
         """
         Docstring for __init__
         
@@ -29,9 +29,18 @@ class Pokemon :
         
     # Getters and setters -----------------------------------------------------------------------------------------------
 
+    def get_id(self):
+        return self.__id
+    def set_id(self, new_id):
+        if not isinstance(new_id, str):
+            raise TypeError("Name must be a string.")
+        if new_id.strip() == "":
+            raise ValueError("Name cannot be empty.")
+        self.__id = new_id
+
+
     def get_name(self):
         return self.__name
-
     def set_name(self, new_name):
         if not isinstance(new_name, str):
             raise TypeError("Name must be a string.")
@@ -39,17 +48,17 @@ class Pokemon :
             raise ValueError("Name cannot be empty.")
         self.__name = new_name
 
+
     def get_hp(self):
         return self.__hp
-
     def set_hp(self, new_hp):
         if not isinstance(new_hp, int):
             raise TypeError("HP must be an integer.")
         self.__hp = new_hp
 
+
     def get_attack(self):
         return self.__attack
-
     def set_attack(self, new_attack):
         if not isinstance(new_attack, int):
             raise TypeError("Attack must be an integer.")
@@ -57,9 +66,9 @@ class Pokemon :
             raise ValueError("Attack cannot be negative.")
         self.__attack = new_attack
 
+
     def get_defense(self):
         return self.__defense
-
     def set_defense(self, new_defense):
         if not isinstance(new_defense, int):
             raise TypeError("Defense must be an integer.")
@@ -67,9 +76,9 @@ class Pokemon :
             raise ValueError("Defense cannot be negative.")
         self.__defense = new_defense
 
+
     def get_level(self):
         return self.__level
-
     def set_level(self, new_level):
         if not isinstance(new_level, int):
             raise TypeError("Level must be an integer.")
@@ -77,9 +86,9 @@ class Pokemon :
             raise ValueError("Level must be at least 1.")
         self.__level = new_level
 
+
     def get_types(self):
         return self.__types
-
     def set_types(self, new_types):
         if not isinstance(new_types, list):
             raise TypeError("Types must be a list.")
