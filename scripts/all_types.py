@@ -1,5 +1,7 @@
 from PokemonType_class import PokemonType
 
+# Initialize all types, with empty weaknesses, strenghts, and useless against lists
+
 normal  = PokemonType("Normal",  [], [], [])
 fire    = PokemonType("Fire",    [], [], [])
 water   = PokemonType("Water",   [], [], [])
@@ -18,6 +20,8 @@ dragon  = PokemonType("Dragon",  [], [], [])
 dark    = PokemonType("Dark",    [], [], [])
 steel   = PokemonType("Steel",   [], [], [])
 fairy   = PokemonType("Fairy",   [], [], [])
+
+# Now all types exist, update lists according to the pokemon data 
 
 normal.set_weaknesses([rock, steel])
 normal.set_strenghts([])

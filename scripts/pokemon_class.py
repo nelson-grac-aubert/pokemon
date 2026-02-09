@@ -128,15 +128,3 @@ class Pokemon :
         self.__types = new_types
 
     # End of getters and setters ---------------------------------------------------------------------------------------
-
-    def load_front_sprite(self) -> list : 
-        """ Returns a list of pygame.Surface objects, that are the frames of the animated gif
-        of the pokemon, facing the player """
-
-        return load_gif(f"../assets/sprites/{self.get_id()}.gif")
-    
-    def load_back_sprite(self) -> list : 
-        """ Returns a list of pygame.Surface objects, that are the frames of the animated gif 
-        of the pokemon, with its back turned from the player"""
-
-        return load_gif(f"../assets/sprites/{self.get_id()}.gif")

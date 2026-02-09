@@ -1,19 +1,36 @@
 from Pokemon_class import Pokemon
 from all_types import *
 
-ROLE_STATS = {
-    "base_weak":   (45, 45, 45, 45, 85),
-    "base_mid":    (55, 55, 55, 55, 90),
-    "intermediate":(65, 65, 65, 60, 92),
-    "final":       (80, 80, 80, 75, 95),
-    "fast":        (55, 50, 45, 90, 98),
-    "tank":        (70, 60, 90, 40, 88),
-    "legend":      (100, 100, 100, 100, 100),
+# Pokemon stats are simplified using a re-usable stat template 
+stats_template = {
+    "base_weak":   (45, 45, 45, 45, 85),        # First evolution, weak
+    "base_mid":    (55, 55, 55, 55, 90),        # First evolution, a bit stronger
+    "intermediate":(65, 65, 65, 60, 92),        # Middle evolution
+    "final":       (80, 80, 80, 75, 95),        # Final evolution
+    "fast":        (55, 50, 45, 90, 98),        # Weak but fast pokemon, often attacks first
+    "tank":        (70, 60, 90, 40, 88),        # Tanky pokemon, slow but healthy
+    "legend":      (100, 100, 100, 100, 100),   # Mew, Mewtwo, 3 legendary birds
 }
 
-def make_pokemon(pid: str, name: str, types_list: list, role: str) -> Pokemon:
-    hp, atk, df, spd, prec = ROLE_STATS[role]
-    return Pokemon(name, hp, atk, df, spd, prec, types_list, pid)
+def make_pokemon(pid: str, name: str, types: list, key: str) -> Pokemon:
+    """ 
+    Instantiate a Pokemon object using the stats_template dictionary
+    
+    :param pid: ID # of the Pokemon
+    :type pid: str
+    :param name: English name of the Pokemon
+    :type name: str
+    :param types: Types of that Pokemon
+    :type types: list
+    :param key: key of the stats_template dictionary, reflecting a stat profile
+    :type key: str
+    :return: The created Pokemon object
+    :rtype: Pokemon
+    """
+    hp, atk, df, spd, prec = stats_template[key]
+    return Pokemon(name, hp, atk, df, spd, prec, types, pid)
+
+# Instantiate all Pokemons of the first generation 
 
 bulbasaur   = make_pokemon("001", "Bulbasaur",      [grass, poison], "base_mid")
 ivysaur     = make_pokemon("002", "Ivysaur",        [grass, poison], "intermediate")
