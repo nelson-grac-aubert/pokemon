@@ -1,4 +1,5 @@
 import pygame
+from scripts.logic.assets_management import load_font
 from scripts.classes.Pokedex_class import Pokedex
 from scripts.classes.PokemonDisplay_class import PokemonDisplay
 
@@ -17,7 +18,7 @@ class PokedexDisplay:
         self.left_width = 260
         self.right_width = screen.get_width() - self.left_width
 
-        # Back button (PLACÉ APRÈS left_width)
+        # Back button
         self.back_button_rect = pygame.Rect(self.left_width + 20, self.screen.get_height() - 60, 160, 40)
 
         # Scroll
@@ -26,8 +27,8 @@ class PokedexDisplay:
         self.line_height = 48
 
         # Fonts
-        self.font = pygame.font.Font(None, 28)
-        self.small_font = pygame.font.Font(None, 22)
+        self.font = load_font("assets/font/Pokemon_GB.ttf", 18)
+        self.small_font = load_font("assets/font/Pokemon_GB.ttf", 14)
 
         # Animated Pokémon
         self.current_display = None
@@ -46,10 +47,8 @@ class PokedexDisplay:
         self.current_display = PokemonDisplay(pokemon, scale=3.0, is_front=True)
         self.current_display.set_position(self.left_width + 350, 200)
 
-    # -------------------------------------------------------------------------
-    # Left panel : pokemon list
-    # -------------------------------------------------------------------------
     def draw_left_panel(self):
+        """ Draw left pannel, a scrollable Pokemon list """
         pygame.draw.rect(
             self.screen,
             (220, 0, 0),
@@ -73,25 +72,24 @@ class PokedexDisplay:
                 pygame.draw.rect(self.screen, (255, 230, 230), rect)
 
             text = self.font.render(
-                f"#{pokemon.get_id()}  {pokemon.get_name()}",
+                f"{pokemon.get_id()} {pokemon.get_name()}",
                 True,
                 (0, 0, 0)
             )
             self.screen.blit(text, (10, y + 10))
 
-    # -------------------------------------------------------------------------
-    # Right panel : pokemon infos
-    # -------------------------------------------------------------------------
+
     def draw_right_panel(self):
+        """ Draw right pannel, showing pokemon name, stats and animated sprite """
         pygame.draw.rect(
             self.screen,
             (245, 245, 245),
             (self.left_width, 0, self.right_width, self.screen.get_height())
         )
 
-    # Bouton retour
+        # Return button
         pygame.draw.rect(self.screen, (200, 50, 50), self.back_button_rect)
-        txt = self.font.render("Retour menu", True, (255, 255, 255))
+        txt = self.font.render("Main menu", True, (255, 255, 255))
         self.screen.blit(txt, (self.back_button_rect.x + 10, self.back_button_rect.y + 8))
 
         pokemons = self.__pokedex.get_pokemons()
