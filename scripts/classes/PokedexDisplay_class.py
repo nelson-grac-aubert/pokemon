@@ -147,25 +147,28 @@ class PokedexDisplay:
 
         if event.type == pygame.MOUSEBUTTONDOWN:
 
-        # Scroll
+            # Scroll
             if event.button == 4:
                 self.scroll_offset = max(self.scroll_offset - self.scroll_speed, 0)
+                return
+
             elif event.button == 5:
                 self.scroll_offset += self.scroll_speed
+                return
 
-        # Clic gauche
+            # Clic gauche
             if event.button == 1:
                 mx, my = event.pos
 
-            # Bouton retour
+                # Bouton retour
                 if self.back_button_rect.collidepoint(mx, my):
                     self.request_exit = True
                     return
 
-            # Sélection d'un Pokémon
-            if mx < self.left_width:
-                index = (my + self.scroll_offset) // self.line_height
-                if 0 <= index < len(self.__pokedex.get_pokemons()):
-                    self.selected_index = index
-                    self.load_current_pokemon_display()
+                # Sélection d'un Pokémon
+                if mx < self.left_width:
+                    index = (my + self.scroll_offset) // self.line_height
+                    if 0 <= index < len(self.__pokedex.get_pokemons()):
+                        self.selected_index = index
+                        self.load_current_pokemon_display()
 
