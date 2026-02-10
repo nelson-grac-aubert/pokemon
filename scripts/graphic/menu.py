@@ -5,6 +5,8 @@ from scripts.data.all_pokemons import bulbasaur
 from scripts.classes.PokemonDisplay_class import PokemonDisplay
 from scripts.classes.PixelButton_class import PixelButton
 from scripts.graphic.colors import * 
+from scripts.graphic.pokedex_menu import run_pokedex
+
 
 pygame.init()
 fps = 60
@@ -28,6 +30,9 @@ button_click_cooldown = 0
 
 
 # Buttons functions 
+def open_pokedex():
+    run_pokedex()
+
 def new_game():
     print("Nouvelle partie !")
 
@@ -43,43 +48,11 @@ buttons = [PixelButton("NEW GAME", width//2 - 175, 300, 350, 60, RED, new_game),
         PixelButton("RESUME GAME", width//2 - 175, 380, 350, 60, BLUE, resume_game),
         PixelButton("QUIT", width//2 - 175, 460, 350, 60, GREEN, quit_game)]
 
-def open_new_window():
-    new_screen = pygame.display.set_mode((500, 400))
-    pygame.display.set_caption("Nouvelle Fenêtre")
-
-    back_img = load_image("assets/images/back_arrow.png").convert_alpha()
-    back_img = pygame.transform.scale(back_img, (64, 64))
-    back_rect = back_img.get_rect()
-    back_rect.topleft = (20, 20)
-
-    running = True
-    while running:
-        mouse_pos = pygame.mouse.get_pos()
-
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                running = False
-
-            if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
-                if back_rect.collidepoint(mouse_pos):
-                    running = False
-
-        new_screen.fill((180, 200, 255))
-        new_screen.blit(back_img, back_rect)
-
-        pygame.display.flip()
-
-    # Retour à la fenêtre principale
-    pygame.display.set_mode((width, height))
-    pygame.display.set_caption("Menu Pokémon Pixel")
-
 def draw_animated_button(surface, image, rect, scale):
     w, h = image.get_size()
     scaled_img = pygame.transform.scale(image, (int(w * scale), int(h * scale)))
     new_rect = scaled_img.get_rect(center=rect.center)
     surface.blit(scaled_img, new_rect)
-
-
 
 def main_menu():
     while True:
@@ -100,7 +73,7 @@ def main_menu():
 
         global button_hover_scale, button_target_scale, button_click_cooldown
 
-# Hover
+        # Hover
         if button_img_rect.collidepoint(mouse_pos):
             button_target_scale = 1.15  # zoom 
         else:
@@ -116,7 +89,7 @@ def main_menu():
         # Click
                 if button_img_rect.collidepoint(mouse_pos):
                     button_click_cooldown = 5
-                    open_new_window()
+                    run_pokedex()
 
         for btn in buttons:
             btn.update(mouse_pos, mouse_click)

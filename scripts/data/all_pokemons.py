@@ -263,3 +263,5 @@ beedrill    = make_pokemon("015", "Beedrill",       [bug, poison],   (12, 7, 6, 
 #     tangela,kangaskhan,horsea, seadra,goldeen, seaking,staryu, starmie,mr_mime,scyther,jynx,electabuzz,magmar,
 #     pinsir, tauros, magikarp, gyarados, lapras, ditto, eevee, vaporeon, jolteon, flareon, porygon, omanyte, omastar, kabuto, 
 #     kabutops, aerodactyl, snorlax, articuno, zapdos, moltres, dratini, dragonair, dragonite, mewtwo, mew]
+
+kanto_pokemons = [bulbasaur, ivysaur, venusaur, squirtle, charmander, charmeleon]

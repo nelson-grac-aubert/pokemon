@@ -1,38 +1,32 @@
 import pygame
-from scripts.classes.Pokemon_class import Pokemon
 from scripts.classes.Pokedex_class import Pokedex
 from scripts.classes.PokedexDisplay_class import PokedexDisplay
 from scripts.data.all_pokemons import kanto_pokemons
 
-pygame.init()
+def run_pokedex():
+    pygame.init()
 
-# Création du pokédex
-kanto_pokedex = Pokedex()
-kanto_pokedex.set_pokemons(kanto_pokemons)
+    screen = pygame.display.set_mode((900, 600))
+    pygame.display.set_caption("Pokédex")
 
-# Fenêtre
-screen = pygame.display.set_mode((900, 600))
-pygame.display.set_caption("Pokédex")
+    pokedex = Pokedex()
+    pokedex.set_pokemons(kanto_pokemons)
 
-# Affichage pokédex
-pokedex_display = PokedexDisplay(kanto_pokedex, screen)
+    pokedex_display = PokedexDisplay(pokedex, screen)
 
-clock = pygame.time.Clock()
-running = True
+    clock = pygame.time.Clock()
+    running = True
 
-while running:
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            running = False
+    while running:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                running = False
 
-        # Le pokédex gère les inputs
-        pokedex_display.handle_event(event)
+            pokedex_display.handle_event(event)
 
-    # Dessin
-    screen.fill((0, 0, 0))
-    pokedex_display.draw()
-    pygame.display.flip()
+        screen.fill((0, 0, 0))
+        pokedex_display.draw()
+        pygame.display.flip()
+        clock.tick(60)
 
-    clock.tick(60)
-
-pygame.quit()
+    pygame.quit()
