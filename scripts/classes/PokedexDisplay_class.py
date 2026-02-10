@@ -10,9 +10,15 @@ class PokedexDisplay:
         # Selection
         self.selected_index = 0
 
+        # Exit flag
+        self.request_exit = False
+
         # Layout
         self.left_width = 260
         self.right_width = screen.get_width() - self.left_width
+
+        # Back button (PLACÉ APRÈS left_width)
+        self.back_button_rect = pygame.Rect(self.left_width + 20, self.screen.get_height() - 60, 160, 40)
 
         # Scroll
         self.scroll_offset = 0
@@ -83,6 +89,11 @@ class PokedexDisplay:
             (self.left_width, 0, self.right_width, self.screen.get_height())
         )
 
+    # Bouton retour
+        pygame.draw.rect(self.screen, (200, 50, 50), self.back_button_rect)
+        txt = self.font.render("Retour menu", True, (255, 255, 255))
+        self.screen.blit(txt, (self.back_button_rect.x + 10, self.back_button_rect.y + 8))
+
         pokemons = self.__pokedex.get_pokemons()
         if not pokemons:
             return
@@ -133,21 +144,28 @@ class PokedexDisplay:
     # Inputs
     # -------------------------------------------------------------------------
     def handle_event(self, event):
-        # Scroll
+
         if event.type == pygame.MOUSEBUTTONDOWN:
-            if event.button == 4:  # molette haut
+
+        # Scroll
+            if event.button == 4:
                 self.scroll_offset = max(self.scroll_offset - self.scroll_speed, 0)
-            elif event.button == 5:  # molette bas
+            elif event.button == 5:
                 self.scroll_offset += self.scroll_speed
 
-            # Click a pokemon
+        # Clic gauche
             if event.button == 1:
                 mx, my = event.pos
 
-                if mx < self.left_width:
-                    index = (my + self.scroll_offset) // self.line_height
+            # Bouton retour
+                if self.back_button_rect.collidepoint(mx, my):
+                    self.request_exit = True
+                    return
 
-                    if 0 <= index < len(self.__pokedex.get_pokemons()):
-                        self.selected_index = index
-                        self.load_current_pokemon_display()
+            # Sélection d'un Pokémon
+            if mx < self.left_width:
+                index = (my + self.scroll_offset) // self.line_height
+                if 0 <= index < len(self.__pokedex.get_pokemons()):
+                    self.selected_index = index
+                    self.load_current_pokemon_display()
 
