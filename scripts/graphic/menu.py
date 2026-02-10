@@ -5,25 +5,34 @@ from scripts.data.all_pokemons import bulbasaur
 from scripts.classes.PokemonDisplay_class import PokemonDisplay
 from scripts.classes.PixelButton_class import PixelButton
 from scripts.graphic.colors import * 
+from scripts.graphic.pokedex_menu import run_pokedex
+
 
 pygame.init()
-FPS = 60
-CLOCK = pygame.time.Clock()
-WIDTH, HEIGHT = 800, 600
-SCREEN = pygame.display.set_mode((WIDTH, HEIGHT))
-TITLE_FONT = load_font("../assets/font/Pokemon_GB.ttf", 48)
+fps = 60
+clock = pygame.time.Clock()
+width, height = 800, 600
+screen = pygame.display.set_mode((width, height))
+title_font = load_font("assets/font/Pokemon_GB.ttf", 48)
 
 pygame.display.set_caption("Menu Pokémon Pixel")
 
 bulbasaur_display = PokemonDisplay(bulbasaur, scale=2.0, is_front=True)
-bulbasaur_display.set_position(WIDTH // 2, 200)
+bulbasaur_display.set_position(width // 2, 200)
 
-button_img = load_image("../assets/images/pokedex.png").convert_alpha()
-button_img = pygame.transform.scale(button_img, (120, 100))  # adapte la taille si tu veux
+button_img = load_image("assets/images/pokedex.png").convert_alpha()
+button_img = pygame.transform.scale(button_img, (140, 120))  # adapte la taille 
 button_img_rect = button_img.get_rect()
-button_img_rect.topright = (WIDTH - 20, 20)  # position en haut à droite
+button_img_rect.topright = (width - 20, 20)  # position en haut à droite
+button_hover_scale = 1.0
+button_target_scale = 1.0
+button_click_cooldown = 0
+
 
 # Buttons functions 
+def open_pokedex():
+    run_pokedex()
+
 def new_game():
     print("Nouvelle partie !")
 
@@ -34,42 +43,16 @@ def quit_game():
     pygame.quit()
     sys.exit()
 
-# Pygame initialisation    
-pygame.init()
-pygame.display.set_caption("Menu Pokémon Pixel")
-
-# Pygame variables
-fps = 60
-clock = pygame.time.Clock()
-width, height = 800, 600
-screen = pygame.display.set_mode((width, height))
-title_font = load_font("../assets/font/Pokemon_GB.ttf", 48)
-
-# Animated bulbasaur
-bulbasaur_display = PokemonDisplay(bulbasaur, scale=2.0, is_front=True)
-bulbasaur_display.set_position(width // 2, 200)
 
 buttons = [PixelButton("NEW GAME", width//2 - 175, 300, 350, 60, RED, new_game),
         PixelButton("RESUME GAME", width//2 - 175, 380, 350, 60, BLUE, resume_game),
         PixelButton("QUIT", width//2 - 175, 460, 350, 60, GREEN, quit_game)]
 
-def open_new_window():
-    new_screen = pygame.display.set_mode((500, 400))
-    pygame.display.set_caption("Nouvelle Fenêtre")
-
-    running = True
-    while running:
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                running = False
-
-        new_screen.fill((180, 200, 255))
-        pygame.display.flip()
-
-    # Retour à la fenêtre principale
-    pygame.display.set_mode((WIDTH, HEIGHT))
-    pygame.display.set_caption("Menu Pokémon Pixel")
-
+def draw_animated_button(surface, image, rect, scale):
+    w, h = image.get_size()
+    scaled_img = pygame.transform.scale(image, (int(w * scale), int(h * scale)))
+    new_rect = scaled_img.get_rect(center=rect.center)
+    surface.blit(scaled_img, new_rect)
 
 def main_menu():
     while True:
@@ -88,6 +71,14 @@ def main_menu():
         mouse_pos = pygame.mouse.get_pos()
         mouse_click = False
 
+        global button_hover_scale, button_target_scale, button_click_cooldown
+
+        # Hover
+        if button_img_rect.collidepoint(mouse_pos):
+            button_target_scale = 1.15  # zoom 
+        else:
+            button_target_scale = 1.0
+
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 quit_game()
@@ -95,16 +86,22 @@ def main_menu():
             if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
                 mouse_click = True
 
-        # Clic sur le bouton image
+        # Click
                 if button_img_rect.collidepoint(mouse_pos):
-                    open_new_window()
+                    button_click_cooldown = 5
+                    run_pokedex()
 
         for btn in buttons:
             btn.update(mouse_pos, mouse_click)
-            btn.draw(SCREEN, mouse_pos)
+            btn.draw(screen, mouse_pos)
         
-        SCREEN.blit(button_img, button_img_rect)
-       
+        button_hover_scale += (button_target_scale - button_hover_scale) * 0.15 
+        if button_click_cooldown > 0 :
+           button_hover_scale = 0.9
+           button_click_cooldown -= 1
+
+        draw_animated_button(screen, button_img, button_img_rect, button_hover_scale)
+
         btn.draw(screen, mouse_pos)
 
         pygame.display.flip()

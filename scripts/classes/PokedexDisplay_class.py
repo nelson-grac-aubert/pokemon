@@ -1,10 +1,14 @@
 import pygame
 from scripts.classes.Pokedex_class import Pokedex
+from scripts.classes.PokemonDisplay_class import PokemonDisplay
 
 class PokedexDisplay:
     def __init__(self, pokedex: Pokedex, screen: pygame.Surface):
         self.__pokedex = pokedex
         self.screen = screen
+
+        # Selection
+        self.selected_index = 0
 
         # Layout
         self.left_width = 260
@@ -15,12 +19,14 @@ class PokedexDisplay:
         self.scroll_speed = 30
         self.line_height = 48
 
-        # Selection
-        self.selected_index = 0
-
         # Fonts
         self.font = pygame.font.Font(None, 28)
         self.small_font = pygame.font.Font(None, 22)
+
+        # Animated Pokémon
+        self.current_display = None
+        if self.__pokedex.get_pokemons():
+            self.load_current_pokemon_display()
 
     def get_pokedex(self):
         return self.__pokedex
@@ -28,6 +34,11 @@ class PokedexDisplay:
     def draw(self):
         self.draw_left_panel()
         self.draw_right_panel()
+
+    def load_current_pokemon_display(self):
+        pokemon = self.__pokedex.get_pokemons()[self.selected_index]
+        self.current_display = PokemonDisplay(pokemon, scale=3.0, is_front=True)
+        self.current_display.set_position(self.left_width + 350, 200)
 
     # -------------------------------------------------------------------------
     # Left panel : pokemon list
@@ -113,11 +124,10 @@ class PokedexDisplay:
             self.screen.blit(txt, (self.left_width + 20, stats_y))
             stats_y += 40
 
-        # Animated frames (si déjà chargées quelque part)
-        if getattr(pokemon, "front_frames", None):
-            if pokemon.front_frames:
-                frame = pokemon.front_frames[pokemon.frame_index]
-                self.screen.blit(frame, (self.left_width + 250, 80))
+        if self.current_display:
+            self.current_display.update()
+            self.current_display.draw(self.screen)
+
 
     # -------------------------------------------------------------------------
     # Inputs
@@ -139,3 +149,5 @@ class PokedexDisplay:
 
                     if 0 <= index < len(self.__pokedex.get_pokemons()):
                         self.selected_index = index
+                        self.load_current_pokemon_display()
+

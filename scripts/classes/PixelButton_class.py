@@ -3,7 +3,7 @@ from scripts.logic.assets_management import load_font
 from scripts.graphic.colors import * 
 
 pygame.init()
-FONT = load_font("../assets/font/Pokemon_GB.ttf", 22)
+FONT = load_font("assets/font/Pokemon_GB.ttf", 22)
 
 class PixelButton:
     def __init__(self, text : str, x : int, y : int, w : int, h, color : tuple, callback):
