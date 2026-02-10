@@ -1,7 +1,7 @@
 import pygame
 from scripts.classes.Pokedex_class import Pokedex
 from scripts.classes.PokedexDisplay_class import PokedexDisplay
-from scripts.data.all_pokemons import kanto_pokemons
+from scripts.logic.json_management import load_pokemons_from_json, load_types_from_json
 
 def run_pokedex():
     pygame.init()
@@ -10,7 +10,8 @@ def run_pokedex():
     pygame.display.set_caption("Pokédex")
 
     pokedex = Pokedex()
-    pokedex.set_pokemons(kanto_pokemons)
+    pokedex.set_pokemons(load_pokemons_from_json("scripts/data/all_pokemons.json", 
+                        load_types_from_json("scripts/data/all_types.json")))
 
     pokedex_display = PokedexDisplay(pokedex, screen)
 

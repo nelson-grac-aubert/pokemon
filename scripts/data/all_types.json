@@ -1,0 +1,92 @@
+{
+  "normal": {
+    "weaknesses": ["rock", "steel"],
+    "strenghts": [],
+    "useless": ["ghost"]
+  },
+  "fire": {
+    "weaknesses": ["fire", "water", "rock", "dragon"],
+    "strenghts": ["grass", "ice", "bug", "steel"],
+    "useless": []
+  },
+  "water": {
+    "weaknesses": ["water", "grass", "dragon"],
+    "strenghts": ["fire", "ground", "rock"],
+    "useless": []
+  },
+  "grass": {
+    "weaknesses": ["fire", "grass", "poison", "flying", "bug", "dragon", "steel"],
+    "strenghts": ["water", "ground", "rock"],
+    "useless": []
+  },
+  "electric": {
+    "weaknesses": ["grass", "electric", "dragon"],
+    "strenghts": ["water", "flying"],
+    "useless": ["ground"]
+  },
+  "ice": {
+    "weaknesses": ["fire", "water", "ice", "steel"],
+    "strenghts": ["grass", "ground", "flying", "dragon"],
+    "useless": []
+  },
+  "fighting": {
+    "weaknesses": ["poison", "flying", "psychic", "bug", "fairy"],
+    "strenghts": ["normal", "ice", "rock", "dark", "steel"],
+    "useless": ["ghost"]
+  },
+  "poison": {
+    "weaknesses": ["poison", "ground", "rock", "ghost"],
+    "strenghts": ["grass", "fairy"],
+    "useless": ["steel"]
+  },
+  "ground": {
+    "weaknesses": ["grass", "bug"],
+    "strenghts": ["fire", "electric", "poison", "rock", "steel"],
+    "useless": ["flying"]
+  },
+  "flying": {
+    "weaknesses": ["electric", "rock", "steel"],
+    "strenghts": ["grass", "fighting", "bug"],
+    "useless": []
+  },
+  "psychic": {
+    "weaknesses": ["psychic", "steel"],
+    "strenghts": ["fighting", "poison"],
+    "useless": ["dark"]
+  },
+  "bug": {
+    "weaknesses": ["fire", "fighting", "poison", "flying", "ghost", "steel", "fairy"],
+    "strenghts": ["grass", "psychic", "dark"],
+    "useless": []
+  },
+  "rock": {
+    "weaknesses": ["fighting", "ground", "steel"],
+    "strenghts": ["fire", "ice", "flying", "bug"],
+    "useless": []
+  },
+  "ghost": {
+    "weaknesses": ["dark"],
+    "strenghts": ["psychic", "ghost"],
+    "useless": ["normal"]
+  },
+  "dragon": {
+    "weaknesses": ["steel"],
+    "strenghts": ["dragon"],
+    "useless": ["fairy"]
+  },
+  "dark": {
+    "weaknesses": ["fighting", "dark", "fairy"],
+    "strenghts": ["psychic", "ghost"],
+    "useless": []
+  },
+  "steel": {
+    "weaknesses": ["fire", "water", "electric", "steel"],
+    "strenghts": ["ice", "rock", "fairy"],
+    "useless": []
+  },
+  "fairy": {
+    "weaknesses": ["fire", "poison", "steel"],
+    "strenghts": ["fighting", "dragon", "dark"],
+    "useless": []
+  }
+}

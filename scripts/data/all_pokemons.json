@@ -282,7 +282,7 @@
     },
     {
       "id": "029",
-      "name": "Nidoran♀",
+      "name": "Nidoran F",
       "hp": 12,
       "attack": 6,
       "defense": 6,
@@ -312,7 +312,7 @@
     },
     {
       "id": "032",
-      "name": "Nidoran♂",
+      "name": "Nidoran M",
       "hp": 12,
       "attack": 6,
       "defense": 5,
