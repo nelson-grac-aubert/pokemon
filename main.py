@@ -1,4 +1,4 @@
-from menu import main_menu
+from scripts.graphic.menu import main_menu
 
 if __name__ == "__main__" : 
 

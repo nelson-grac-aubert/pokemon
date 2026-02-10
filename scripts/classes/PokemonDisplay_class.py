@@ -1,5 +1,5 @@
 import pygame
-from assets_management import load_gif
+from scripts.logic.assets_management import load_gif
 
 class PokemonDisplay:
     def __init__(self, pokemon, scale=1.0, is_front=True):

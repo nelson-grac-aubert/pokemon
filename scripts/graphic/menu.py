@@ -1,10 +1,10 @@
 import pygame
 import sys
-from assets_management import load_font, load_image
-from all_pokemons import pikachu
-from PokemonDisplay_class import PokemonDisplay
-from PixelButton_class import PixelButton
-from colors import * 
+from scripts.logic.assets_management import load_font, load_image
+from scripts.data.all_pokemons import bulbasaur
+from scripts.classes.PokemonDisplay_class import PokemonDisplay
+from scripts.classes.PixelButton_class import PixelButton
+from scripts.graphic.colors import * 
 
 pygame.init()
 FPS = 60
@@ -15,8 +15,8 @@ TITLE_FONT = load_font("../assets/font/Pokemon_GB.ttf", 48)
 
 pygame.display.set_caption("Menu Pokémon Pixel")
 
-pikachu_display = PokemonDisplay(pikachu, scale=2.0, is_front=True)
-pikachu_display.set_position(WIDTH // 2, 200)
+bulbasaur_display = PokemonDisplay(bulbasaur, scale=2.0, is_front=True)
+bulbasaur_display.set_position(WIDTH // 2, 200)
 
 button_img = load_image("../assets/images/pokedex.png").convert_alpha()
 button_img = pygame.transform.scale(button_img, (120, 100))  # adapte la taille si tu veux
@@ -45,9 +45,9 @@ width, height = 800, 600
 screen = pygame.display.set_mode((width, height))
 title_font = load_font("../assets/font/Pokemon_GB.ttf", 48)
 
-# Animated pikachu
-pikachu_display = PokemonDisplay(pikachu, scale=2.0, is_front=True)
-pikachu_display.set_position(width // 2, 200)
+# Animated bulbasaur
+bulbasaur_display = PokemonDisplay(bulbasaur, scale=2.0, is_front=True)
+bulbasaur_display.set_position(width // 2, 200)
 
 buttons = [PixelButton("NEW GAME", width//2 - 175, 300, 350, 60, RED, new_game),
         PixelButton("RESUME GAME", width//2 - 175, 380, 350, 60, BLUE, resume_game),
@@ -80,9 +80,9 @@ def main_menu():
         title_rect = title.get_rect(center=(width//2, 100))
         screen.blit(title, title_rect)
 
-        # Animate pikachu on screen 
-        pikachu_display.update()
-        pikachu_display.draw(screen)
+        # Animate bulbasaur on screen 
+        bulbasaur_display.update()
+        bulbasaur_display.draw(screen)
 
         # Events
         mouse_pos = pygame.mouse.get_pos()

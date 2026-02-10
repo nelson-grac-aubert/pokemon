@@ -1,8 +1,8 @@
 import pygame
-from Pokemon_class import Pokemon
-from Pokedex_class import Pokedex
-from PokedexDisplay_class import PokedexDisplay
-from all_pokemons import kanto_pokemons
+from scripts.classes.Pokemon_class import Pokemon
+from scripts.classes.Pokedex_class import Pokedex
+from scripts.classes.PokedexDisplay_class import PokedexDisplay
+from scripts.data.all_pokemons import kanto_pokemons
 
 pygame.init()
 

@@ -1,4 +1,4 @@
-from PokemonType_class import PokemonType
+from scripts.classes.PokemonType_class import PokemonType
 
 # Initialize all types, with empty weaknesses, strenghts, and useless against lists
 

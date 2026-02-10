@@ -1,6 +1,6 @@
 import pygame
-from PokemonType_class import PokemonType
-from assets_management import load_gif
+from scripts.classes.PokemonType_class import PokemonType
+from scripts.logic.assets_management import load_gif
 
 class Pokemon : 
     def __init__(self, name : str, hp : int, attack : int, defense : int, speed : int, precision : int, types : list, id : str) : 

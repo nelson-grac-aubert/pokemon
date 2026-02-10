@@ -1,5 +1,5 @@
 import pygame
-from Pokedex_class import Pokedex
+from scripts.classes.Pokedex_class import Pokedex
 
 class PokedexDisplay:
     def __init__(self, pokedex: Pokedex, screen: pygame.Surface):
@@ -92,7 +92,7 @@ class PokedexDisplay:
             type_rect = pygame.Rect(self.left_width + 20, type_y, 90, 28)
             pygame.draw.rect(self.screen, (210, 210, 210), type_rect)
 
-            # Si ton PokemonType a get_name()
+            # get_name()
             type_label = self.small_font.render(str(t.get_name()), True, (0, 0, 0))
             self.screen.blit(type_label, (self.left_width + 25, type_y + 4))
 
