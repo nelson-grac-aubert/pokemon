@@ -10,8 +10,8 @@ def run_pokedex():
     pygame.display.set_caption("Pokédex")
 
     pokedex = Pokedex()
-    pokedex.set_pokemons(load_pokemons_from_json("scripts/data/all_pokemons.json", 
-                        load_types_from_json("scripts/data/all_types.json")))
+    pokedex.set_pokemons(load_pokemons_from_json("assets/data/all_pokemons.json", 
+                        load_types_from_json("assets/data/all_types.json")))
 
     pokedex_display = PokedexDisplay(pokedex, screen)
 

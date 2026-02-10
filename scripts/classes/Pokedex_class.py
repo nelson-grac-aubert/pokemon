@@ -1,4 +1,4 @@
-from scripts.data.all_pokemons import * 
+from scripts.classes.Pokemon_class import Pokemon
 
 class Pokedex : 
     def __init__(self) : 

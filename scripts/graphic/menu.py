@@ -1,7 +1,7 @@
 import pygame
 import sys
 from scripts.logic.assets_management import load_font, load_image
-from scripts.data.all_pokemons import bulbasaur
+from assets.data.all_pokemons import bulbasaur
 from scripts.classes.PokemonDisplay_class import PokemonDisplay
 from scripts.classes.PixelButton_class import PixelButton
 from scripts.graphic.colors import * 

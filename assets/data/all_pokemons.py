@@ -1,5 +1,5 @@
 from scripts.classes.Pokemon_class import Pokemon
-from scripts.data.all_types import *
+from assets.data.all_types import *
 
 # Pokemon stats are simplified using a re-usable stat template 
 precision_template = {
