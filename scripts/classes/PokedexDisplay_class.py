@@ -115,7 +115,7 @@ class PokedexDisplay:
         # Return button
         pygame.draw.rect(self.screen, (200, 50, 50), self.back_button_rect)
 
-        txt = self.font.render("Main menu", True, (255, 255, 255))
+        txt = self.font.render("Exit", True, (255, 255, 255))
         txt_rect = txt.get_rect(center=self.back_button_rect.center)
 
         self.screen.blit(txt, txt_rect)

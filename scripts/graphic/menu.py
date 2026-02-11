@@ -24,12 +24,12 @@ title_font = load_font("assets/font/Pokemon_GB.ttf", 48)
 sound_control.play_music("assets/music/opening.mp3")
 
 # Load Pokedex for gif display on menu 
-pokedex = Pokedex()
-pokedex.set_pokemons(load_pokemons_from_json("assets/data/all_pokemons.json", 
+kanto_pokedex = Pokedex()
+kanto_pokedex.set_pokemons(load_pokemons_from_json("assets/data/all_pokemons.json", 
                         load_types_from_json("assets/data/all_types.json")))
 
 # Animated pikachu on main menu 
-pikachu_display = PokemonDisplay(pokedex.get_pokemons()[24], scale=2.3, is_front=True)
+pikachu_display = PokemonDisplay(kanto_pokedex.get_pokemons()[24], scale=2.3, is_front=True)
 pikachu_display.set_position(width // 2, 235)
 
 button_img = load_image("assets/images/pokedex.png").convert_alpha()
@@ -43,7 +43,7 @@ button_click_cooldown = 0
 # Buttons functions 
 
 def new_game():
-    player_pokedex, starter = run_game_intro(screen, clock, pokedex)
+    player_pokedex, starter = run_game_intro(screen, clock, kanto_pokedex)
     return player_pokedex
 
 def resume_game():
@@ -65,7 +65,7 @@ def draw_animated_button(surface, image, rect, scale):
     surface.blit(scaled_img, new_rect)
 
 def main_menu():
-    run_intro(screen, clock, pokedex)
+    run_intro(screen, clock, kanto_pokedex)
 
     while True:
         screen.fill(BEIGE)
@@ -104,7 +104,7 @@ def main_menu():
         # Click
                 if button_img_rect.collidepoint(mouse_pos):
                     button_click_cooldown = 5
-                    run_pokedex(pokedex)
+                    run_pokedex(kanto_pokedex)
 
         for btn in buttons:
             btn.update(mouse_pos, mouse_click)
