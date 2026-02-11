@@ -8,20 +8,21 @@ from scripts.classes.PixelButton_class import PixelButton
 from scripts.graphic.colors import * 
 from scripts.graphic.pokedex_menu import run_pokedex
 
-
+# Initialize pygame screen variables
 pygame.init()
 fps = 60
 clock = pygame.time.Clock()
 width, height = 800, 600
 screen = pygame.display.set_mode((width, height))
+pygame.display.set_caption("PokePixel")
 title_font = load_font("assets/font/Pokemon_GB.ttf", 48)
 
+# Load Pokedex for gif display on menu 
 pokedex = Pokedex()
 pokedex.set_pokemons(load_pokemons_from_json("assets/data/all_pokemons.json", 
                         load_types_from_json("assets/data/all_types.json")))
 
-pygame.display.set_caption("Menu Pokémon Pixel")
-
+# Animated pikachu on main menu 
 pikachu_display = PokemonDisplay(pokedex.get_pokemons()[24], scale=2.0, is_front=True)
 pikachu_display.set_position(width // 2, 200)
 
@@ -32,8 +33,6 @@ button_img_rect.topright = (width - 20, 20)  # position en haut à droite
 button_hover_scale = 1.0
 button_target_scale = 1.0
 button_click_cooldown = 0
-
-
 
 # Buttons functions 
 def open_pokedex():
