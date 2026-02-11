@@ -7,6 +7,8 @@ from scripts.classes.PokemonDisplay_class import PokemonDisplay
 from scripts.classes.PixelButton_class import PixelButton
 from scripts.graphic.colors import * 
 from scripts.graphic.pokedex_menu import run_pokedex
+from scripts.classes.SoundControl_class import SoundControl
+from scripts.graphic.intro import run_intro
 
 # Initialize pygame screen variables
 pygame.init()
@@ -16,6 +18,10 @@ width, height = 800, 600
 screen = pygame.display.set_mode((width, height))
 pygame.display.set_caption("PokePixel")
 title_font = load_font("assets/font/Pokemon_GB.ttf", 48)
+
+# Sounds 
+sound_control = SoundControl()
+sound_control.play_music("assets/music/opening.mp3")
 
 # Load Pokedex for gif display on menu 
 pokedex = Pokedex()
@@ -60,6 +66,8 @@ def draw_animated_button(surface, image, rect, scale):
     surface.blit(scaled_img, new_rect)
 
 def main_menu():
+    run_intro(screen, clock, pokedex)
+
     while True:
         screen.fill(BEIGE)
 

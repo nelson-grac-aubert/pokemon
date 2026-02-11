@@ -79,11 +79,21 @@ class PokedexDisplay:
             )
             self.screen.blit(text, (10, y + 10))
 
-    def draw_type_rectangle(self, type_name, x, y):
+    def draw_type_rectangle(self, type_name : str, x : int, y : int):
+        """
+        Draw a rectangle with the Pokemon type, with a matching color 
+        
+        :param type_name: Name of that Type
+        :type type_name: str
+        :param x: Horizontal position of the box
+        :type x: int
+        :param y: Vertical position of the box 
+        :type y: int
+        """
         type_box_width = 120
         type_box_height = 32
 
-        # Pick color based on type, fallback to light gray
+        # Pick color based on type
         color = TYPE_COLORS.get(type_name.lower(), (210, 210, 210))
 
         type_rect = pygame.Rect(x, y, type_box_width, type_box_height)
