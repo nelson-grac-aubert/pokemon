@@ -58,11 +58,13 @@ def run_game_intro(screen, clock, pokedex):
     font = load_font("assets/font/Pokemon_GB.ttf", DIALOG_FONT_SIZE)
 
     # Load background image
-    background = load_image("assets/images/forest_background.jpg")
+    # background = load_image("assets/images/forest_background.jpg")
+    background = load_image("assets/images/professors_1.png")
     background = pygame.transform.scale(background, (width, height))
 
     dialogs = [
-        "You've seen on the main screen the full Kanto Pokédex.",
+        "Hi! We are the Professors Pellat, Sandoval and Grac.",
+        "Maybe you've seen our fully completed Pokédex on the main screen.",
         "Your goal in this game is to catch them all, and complete your own Pokédex!",
         "You will fight wild Pokémon and capture them when they faint, adding them one by one.",
         "It's dangerous to go alone! Pick a starter Pokémon to begin  your adventure."
@@ -90,6 +92,8 @@ def run_game_intro(screen, clock, pokedex):
     chosen_pokemon = None
 
     while choosing:
+        background = load_image("assets/images/forest_background.jpg")
+        background = pygame.transform.scale(background, (width, height))
         screen.blit(background, (0, 0))  # Draw background
 
         # Draw starters
