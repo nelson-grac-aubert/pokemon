@@ -2,6 +2,7 @@ import pygame
 from scripts.classes.PokemonDisplay_class import PokemonDisplay
 from scripts.classes.Pokedex_class import Pokedex
 from scripts.logic.assets_management import load_font, load_image
+from scripts.logic.overworld_game_loop import overworld_game_loop
 
 # Dialog box settings
 DIALOG_FONT_SIZE = 26
@@ -75,12 +76,12 @@ def run_game_intro(screen, clock, pokedex):
         wait_for_click()
 
     # Starter selection
-    STARTERS = [0, 3, 6]  # Bulbasaur, Charmander, Squirtle
+    starters_id = [0, 3, 6]  # Bulbasaur, Charmander, Squirtle
 
     starter_displays = []
     positions = [(width // 4, height // 2), (width // 2, height // 2), (3 * width // 4, height // 2)]
 
-    for idx, pos in zip(STARTERS, positions):
+    for idx, pos in zip(starters_id, positions):
         p = PokemonDisplay(pokedex.get_pokemons()[idx], scale=3.0, is_front=True)
         p.set_position(pos[0], pos[1])
         starter_displays.append(p)
@@ -117,5 +118,7 @@ def run_game_intro(screen, clock, pokedex):
     new_pokedex = Pokedex()
     new_pokedex.set_pokemons([])  # empty
     new_pokedex.add_pokemon(chosen_pokemon)
+
+    overworld_game_loop(screen, clock, chosen_pokemon, new_pokedex)
 
     return new_pokedex, chosen_pokemon

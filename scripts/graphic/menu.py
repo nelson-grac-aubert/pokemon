@@ -105,7 +105,7 @@ def main_menu():
         # Click
                 if button_img_rect.collidepoint(mouse_pos):
                     button_click_cooldown = 5
-                    run_pokedex()
+                    run_pokedex(pokedex)
 
         for btn in buttons:
             btn.update(mouse_pos, mouse_click)
