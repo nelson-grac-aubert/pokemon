@@ -42,11 +42,8 @@ button_target_scale = 1.0
 button_click_cooldown = 0
 
 # Buttons functions 
-def open_pokedex():
-    run_pokedex()
 
 def new_game():
-
     player_pokedex, starter = run_game_intro(screen, clock, pokedex)
     return player_pokedex
 

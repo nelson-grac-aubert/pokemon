@@ -6,7 +6,7 @@ from scripts.logic.json_management import load_pokemons_from_json, load_types_fr
 def run_pokedex():
     pygame.init()
 
-    screen = pygame.display.set_mode((900, 600))
+    screen = pygame.display.set_mode((800, 600))
     pygame.display.set_caption("Pokédex")
 
     pokedex = Pokedex()
@@ -29,5 +29,9 @@ def run_pokedex():
         pokedex_display.draw()
         pygame.display.flip()
         clock.tick(60)
+
+        # Back to main menu
+        if pokedex_display.request_exit:
+            return
 
     pygame.quit()

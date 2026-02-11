@@ -3,13 +3,10 @@ from scripts.classes.PokemonDisplay_class import PokemonDisplay
 from scripts.classes.Pokedex_class import Pokedex
 from scripts.logic.assets_management import load_font, load_image
 
-
-
 # Dialog box settings
 DIALOG_FONT_SIZE = 26
 BOX_HEIGHT = 140
 TEXT_MARGIN = 20
-
 
 def draw_dialog_box(screen, font, text):
     """Draws a dialog box with wrapped text."""
@@ -41,7 +38,6 @@ def draw_dialog_box(screen, font, text):
         screen.blit(surf, (TEXT_MARGIN, y))
         y += font.get_height() + 4
 
-
 def wait_for_click():
     """Waits until the player clicks to continue."""
     waiting = True
@@ -53,7 +49,6 @@ def wait_for_click():
             if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
                 waiting = False
 
-
 def run_game_intro(screen, clock, pokedex):
     """Runs the intro sequence and returns the chosen starter Pokémon."""
     width, height = screen.get_size()
@@ -64,7 +59,6 @@ def run_game_intro(screen, clock, pokedex):
     # Load background image
     background = load_image("assets/images/forest_background.jpg")
     background = pygame.transform.scale(background, (width, height))
-
 
     dialogs = [
         "You've seen on the main screen the full Kanto Pokédex.",
