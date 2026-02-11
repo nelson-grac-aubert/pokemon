@@ -8,7 +8,8 @@ from scripts.classes.PixelButton_class import PixelButton
 from scripts.graphic.colors import * 
 from scripts.graphic.pokedex_menu import run_pokedex
 from scripts.classes.SoundControl_class import SoundControl
-from scripts.graphic.intro import run_intro
+from scripts.graphic.menu_intro import run_intro
+from scripts.graphic.game_intro import run_game_intro
 
 # Initialize pygame screen variables
 pygame.init()
@@ -45,7 +46,9 @@ def open_pokedex():
     run_pokedex()
 
 def new_game():
-    print("Nouvelle partie !")
+
+    player_pokedex, starter = run_game_intro(screen, clock, pokedex)
+    return player_pokedex
 
 def resume_game():
     print("Reprendre la partie !")
