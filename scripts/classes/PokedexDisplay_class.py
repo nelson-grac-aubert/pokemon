@@ -2,6 +2,7 @@ import pygame
 from scripts.logic.assets_management import load_font
 from scripts.classes.Pokedex_class import Pokedex
 from scripts.classes.PokemonDisplay_class import PokemonDisplay
+from scripts.graphic.colors import TYPE_COLORS
 
 class PokedexDisplay:
     def __init__(self, pokedex: Pokedex, screen: pygame.Surface):
@@ -78,6 +79,20 @@ class PokedexDisplay:
             )
             self.screen.blit(text, (10, y + 10))
 
+    def draw_type_rectangle(self, type_name, x, y):
+        type_box_width = 120
+        type_box_height = 32
+
+        # Pick color based on type, fallback to light gray
+        color = TYPE_COLORS.get(type_name.lower(), (210, 210, 210))
+
+        type_rect = pygame.Rect(x, y, type_box_width, type_box_height)
+        pygame.draw.rect(self.screen, color, type_rect)
+
+        type_label = self.small_font.render(type_name, True, (0, 0, 0))
+        text_rect = type_label.get_rect(center=type_rect.center)
+        self.screen.blit(type_label, text_rect)
+
 
     def draw_right_panel(self):
         """ Draw right pannel, showing pokemon name, stats and animated sprite """
@@ -106,17 +121,12 @@ class PokedexDisplay:
         )
         self.screen.blit(name_text, (self.left_width + 20, 20))
 
-        # Types (rect gris + nom du type)
+        # Rectangles with types
         type_y = 70
         for t in pokemon.get_types():
-            type_rect = pygame.Rect(self.left_width + 20, type_y, 90, 28)
-            pygame.draw.rect(self.screen, (210, 210, 210), type_rect)
-
-            # get_name()
-            type_label = self.small_font.render(str(t.get_name()), True, (0, 0, 0))
-            self.screen.blit(type_label, (self.left_width + 25, type_y + 4))
-
+            self.draw_type_rectangle(str(t.get_name()), self.left_width + 20, type_y)
             type_y += 40
+
 
         # Stats
         stats_y = 160
@@ -138,14 +148,12 @@ class PokedexDisplay:
             self.current_display.draw(self.screen)
 
 
-    # -------------------------------------------------------------------------
     # Inputs
-    # -------------------------------------------------------------------------
     def handle_event(self, event):
 
         if event.type == pygame.MOUSEBUTTONDOWN:
 
-            # Scroll
+            # Scroll list of pokemon
             if event.button == 4:
                 self.scroll_offset = max(self.scroll_offset - self.scroll_speed, 0)
                 return
@@ -154,16 +162,16 @@ class PokedexDisplay:
                 self.scroll_offset += self.scroll_speed
                 return
 
-            # Clic gauche
+            # Left click
             if event.button == 1:
                 mx, my = event.pos
 
-                # Bouton retour
+                # Main menu button
                 if self.back_button_rect.collidepoint(mx, my):
                     self.request_exit = True
                     return
 
-                # Sélection d'un Pokémon
+                # Select a pokemon
                 if mx < self.left_width:
                     index = (my + self.scroll_offset) // self.line_height
                     if 0 <= index < len(self.__pokedex.get_pokemons()):
