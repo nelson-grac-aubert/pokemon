@@ -48,44 +48,44 @@ pidgey      = make_pokemon("016", "Pidgey",         [normal, flying],(40, 45, 40
 pidgeotto   = make_pokemon("017", "Pidgeotto",      [normal, flying],(63, 60, 55, 71, "intermediate"))
 pidgeot     = make_pokemon("018", "Pidgeot",        [normal, flying],(83, 80, 75, 101, "fast"))
 
-rattata     = make_pokemon("019", "Rattata",        [normal],        (11, 6, (5,6), 6, "base_weak"))
-raticate    = make_pokemon("020", "Raticate",       [normal],        (12, 6, 6, (6,7), "base_mid"))
+rattata     = make_pokemon("019", "Rattata",        [normal],        (30, 56, 35, 72, "base_weak"))
+raticate    = make_pokemon("020", "Raticate",       [normal],        (55, 81, 60, 97, "base_mid"))
 
-spearow     = make_pokemon("021", "Spearow",        [normal, flying],((11,12), 6, 5, 6, "base_weak"))
-fearow      = make_pokemon("022", "Fearow",         [normal, flying],(12, (6,7), 6, 7, "fast"))
+spearow     = make_pokemon("021", "Spearow",        [normal, flying],(40, 60, 30, 70, "base_weak"))
+fearow      = make_pokemon("022", "Fearow",         [normal, flying],(65, 90, 65, 100, "fast"))
 
-ekans       = make_pokemon("023", "Ekans",          [poison],        ((11,12), 6, (5,6), 6, "base_mid"))
-arbok       = make_pokemon("024", "Arbok",          [poison],        (12, (6,7), 6, 6, "base_mid"))
+ekans       = make_pokemon("023", "Ekans",          [poison],        (35, 60, 44, 55, "base_mid"))
+arbok       = make_pokemon("024", "Arbok",          [poison],        (60, 95, 69, 80, "base_mid"))
 
-pikachu     = make_pokemon("025", "Pikachu",        [electric],      ((11,12), 6, (5,6), (6,7), "fast"))
-raichu      = make_pokemon("026", "Raichu",         [electric],      (12, (6,7), 6, 7, "fast"))
+pikachu     = make_pokemon("025", "Pikachu",        [electric],      (35, 55, 40, 90, "fast"))
+raichu      = make_pokemon("026", "Raichu",         [electric],      (60, 90, 55, 110, "fast"))
 
-sandshrew   = make_pokemon("027", "Sandshrew",      [ground],        (12, 6, (6,7), (5,6), "base_mid"))
-sandslash   = make_pokemon("028", "Sandslash",      [ground],        (12, 7, 7, 6, "base_mid"))
+sandshrew   = make_pokemon("027", "Sandshrew",      [ground],        (50, 75, 85, 40, "base_mid"))
+sandslash   = make_pokemon("028", "Sandslash",      [ground],        (75, 100, 110, 65, "base_mid"))
 
-nidoran_f   = make_pokemon("029", "Nidoran♀",       [poison],        (12, (5,6), 6, (5,6), "base_mid"))
-nidorina    = make_pokemon("030", "Nidorina",       [poison],        ("intermediate"))
-nidoqueen   = make_pokemon("031", "Nidoqueen",      [poison, ground],("final"))
+nidoran_f   = make_pokemon("029", "Nidoran♀",       [poison],        (55, 47, 52, 41, "base_mid"))
+nidorina    = make_pokemon("030", "Nidorina",       [poison],        (70, 62, 67, 56, "intermediate"))
+nidoqueen   = make_pokemon("031", "Nidoqueen",      [poison, ground],(90, 92, 87, 76, "final"))
 
-nidoran_m   = make_pokemon("032", "Nidoran♂",       [poison],        ("base_mid"))
-nidorino    = make_pokemon("033", "Nidorino",       [poison],        ("intermediate"))
-nidoking    = make_pokemon("034", "Nidoking",       [poison, ground],("final"))
+nidoran_m   = make_pokemon("032", "Nidoran♂",       [poison],        (46, 57, 40, 50, "base_mid"))
+nidorino    = make_pokemon("033", "Nidorino",       [poison],        (61, 72, 57, 65, "intermediate"))
+nidoking    = make_pokemon("034", "Nidoking",       [poison, ground],(81, 102, 77, 85, "final"))
 
-clefairy    = make_pokemon("035", "Clefairy",       [fairy],         ("base_mid"))
-clefable    = make_pokemon("036", "Clefable",       [fairy],         ("final"))
+clefairy    = make_pokemon("035", "Clefairy",       [fairy],         (70, 45, 48, 35, "base_mid"))
+clefable    = make_pokemon("036", "Clefable",       [fairy],         (95, 70, 73, 60, "final"))
 
-vulpix      = make_pokemon("037", "Vulpix",         [fire],          ("base_mid"))
-ninetales   = make_pokemon("038", "Ninetales",      [fire],          ("final"))
+vulpix      = make_pokemon("037", "Vulpix",         [fire],          (38, 41, 40, 65, "base_mid"))
+ninetales   = make_pokemon("038", "Ninetales",      [fire],          (73, 76, 75,100, "final"))
 
-jigglypuff  = make_pokemon("039", "Jigglypuff",     [normal, fairy], ("base_mid"))
-wigglytuff  = make_pokemon("040", "Wigglytuff",     [normal, fairy], ("final"))
+jigglypuff  = make_pokemon("039", "Jigglypuff",     [normal, fairy], (115, 45, 20, 20, "base_mid"))
+wigglytuff  = make_pokemon("040", "Wigglytuff",     [normal, fairy], (140, 70, 45, 45, "final"))
 
-zubat       = make_pokemon("041", "Zubat",          [poison, flying],())
-golbat      = make_pokemon("042", "Golbat",         [poison, flying],("base_mid"))
+zubat       = make_pokemon("041", "Zubat",          [poison, flying],(40, 45, 35, 55, "base_weak"))
+golbat      = make_pokemon("042", "Golbat",         [poison, flying],(75, 80, 70, 90, "base_mid"))
 
-oddish      = make_pokemon("043", "Oddish",         [grass, poison], ("base_mid"))
-gloom       = make_pokemon("044", "Gloom",          [grass, poison], ("intermediate"))
-vileplume   = make_pokemon("045", "Vileplume",      [grass, poison], ("final"))
+oddish      = make_pokemon("043", "Oddish",         [grass, poison], (45, 50, 55, 30, "base_mid"))
+gloom       = make_pokemon("044", "Gloom",          [grass, poison], (60, 65, 70, 40, "intermediate"))
+vileplume   = make_pokemon("045", "Vileplume",      [grass, poison], (75, 80, 85, 50, "final"))
 
 paras       = make_pokemon("046", "Paras",          [bug, grass],    ("base_mid"))
 parasect    = make_pokemon("047", "Parasect",       [bug, grass],    ("base_mid"))
