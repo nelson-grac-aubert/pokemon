@@ -1,7 +1,8 @@
 import pygame
 import sys
 from scripts.logic.assets_management import load_font, load_image
-from assets.data.all_pokemons import bulbasaur
+from scripts.logic.json_management import *
+from scripts.classes.Pokedex_class import Pokedex
 from scripts.classes.PokemonDisplay_class import PokemonDisplay
 from scripts.classes.PixelButton_class import PixelButton
 from scripts.graphic.colors import * 
@@ -15,10 +16,14 @@ width, height = 800, 600
 screen = pygame.display.set_mode((width, height))
 title_font = load_font("assets/font/Pokemon_GB.ttf", 48)
 
+pokedex = Pokedex()
+pokedex.set_pokemons(load_pokemons_from_json("assets/data/all_pokemons.json", 
+                        load_types_from_json("assets/data/all_types.json")))
+
 pygame.display.set_caption("Menu Pokémon Pixel")
 
-bulbasaur_display = PokemonDisplay(bulbasaur, scale=2.0, is_front=True)
-bulbasaur_display.set_position(width // 2, 200)
+pikachu_display = PokemonDisplay(pokedex.get_pokemons()[24], scale=2.0, is_front=True)
+pikachu_display.set_position(width // 2, 200)
 
 button_img = load_image("assets/images/pokedex.png").convert_alpha()
 button_img = pygame.transform.scale(button_img, (140, 120))  # adapte la taille 
@@ -27,6 +32,7 @@ button_img_rect.topright = (width - 20, 20)  # position en haut à droite
 button_hover_scale = 1.0
 button_target_scale = 1.0
 button_click_cooldown = 0
+
 
 
 # Buttons functions 
@@ -63,9 +69,9 @@ def main_menu():
         title_rect = title.get_rect(center=(width//2, 100))
         screen.blit(title, title_rect)
 
-        # Animate bulbasaur on screen 
-        bulbasaur_display.update()
-        bulbasaur_display.draw(screen)
+        # Animate pikachu on screen 
+        pikachu_display.update()
+        pikachu_display.draw(screen)
 
         # Events
         mouse_pos = pygame.mouse.get_pos()
