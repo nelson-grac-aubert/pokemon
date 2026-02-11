@@ -62,9 +62,9 @@ def run_game_intro(screen, clock, pokedex):
 
     dialogs = [
         "You've seen on the main screen the full Kanto Pokédex.",
-        "Your goal in this game is to catch them all!",
-        "You will fight wild Pokémon and capture them when they faint.",
-        "But first, you need to choose a starter!"
+        "Your goal in this game is to catch them all, and complete your own Pokédex!",
+        "You will fight wild Pokémon and capture them when they faint, adding them one by one.",
+        "It's dangerous to go alone! Pick a starter Pokémon to begin  your adventure."
     ]
 
     # Dialog sequence
