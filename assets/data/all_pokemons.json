@@ -3,1513 +3,1929 @@
     {
       "id": "001",
       "name": "Bulbasaur",
-      "hp": 12,
-      "attack": 6,
-      "defense": 6,
-      "speed": 6,
-      "precision": 6,
-      "types": ["grass", "poison"]
+      "hp": 45,
+      "attack": 49,
+      "defense": 49,
+      "speed": 45,
+      "precision": 90,
+      "types": [
+        "grass",
+        "poison"
+      ]
     },
     {
       "id": "002",
       "name": "Ivysaur",
-      "hp": 12,
-      "attack": 6,
-      "defense": 6,
-      "speed": 6,
-      "precision": 6,
-      "types": ["grass", "poison"]
+      "hp": 60,
+      "attack": 62,
+      "defense": 63,
+      "speed": 60,
+      "precision": 92,
+      "types": [
+        "grass",
+        "poison"
+      ]
     },
     {
       "id": "003",
       "name": "Venusaur",
-      "hp": 12,
-      "attack": 6,
-      "defense": 6,
-      "speed": 6,
-      "precision": 6,
-      "types": ["grass", "poison"]
+      "hp": 80,
+      "attack": 82,
+      "defense": 83,
+      "speed": 80,
+      "precision": 98,
+      "types": [
+        "grass",
+        "poison"
+      ]
     },
     {
       "id": "004",
       "name": "Charmander",
-      "hp": 12,
-      "attack": 6,
-      "defense": 6,
-      "speed": 6,
-      "precision": 6,
-      "types": ["fire"]
+      "hp": 39,
+      "attack": 52,
+      "defense": 43,
+      "speed": 65,
+      "precision": 90,
+      "types": [
+        "fire"
+      ]
     },
     {
       "id": "005",
       "name": "Charmeleon",
-      "hp": 12,
-      "attack": 6,
-      "defense": 6,
-      "speed": 6,
-      "precision": 6,
-      "types": ["fire"]
+      "hp": 58,
+      "attack": 64,
+      "defense": 58,
+      "speed": 80,
+      "precision": 92,
+      "types": [
+        "fire"
+      ]
     },
     {
       "id": "006",
       "name": "Charizard",
-      "hp": 12,
-      "attack": 6,
-      "defense": 6,
-      "speed": 6,
-      "precision": 6,
-      "types": ["fire", "flying"]
+      "hp": 78,
+      "attack": 84,
+      "defense": 78,
+      "speed": 100,
+      "precision": 98,
+      "types": [
+        "fire",
+        "flying"
+      ]
     },
     {
       "id": "007",
       "name": "Squirtle",
-      "hp": 12,
-      "attack": 6,
-      "defense": 6,
-      "speed": 6,
-      "precision": 6,
-      "types": ["water"]
+      "hp": 44,
+      "attack": 48,
+      "defense": 65,
+      "speed": 43,
+      "precision": 90,
+      "types": [
+        "water"
+      ]
     },
     {
       "id": "008",
       "name": "Wartortle",
-      "hp": 12,
-      "attack": 6,
-      "defense": 6,
-      "speed": 6,
-      "precision": 6,
-      "types": ["water"]
+      "hp": 59,
+      "attack": 63,
+      "defense": 80,
+      "speed": 58,
+      "precision": 92,
+      "types": [
+        "water"
+      ]
     },
     {
       "id": "009",
       "name": "Blastoise",
-      "hp": 12,
-      "attack": 6,
-      "defense": 6,
-      "speed": 6,
-      "precision": 6,
-      "types": ["water"]
+      "hp": 79,
+      "attack": 83,
+      "defense": 100,
+      "speed": 78,
+      "precision": 98,
+      "types": [
+        "water"
+      ]
     },
     {
       "id": "010",
       "name": "Caterpie",
-      "hp": 12,
-      "attack": 5,
-      "defense": 6,
-      "speed": 6,
-      "precision": 6,
-      "types": ["bug"]
+      "hp": 45,
+      "attack": 30,
+      "defense": 35,
+      "speed": 45,
+      "precision": 85,
+      "types": [
+        "bug"
+      ]
     },
     {
       "id": "011",
       "name": "Metapod",
-      "hp": 12,
-      "attack": 5,
-      "defense": 6,
-      "speed": 5,
-      "precision": 6,
-      "types": ["bug"]
+      "hp": 50,
+      "attack": 20,
+      "defense": 55,
+      "speed": 30,
+      "precision": 85,
+      "types": [
+        "bug"
+      ]
     },
     {
       "id": "012",
       "name": "Butterfree",
-      "hp": 12,
-      "attack": 6,
-      "defense": 7,
-      "speed": 6,
-      "precision": 6,
-      "types": ["bug", "flying"]
+      "hp": 60,
+      "attack": 45,
+      "defense": 50,
+      "speed": 70,
+      "precision": 98,
+      "types": [
+        "bug",
+        "flying"
+      ]
     },
     {
       "id": "013",
       "name": "Weedle",
-      "hp": 12,
-      "attack": 6,
-      "defense": 5,
-      "speed": 6,
-      "precision": 6,
-      "types": ["bug", "poison"]
+      "hp": 40,
+      "attack": 35,
+      "defense": 30,
+      "speed": 50,
+      "precision": 85,
+      "types": [
+        "bug",
+        "poison"
+      ]
     },
     {
       "id": "014",
       "name": "Kakuna",
-      "hp": 12,
-      "attack": 5,
-      "defense": 6,
-      "speed": 6,
-      "precision": 6,
-      "types": ["bug", "poison"]
+      "hp": 45,
+      "attack": 25,
+      "defense": 50,
+      "speed": 35,
+      "precision": 85,
+      "types": [
+        "bug",
+        "poison"
+      ]
     },
     {
       "id": "015",
       "name": "Beedrill",
-      "hp": 12,
-      "attack": 7,
-      "defense": 6,
-      "speed": 6,
-      "precision": 6,
-      "types": ["bug", "poison"]
+      "hp": 65,
+      "attack": 90,
+      "defense": 40,
+      "speed": 75,
+      "precision": 98,
+      "types": [
+        "bug",
+        "poison"
+      ]
     },
     {
       "id": "016",
       "name": "Pidgey",
-      "hp": 12,
-      "attack": 6,
-      "defense": 6,
-      "speed": 6,
-      "precision": 6,
-      "types": ["normal", "flying"]
+      "hp": 40,
+      "attack": 45,
+      "defense": 40,
+      "speed": 56,
+      "precision": 85,
+      "types": [
+        "normal",
+        "flying"
+      ]
     },
     {
       "id": "017",
       "name": "Pidgeotto",
-      "hp": 12,
-      "attack": 6,
-      "defense": 6,
-      "speed": 7,
-      "precision": 6,
-      "types": ["normal", "flying"]
+      "hp": 63,
+      "attack": 60,
+      "defense": 55,
+      "speed": 71,
+      "precision": 92,
+      "types": [
+        "normal",
+        "flying"
+      ]
     },
     {
       "id": "018",
       "name": "Pidgeot",
-      "hp": 12,
-      "attack": 7,
-      "defense": 7,
-      "speed": 7,
-      "precision": 6,
-      "types": ["normal", "flying"]
+      "hp": 83,
+      "attack": 80,
+      "defense": 75,
+      "speed": 101,
+      "precision": 98,
+      "types": [
+        "normal",
+        "flying"
+      ]
     },
     {
       "id": "019",
       "name": "Rattata",
-      "hp": 12,
-      "attack": 6,
-      "defense": 5,
-      "speed": 7,
-      "precision": 6,
-      "types": ["normal"]
+      "hp": 30,
+      "attack": 56,
+      "defense": 35,
+      "speed": 72,
+      "precision": 85,
+      "types": [
+        "normal"
+      ]
     },
     {
       "id": "020",
       "name": "Raticate",
-      "hp": 12,
-      "attack": 7,
-      "defense": 6,
-      "speed": 7,
-      "precision": 6,
-      "types": ["normal"]
+      "hp": 55,
+      "attack": 81,
+      "defense": 60,
+      "speed": 97,
+      "precision": 90,
+      "types": [
+        "normal"
+      ]
     },
     {
       "id": "021",
       "name": "Spearow",
-      "hp": 12,
-      "attack": 7,
-      "defense": 5,
-      "speed": 7,
-      "precision": 6,
-      "types": ["normal", "flying"]
+      "hp": 40,
+      "attack": 60,
+      "defense": 30,
+      "speed": 70,
+      "precision": 85,
+      "types": [
+        "normal",
+        "flying"
+      ]
     },
     {
       "id": "022",
       "name": "Fearow",
-      "hp": 12,
-      "attack": 8,
-      "defense": 6,
-      "speed": 8,
-      "precision": 6,
-      "types": ["normal", "flying"]
+      "hp": 65,
+      "attack": 90,
+      "defense": 65,
+      "speed": 100,
+      "precision": 98,
+      "types": [
+        "normal",
+        "flying"
+      ]
     },
     {
       "id": "023",
       "name": "Ekans",
-      "hp": 12,
-      "attack": 6,
-      "defense": 5,
-      "speed": 6,
-      "precision": 6,
-      "types": ["poison"]
+      "hp": 35,
+      "attack": 60,
+      "defense": 44,
+      "speed": 55,
+      "precision": 90,
+      "types": [
+        "poison"
+      ]
     },
     {
       "id": "024",
       "name": "Arbok",
-      "hp": 12,
-      "attack": 7,
-      "defense": 6,
-      "speed": 7,
-      "precision": 6,
-      "types": ["poison"]
+      "hp": 60,
+      "attack": 95,
+      "defense": 69,
+      "speed": 80,
+      "precision": 90,
+      "types": [
+        "poison"
+      ]
     },
     {
       "id": "025",
       "name": "Pikachu",
-      "hp": 12,
-      "attack": 6,
-      "defense": 5,
-      "speed": 8,
-      "precision": 6,
-      "types": ["electric"]
+      "hp": 35,
+      "attack": 55,
+      "defense": 40,
+      "speed": 90,
+      "precision": 98,
+      "types": [
+        "electric"
+      ]
     },
     {
       "id": "026",
       "name": "Raichu",
-      "hp": 12,
-      "attack": 7,
-      "defense": 6,
-      "speed": 8,
-      "precision": 6,
-      "types": ["electric"]
+      "hp": 60,
+      "attack": 90,
+      "defense": 55,
+      "speed": 110,
+      "precision": 98,
+      "types": [
+        "electric"
+      ]
     },
     {
       "id": "027",
       "name": "Sandshrew",
-      "hp": 12,
-      "attack": 6,
-      "defense": 7,
-      "speed": 5,
-      "precision": 6,
-      "types": ["ground"]
+      "hp": 50,
+      "attack": 75,
+      "defense": 85,
+      "speed": 40,
+      "precision": 90,
+      "types": [
+        "ground"
+      ]
     },
     {
       "id": "028",
       "name": "Sandslash",
-      "hp": 12,
-      "attack": 7,
-      "defense": 8,
-      "speed": 6,
-      "precision": 6,
-      "types": ["ground"]
+      "hp": 75,
+      "attack": 100,
+      "defense": 110,
+      "speed": 65,
+      "precision": 90,
+      "types": [
+        "ground"
+      ]
     },
     {
       "id": "029",
-      "name": "Nidoran F",
-      "hp": 12,
-      "attack": 6,
-      "defense": 6,
-      "speed": 5,
-      "precision": 6,
-      "types": ["poison"]
+      "name": "Nidoran♀",
+      "hp": 55,
+      "attack": 47,
+      "defense": 52,
+      "speed": 41,
+      "precision": 90,
+      "types": [
+        "poison"
+      ]
     },
     {
       "id": "030",
       "name": "Nidorina",
-      "hp": 12,
-      "attack": 6,
-      "defense": 7,
-      "speed": 5,
-      "precision": 6,
-      "types": ["poison"]
+      "hp": 70,
+      "attack": 62,
+      "defense": 67,
+      "speed": 56,
+      "precision": 92,
+      "types": [
+        "poison"
+      ]
     },
     {
       "id": "031",
       "name": "Nidoqueen",
-      "hp": 12,
-      "attack": 7,
-      "defense": 8,
-      "speed": 6,
-      "precision": 6,
-      "types": ["poison", "ground"]
+      "hp": 90,
+      "attack": 92,
+      "defense": 87,
+      "speed": 76,
+      "precision": 98,
+      "types": [
+        "poison",
+        "ground"
+      ]
     },
     {
       "id": "032",
-      "name": "Nidoran M",
-      "hp": 12,
-      "attack": 6,
-      "defense": 5,
-      "speed": 6,
-      "precision": 6,
-      "types": ["poison"]
+      "name": "Nidoran♂",
+      "hp": 46,
+      "attack": 57,
+      "defense": 40,
+      "speed": 50,
+      "precision": 90,
+      "types": [
+        "poison"
+      ]
     },
     {
       "id": "033",
       "name": "Nidorino",
-      "hp": 12,
-      "attack": 7,
-      "defense": 6,
-      "speed": 6,
-      "precision": 6,
-      "types": ["poison"]
+      "hp": 61,
+      "attack": 72,
+      "defense": 57,
+      "speed": 65,
+      "precision": 92,
+      "types": [
+        "poison"
+      ]
     },
     {
       "id": "034",
       "name": "Nidoking",
-      "hp": 12,
-      "attack": 8,
-      "defense": 7,
-      "speed": 6,
-      "precision": 6,
-      "types": ["poison", "ground"]
+      "hp": 81,
+      "attack": 102,
+      "defense": 77,
+      "speed": 85,
+      "precision": 98,
+      "types": [
+        "poison",
+        "ground"
+      ]
     },
     {
       "id": "035",
       "name": "Clefairy",
-      "hp": 12,
-      "attack": 5,
-      "defense": 6,
-      "speed": 5,
-      "precision": 6,
-      "types": ["fairy"]
+      "hp": 70,
+      "attack": 45,
+      "defense": 48,
+      "speed": 35,
+      "precision": 90,
+      "types": [
+        "fairy"
+      ]
     },
     {
       "id": "036",
       "name": "Clefable",
-      "hp": 12,
-      "attack": 6,
-      "defense": 7,
-      "speed": 6,
-      "precision": 6,
-      "types": ["fairy"]
+      "hp": 95,
+      "attack": 70,
+      "defense": 73,
+      "speed": 60,
+      "precision": 98,
+      "types": [
+        "fairy"
+      ]
     },
     {
       "id": "037",
       "name": "Vulpix",
-      "hp": 12,
-      "attack": 5,
-      "defense": 5,
-      "speed": 7,
-      "precision": 6,
-      "types": ["fire"]
+      "hp": 38,
+      "attack": 41,
+      "defense": 40,
+      "speed": 65,
+      "precision": 90,
+      "types": [
+        "fire"
+      ]
     },
     {
       "id": "038",
       "name": "Ninetales",
-      "hp": 12,
-      "attack": 7,
-      "defense": 6,
-      "speed": 8,
-      "precision": 6,
-      "types": ["fire"]
+      "hp": 73,
+      "attack": 76,
+      "defense": 75,
+      "speed": 100,
+      "precision": 98,
+      "types": [
+        "fire"
+      ]
     },
     {
       "id": "039",
       "name": "Jigglypuff",
-      "hp": 12,
-      "attack": 4,
-      "defense": 4,
-      "speed": 4,
-      "precision": 6,
-      "types": ["normal", "fairy"]
+      "hp": 115,
+      "attack": 45,
+      "defense": 20,
+      "speed": 20,
+      "precision": 90,
+      "types": [
+        "normal",
+        "fairy"
+      ]
     },
     {
       "id": "040",
       "name": "Wigglytuff",
-      "hp": 12,
-      "attack": 5,
-      "defense": 5,
-      "speed": 5,
-      "precision": 6,
-      "types": ["normal", "fairy"]
+      "hp": 140,
+      "attack": 70,
+      "defense": 45,
+      "speed": 45,
+      "precision": 98,
+      "types": [
+        "normal",
+        "fairy"
+      ]
     },
     {
       "id": "041",
       "name": "Zubat",
-      "hp": 12,
-      "attack": 5,
-      "defense": 5,
-      "speed": 7,
-      "precision": 6,
-      "types": ["poison", "flying"]
+      "hp": 40,
+      "attack": 45,
+      "defense": 35,
+      "speed": 55,
+      "precision": 85,
+      "types": [
+        "poison",
+        "flying"
+      ]
     },
     {
       "id": "042",
       "name": "Golbat",
-      "hp": 12,
-      "attack": 7,
-      "defense": 6,
-      "speed": 7,
-      "precision": 6,
-      "types": ["poison", "flying"]
+      "hp": 75,
+      "attack": 80,
+      "defense": 70,
+      "speed": 90,
+      "precision": 90,
+      "types": [
+        "poison",
+        "flying"
+      ]
     },
     {
       "id": "043",
       "name": "Oddish",
-      "hp": 12,
-      "attack": 6,
-      "defense": 6,
-      "speed": 5,
-      "precision": 6,
-      "types": ["grass", "poison"]
+      "hp": 45,
+      "attack": 50,
+      "defense": 55,
+      "speed": 30,
+      "precision": 90,
+      "types": [
+        "grass",
+        "poison"
+      ]
     },
     {
       "id": "044",
       "name": "Gloom",
-      "hp": 12,
-      "attack": 6,
-      "defense": 7,
-      "speed": 5,
-      "precision": 6,
-      "types": ["grass", "poison"]
+      "hp": 60,
+      "attack": 65,
+      "defense": 70,
+      "speed": 40,
+      "precision": 92,
+      "types": [
+        "grass",
+        "poison"
+      ]
     },
     {
       "id": "045",
       "name": "Vileplume",
-      "hp": 12,
-      "attack": 7,
-      "defense": 8,
-      "speed": 5,
-      "precision": 6,
-      "types": ["grass", "poison"]
+      "hp": 75,
+      "attack": 80,
+      "defense": 85,
+      "speed": 50,
+      "precision": 98,
+      "types": [
+        "grass",
+        "poison"
+      ]
     },
     {
       "id": "046",
       "name": "Paras",
-      "hp": 12,
-      "attack": 6,
-      "defense": 6,
-      "speed": 4,
-      "precision": 6,
-      "types": ["bug", "grass"]
+      "hp": 35,
+      "attack": 70,
+      "defense": 55,
+      "speed": 25,
+      "precision": 90,
+      "types": [
+        "bug",
+        "grass"
+      ]
     },
     {
       "id": "047",
       "name": "Parasect",
-      "hp": 12,
-      "attack": 7,
-      "defense": 7,
-      "speed": 4,
-      "precision": 6,
-      "types": ["bug", "grass"]
+      "hp": 60,
+      "attack": 95,
+      "defense": 80,
+      "speed": 30,
+      "precision": 90,
+      "types": [
+        "bug",
+        "grass"
+      ]
     },
     {
       "id": "048",
       "name": "Venonat",
-      "hp": 12,
-      "attack": 6,
-      "defense": 5,
-      "speed": 5,
-      "precision": 6,
-      "types": ["bug", "poison"]
+      "hp": 60,
+      "attack": 55,
+      "defense": 50,
+      "speed": 45,
+      "precision": 90,
+      "types": [
+        "bug",
+        "poison"
+      ]
     },
     {
       "id": "049",
       "name": "Venomoth",
-      "hp": 12,
-      "attack": 7,
-      "defense": 6,
-      "speed": 7,
-      "precision": 6,
-      "types": ["bug", "poison"]
+      "hp": 70,
+      "attack": 65,
+      "defense": 60,
+      "speed": 90,
+      "precision": 98,
+      "types": [
+        "bug",
+        "poison"
+      ]
     },
     {
       "id": "050",
       "name": "Diglett",
-      "hp": 12,
-      "attack": 6,
-      "defense": 4,
-      "speed": 8,
-      "precision": 6,
-      "types": ["ground"]
+      "hp": 10,
+      "attack": 55,
+      "defense": 25,
+      "speed": 95,
+      "precision": 98,
+      "types": [
+        "ground"
+      ]
     },
     {
       "id": "051",
       "name": "Dugtrio",
-      "hp": 12,
-      "attack": 7,
-      "defense": 5,
-      "speed": 9,
-      "precision": 6,
-      "types": ["ground"]
+      "hp": 35,
+      "attack": 100,
+      "defense": 50,
+      "speed": 120,
+      "precision": 98,
+      "types": [
+        "ground"
+      ]
     },
     {
       "id": "052",
       "name": "Meowth",
-      "hp": 12,
-      "attack": 5,
-      "defense": 4,
-      "speed": 8,
-      "precision": 6,
-      "types": ["normal"]
+      "hp": 40,
+      "attack": 45,
+      "defense": 35,
+      "speed": 90,
+      "precision": 90,
+      "types": [
+        "normal"
+      ]
     },
     {
       "id": "053",
       "name": "Persian",
-      "hp": 12,
-      "attack": 6,
-      "defense": 5,
-      "speed": 9,
-      "precision": 6,
-      "types": ["normal"]
+      "hp": 65,
+      "attack": 70,
+      "defense": 60,
+      "speed": 115,
+      "precision": 98,
+      "types": [
+        "normal"
+      ]
     },
     {
       "id": "054",
       "name": "Psyduck",
-      "hp": 12,
-      "attack": 6,
-      "defense": 5,
-      "speed": 5,
-      "precision": 6,
-      "types": ["water"]
+      "hp": 50,
+      "attack": 52,
+      "defense": 48,
+      "speed": 55,
+      "precision": 90,
+      "types": [
+        "water"
+      ]
     },
     {
       "id": "055",
       "name": "Golduck",
-      "hp": 12,
-      "attack": 7,
-      "defense": 6,
-      "speed": 7,
-      "precision": 6,
-      "types": ["water"]
+      "hp": 80,
+      "attack": 82,
+      "defense": 78,
+      "speed": 85,
+      "precision": 90,
+      "types": [
+        "water"
+      ]
     },
     {
       "id": "056",
       "name": "Mankey",
-      "hp": 12,
-      "attack": 7,
-      "defense": 5,
-      "speed": 7,
-      "precision": 6,
-      "types": ["fighting"]
+      "hp": 40,
+      "attack": 80,
+      "defense": 35,
+      "speed": 70,
+      "precision": 90,
+      "types": [
+        "fighting"
+      ]
     },
     {
       "id": "057",
       "name": "Primeape",
-      "hp": 12,
-      "attack": 8,
-      "defense": 6,
-      "speed": 7,
-      "precision": 6,
-      "types": ["fighting"]
+      "hp": 65,
+      "attack": 105,
+      "defense": 60,
+      "speed": 95,
+      "precision": 90,
+      "types": [
+        "fighting"
+      ]
     },
     {
       "id": "058",
       "name": "Growlithe",
-      "hp": 12,
-      "attack": 6,
-      "defense": 5,
-      "speed": 6,
-      "precision": 6,
-      "types": ["fire"]
+      "hp": 55,
+      "attack": 70,
+      "defense": 45,
+      "speed": 60,
+      "precision": 90,
+      "types": [
+        "fire"
+      ]
     },
     {
       "id": "059",
       "name": "Arcanine",
-      "hp": 12,
-      "attack": 8,
-      "defense": 6,
-      "speed": 8,
-      "precision": 6,
-      "types": ["fire"]
+      "hp": 90,
+      "attack": 110,
+      "defense": 80,
+      "speed": 95,
+      "precision": 98,
+      "types": [
+        "fire"
+      ]
     },
     {
       "id": "060",
       "name": "Poliwag",
-      "hp": 12,
-      "attack": 5,
-      "defense": 4,
-      "speed": 8,
-      "precision": 6,
-      "types": ["water"]
+      "hp": 40,
+      "attack": 50,
+      "defense": 40,
+      "speed": 90,
+      "precision": 90,
+      "types": [
+        "water"
+      ]
     },
     {
       "id": "061",
       "name": "Poliwhirl",
-      "hp": 12,
-      "attack": 6,
-      "defense": 5,
-      "speed": 7,
-      "precision": 6,
-      "types": ["water"]
+      "hp": 65,
+      "attack": 65,
+      "defense": 65,
+      "speed": 90,
+      "precision": 92,
+      "types": [
+        "water"
+      ]
     },
     {
       "id": "062",
       "name": "Poliwrath",
-      "hp": 12,
-      "attack": 7,
-      "defense": 8,
-      "speed": 6,
-      "precision": 6,
-      "types": ["water", "fighting"]
+      "hp": 90,
+      "attack": 95,
+      "defense": 95,
+      "speed": 70,
+      "precision": 98,
+      "types": [
+        "water",
+        "fighting"
+      ]
     },
     {
       "id": "063",
       "name": "Abra",
-      "hp": 12,
-      "attack": 3,
-      "defense": 3,
-      "speed": 9,
-      "precision": 6,
-      "types": ["psychic"]
+      "hp": 25,
+      "attack": 20,
+      "defense": 15,
+      "speed": 90,
+      "precision": 85,
+      "types": [
+        "psychic"
+      ]
     },
     {
       "id": "064",
       "name": "Kadabra",
-      "hp": 12,
-      "attack": 4,
-      "defense": 4,
-      "speed": 9,
-      "precision": 6,
-      "types": ["psychic"]
+      "hp": 40,
+      "attack": 35,
+      "defense": 30,
+      "speed": 105,
+      "precision": 92,
+      "types": [
+        "psychic"
+      ]
     },
     {
       "id": "065",
       "name": "Alakazam",
-      "hp": 12,
-      "attack": 5,
-      "defense": 5,
-      "speed": 10,
-      "precision": 6,
-      "types": ["psychic"]
+      "hp": 55,
+      "attack": 50,
+      "defense": 45,
+      "speed": 120,
+      "precision": 98,
+      "types": [
+        "psychic"
+      ]
     },
     {
       "id": "066",
       "name": "Machop",
-      "hp": 12,
-      "attack": 7,
-      "defense": 5,
-      "speed": 4,
-      "precision": 6,
-      "types": ["fighting"]
+      "hp": 70,
+      "attack": 80,
+      "defense": 50,
+      "speed": 35,
+      "precision": 90,
+      "types": [
+        "fighting"
+      ]
     },
     {
       "id": "067",
       "name": "Machoke",
-      "hp": 12,
-      "attack": 8,
-      "defense": 6,
-      "speed": 5,
-      "precision": 6,
-      "types": ["fighting"]
+      "hp": 80,
+      "attack": 100,
+      "defense": 70,
+      "speed": 45,
+      "precision": 92,
+      "types": [
+        "fighting"
+      ]
     },
     {
       "id": "068",
       "name": "Machamp",
-      "hp": 12,
-      "attack": 9,
-      "defense": 7,
-      "speed": 5,
-      "precision": 6,
-      "types": ["fighting"]
+      "hp": 90,
+      "attack": 130,
+      "defense": 80,
+      "speed": 55,
+      "precision": 98,
+      "types": [
+        "fighting"
+      ]
     },
     {
       "id": "069",
       "name": "Bellsprout",
-      "hp": 12,
-      "attack": 7,
-      "defense": 4,
-      "speed": 5,
-      "precision": 6,
-      "types": ["grass", "poison"]
+      "hp": 50,
+      "attack": 75,
+      "defense": 35,
+      "speed": 40,
+      "precision": 90,
+      "types": [
+        "grass",
+        "poison"
+      ]
     },
     {
       "id": "070",
       "name": "Weepinbell",
-      "hp": 12,
-      "attack": 7,
-      "defense": 5,
-      "speed": 6,
-      "precision": 6,
-      "types": ["grass", "poison"]
+      "hp": 65,
+      "attack": 90,
+      "defense": 50,
+      "speed": 55,
+      "precision": 92,
+      "types": [
+        "grass",
+        "poison"
+      ]
     },
     {
       "id": "071",
       "name": "Victreebel",
-      "hp": 12,
-      "attack": 8,
-      "defense": 6,
-      "speed": 6,
-      "precision": 6,
-      "types": ["grass", "poison"]
+      "hp": 80,
+      "attack": 105,
+      "defense": 65,
+      "speed": 70,
+      "precision": 98,
+      "types": [
+        "grass",
+        "poison"
+      ]
     },
     {
       "id": "072",
       "name": "Tentacool",
-      "hp": 12,
-      "attack": 5,
-      "defense": 4,
-      "speed": 7,
-      "precision": 6,
-      "types": ["water", "poison"]
+      "hp": 40,
+      "attack": 40,
+      "defense": 35,
+      "speed": 70,
+      "precision": 90,
+      "types": [
+        "water",
+        "poison"
+      ]
     },
     {
       "id": "073",
       "name": "Tentacruel",
-      "hp": 12,
-      "attack": 7,
-      "defense": 6,
-      "speed": 8,
-      "precision": 6,
-      "types": ["water", "poison"]
+      "hp": 80,
+      "attack": 70,
+      "defense": 65,
+      "speed": 100,
+      "precision": 90,
+      "types": [
+        "water",
+        "poison"
+      ]
     },
     {
       "id": "074",
       "name": "Geodude",
-      "hp": 12,
-      "attack": 7,
-      "defense": 8,
-      "speed": 3,
-      "precision": 6,
-      "types": ["rock", "ground"]
+      "hp": 40,
+      "attack": 80,
+      "defense": 100,
+      "speed": 20,
+      "precision": 88,
+      "types": [
+        "rock",
+        "ground"
+      ]
     },
     {
       "id": "075",
       "name": "Graveler",
-      "hp": 12,
-      "attack": 8,
-      "defense": 9,
-      "speed": 3,
-      "precision": 6,
-      "types": ["rock", "ground"]
+      "hp": 55,
+      "attack": 95,
+      "defense": 115,
+      "speed": 35,
+      "precision": 88,
+      "types": [
+        "rock",
+        "ground"
+      ]
     },
     {
       "id": "076",
       "name": "Golem",
-      "hp": 12,
-      "attack": 9,
-      "defense": 10,
-      "speed": 3,
-      "precision": 6,
-      "types": ["rock", "ground"]
+      "hp": 80,
+      "attack": 120,
+      "defense": 130,
+      "speed": 45,
+      "precision": 88,
+      "types": [
+        "rock",
+        "ground"
+      ]
     },
     {
       "id": "077",
       "name": "Ponyta",
-      "hp": 12,
-      "attack": 7,
-      "defense": 5,
-      "speed": 8,
-      "precision": 6,
-      "types": ["fire"]
+      "hp": 50,
+      "attack": 85,
+      "defense": 55,
+      "speed": 90,
+      "precision": 98,
+      "types": [
+        "fire"
+      ]
     },
     {
       "id": "078",
       "name": "Rapidash",
-      "hp": 12,
-      "attack": 8,
-      "defense": 6,
-      "speed": 9,
-      "precision": 6,
-      "types": ["fire"]
+      "hp": 65,
+      "attack": 100,
+      "defense": 70,
+      "speed": 105,
+      "precision": 98,
+      "types": [
+        "fire"
+      ]
     },
     {
       "id": "079",
       "name": "Slowpoke",
-      "hp": 12,
-      "attack": 5,
-      "defense": 6,
-      "speed": 2,
-      "precision": 6,
-      "types": ["water", "psychic"]
+      "hp": 90,
+      "attack": 65,
+      "defense": 65,
+      "speed": 15,
+      "precision": 90,
+      "types": [
+        "water",
+        "psychic"
+      ]
     },
     {
       "id": "080",
       "name": "Slowbro",
-      "hp": 12,
-      "attack": 6,
-      "defense": 8,
-      "speed": 2,
-      "precision": 6,
-      "types": ["water", "psychic"]
+      "hp": 95,
+      "attack": 75,
+      "defense": 110,
+      "speed": 30,
+      "precision": 88,
+      "types": [
+        "water",
+        "psychic"
+      ]
     },
     {
       "id": "081",
       "name": "Magnemite",
-      "hp": 12,
-      "attack": 5,
-      "defense": 7,
-      "speed": 5,
-      "precision": 6,
-      "types": ["electric", "steel"]
+      "hp": 25,
+      "attack": 35,
+      "defense": 70,
+      "speed": 45,
+      "precision": 90,
+      "types": [
+        "electric",
+        "steel"
+      ]
     },
     {
       "id": "082",
       "name": "Magneton",
-      "hp": 12,
-      "attack": 6,
-      "defense": 8,
-      "speed": 6,
-      "precision": 6,
-      "types": ["electric", "steel"]
+      "hp": 50,
+      "attack": 60,
+      "defense": 95,
+      "speed": 70,
+      "precision": 90,
+      "types": [
+        "electric",
+        "steel"
+      ]
     },
     {
       "id": "083",
-      "name": "Farfetch’d",
-      "hp": 12,
-      "attack": 6,
-      "defense": 5,
-      "speed": 6,
-      "precision": 6,
-      "types": ["normal", "flying"]
+      "name": "Farfetch'd",
+      "hp": 52,
+      "attack": 90,
+      "defense": 55,
+      "speed": 60,
+      "precision": 90,
+      "types": [
+        "normal",
+        "flying"
+      ]
     },
     {
       "id": "084",
       "name": "Doduo",
-      "hp": 12,
-      "attack": 7,
-      "defense": 5,
-      "speed": 7,
-      "precision": 6,
-      "types": ["normal", "flying"]
+      "hp": 35,
+      "attack": 85,
+      "defense": 45,
+      "speed": 75,
+      "precision": 90,
+      "types": [
+        "normal",
+        "flying"
+      ]
     },
     {
       "id": "085",
       "name": "Dodrio",
-      "hp": 12,
-      "attack": 8,
-      "defense": 6,
-      "speed": 8,
-      "precision": 6,
-      "types": ["normal", "flying"]
+      "hp": 60,
+      "attack": 110,
+      "defense": 70,
+      "speed": 110,
+      "precision": 98,
+      "types": [
+        "normal",
+        "flying"
+      ]
     },
     {
       "id": "086",
       "name": "Seel",
-      "hp": 12,
-      "attack": 5,
-      "defense": 6,
-      "speed": 5,
-      "precision": 6,
-      "types": ["water"]
+      "hp": 65,
+      "attack": 45,
+      "defense": 55,
+      "speed": 45,
+      "precision": 90,
+      "types": [
+        "water"
+      ]
     },
     {
       "id": "087",
       "name": "Dewgong",
-      "hp": 12,
-      "attack": 6,
-      "defense": 7,
-      "speed": 6,
-      "precision": 6,
-      "types": ["water", "ice"]
+      "hp": 90,
+      "attack": 70,
+      "defense": 80,
+      "speed": 70,
+      "precision": 90,
+      "types": [
+        "water",
+        "ice"
+      ]
     },
     {
       "id": "088",
       "name": "Grimer",
-      "hp": 12,
-      "attack": 6,
-      "defense": 5,
-      "speed": 3,
-      "precision": 6,
-      "types": ["poison"]
+      "hp": 80,
+      "attack": 80,
+      "defense": 50,
+      "speed": 25,
+      "precision": 90,
+      "types": [
+        "poison"
+      ]
     },
     {
       "id": "089",
       "name": "Muk",
-      "hp": 12,
-      "attack": 7,
-      "defense": 6,
-      "speed": 3,
-      "precision": 6,
-      "types": ["poison"]
+      "hp": 105,
+      "attack": 105,
+      "defense": 75,
+      "speed": 50,
+      "precision": 88,
+      "types": [
+        "poison"
+      ]
     },
     {
       "id": "090",
       "name": "Shellder",
-      "hp": 12,
-      "attack": 6,
-      "defense": 9,
-      "speed": 4,
-      "precision": 6,
-      "types": ["water"]
+      "hp": 30,
+      "attack": 65,
+      "defense": 100,
+      "speed": 40,
+      "precision": 90,
+      "types": [
+        "water"
+      ]
     },
     {
       "id": "091",
       "name": "Cloyster",
-      "hp": 12,
-      "attack": 7,
-      "defense": 10,
-      "speed": 5,
-      "precision": 6,
-      "types": ["water", "ice"]
+      "hp": 50,
+      "attack": 95,
+      "defense": 180,
+      "speed": 70,
+      "precision": 88,
+      "types": [
+        "water",
+        "ice"
+      ]
     },
     {
       "id": "092",
       "name": "Gastly",
-      "hp": 12,
-      "attack": 4,
-      "defense": 3,
-      "speed": 8,
-      "precision": 6,
-      "types": ["ghost", "poison"]
+      "hp": 30,
+      "attack": 35,
+      "defense": 30,
+      "speed": 80,
+      "precision": 90,
+      "types": [
+        "ghost",
+        "poison"
+      ]
     },
     {
       "id": "093",
       "name": "Haunter",
-      "hp": 12,
-      "attack": 5,
-      "defense": 4,
-      "speed": 9,
-      "precision": 6,
-      "types": ["ghost", "poison"]
+      "hp": 45,
+      "attack": 50,
+      "defense": 45,
+      "speed": 95,
+      "precision": 92,
+      "types": [
+        "ghost",
+        "poison"
+      ]
     },
     {
       "id": "094",
       "name": "Gengar",
-      "hp": 12,
-      "attack": 6,
-      "defense": 5,
-      "speed": 10,
-      "precision": 6,
-      "types": ["ghost", "poison"]
+      "hp": 60,
+      "attack": 65,
+      "defense": 60,
+      "speed": 110,
+      "precision": 98,
+      "types": [
+        "ghost",
+        "poison"
+      ]
     },
     {
       "id": "095",
       "name": "Onix",
-      "hp": 12,
-      "attack": 5,
-      "defense": 10,
-      "speed": 7,
-      "precision": 6,
-      "types": ["rock", "ground"]
+      "hp": 35,
+      "attack": 45,
+      "defense": 160,
+      "speed": 70,
+      "precision": 88,
+      "types": [
+        "rock",
+        "ground"
+      ]
     },
     {
       "id": "096",
       "name": "Drowzee",
-      "hp": 12,
-      "attack": 5,
-      "defense": 6,
-      "speed": 4,
-      "precision": 6,
-      "types": ["psychic"]
+      "hp": 60,
+      "attack": 48,
+      "defense": 45,
+      "speed": 42,
+      "precision": 90,
+      "types": [
+        "psychic"
+      ]
     },
     {
       "id": "097",
       "name": "Hypno",
-      "hp": 12,
-      "attack": 6,
-      "defense": 7,
-      "speed": 5,
-      "precision": 6,
-      "types": ["psychic"]
+      "hp": 85,
+      "attack": 73,
+      "defense": 70,
+      "speed": 67,
+      "precision": 90,
+      "types": [
+        "psychic"
+      ]
     },
     {
       "id": "098",
       "name": "Krabby",
-      "hp": 12,
-      "attack": 8,
-      "defense": 7,
-      "speed": 5,
-      "precision": 6,
-      "types": ["water"]
+      "hp": 30,
+      "attack": 105,
+      "defense": 90,
+      "speed": 50,
+      "precision": 90,
+      "types": [
+        "water"
+      ]
     },
     {
       "id": "099",
       "name": "Kingler",
-      "hp": 12,
-      "attack": 9,
-      "defense": 8,
-      "speed": 6,
-      "precision": 6,
-      "types": ["water"]
+      "hp": 55,
+      "attack": 130,
+      "defense": 115,
+      "speed": 75,
+      "precision": 90,
+      "types": [
+        "water"
+      ]
     },
     {
       "id": "100",
       "name": "Voltorb",
-      "hp": 12,
-      "attack": 5,
-      "defense": 5,
-      "speed": 9,
-      "precision": 6,
-      "types": ["electric"]
+      "hp": 40,
+      "attack": 30,
+      "defense": 50,
+      "speed": 100,
+      "precision": 98,
+      "types": [
+        "electric"
+      ]
     },
     {
       "id": "101",
       "name": "Electrode",
-      "hp": 12,
-      "attack": 6,
-      "defense": 6,
-      "speed": 10,
-      "precision": 6,
-      "types": ["electric"]
+      "hp": 60,
+      "attack": 50,
+      "defense": 70,
+      "speed": 150,
+      "precision": 98,
+      "types": [
+        "electric"
+      ]
     },
     {
       "id": "102",
       "name": "Exeggcute",
-      "hp": 12,
-      "attack": 5,
-      "defense": 7,
-      "speed": 4,
-      "precision": 6,
-      "types": ["grass", "psychic"]
+      "hp": 60,
+      "attack": 40,
+      "defense": 80,
+      "speed": 40,
+      "precision": 90,
+      "types": [
+        "grass",
+        "psychic"
+      ]
     },
     {
       "id": "103",
       "name": "Exeggutor",
-      "hp": 12,
-      "attack": 8,
-      "defense": 7,
-      "speed": 5,
-      "precision": 6,
-      "types": ["grass", "psychic"]
+      "hp": 95,
+      "attack": 95,
+      "defense": 85,
+      "speed": 55,
+      "precision": 98,
+      "types": [
+        "grass",
+        "psychic"
+      ]
     },
     {
       "id": "104",
       "name": "Cubone",
-      "hp": 12,
-      "attack": 6,
-      "defense": 7,
-      "speed": 4,
-      "precision": 6,
-      "types": ["ground"]
+      "hp": 50,
+      "attack": 50,
+      "defense": 95,
+      "speed": 35,
+      "precision": 90,
+      "types": [
+        "ground"
+      ]
     },
     {
       "id": "105",
       "name": "Marowak",
-      "hp": 12,
-      "attack": 7,
-      "defense": 8,
-      "speed": 5,
-      "precision": 6,
-      "types": ["ground"]
+      "hp": 60,
+      "attack": 80,
+      "defense": 110,
+      "speed": 45,
+      "precision": 90,
+      "types": [
+        "ground"
+      ]
     },
     {
       "id": "106",
       "name": "Hitmonlee",
-      "hp": 12,
-      "attack": 9,
-      "defense": 5,
-      "speed": 7,
-      "precision": 6,
-      "types": ["fighting"]
+      "hp": 50,
+      "attack": 120,
+      "defense": 53,
+      "speed": 87,
+      "precision": 90,
+      "types": [
+        "fighting"
+      ]
     },
     {
       "id": "107",
       "name": "Hitmonchan",
-      "hp": 12,
-      "attack": 8,
-      "defense": 6,
-      "speed": 6,
-      "precision": 6,
-      "types": ["fighting"]
+      "hp": 50,
+      "attack": 105,
+      "defense": 79,
+      "speed": 76,
+      "precision": 90,
+      "types": [
+        "fighting"
+      ]
     },
     {
       "id": "108",
       "name": "Lickitung",
-      "hp": 12,
-      "attack": 5,
-      "defense": 7,
-      "speed": 4,
-      "precision": 6,
-      "types": ["normal"]
+      "hp": 90,
+      "attack": 55,
+      "defense": 75,
+      "speed": 30,
+      "precision": 90,
+      "types": [
+        "normal"
+      ]
     },
     {
       "id": "109",
       "name": "Koffing",
-      "hp": 12,
-      "attack": 6,
-      "defense": 7,
-      "speed": 4,
-      "precision": 6,
-      "types": ["poison"]
+      "hp": 40,
+      "attack": 65,
+      "defense": 95,
+      "speed": 35,
+      "precision": 90,
+      "types": [
+        "poison"
+      ]
     },
     {
       "id": "110",
       "name": "Weezing",
-      "hp": 12,
-      "attack": 7,
-      "defense": 8,
-      "speed": 5,
-      "precision": 6,
-      "types": ["poison"]
+      "hp": 65,
+      "attack": 90,
+      "defense": 120,
+      "speed": 60,
+      "precision": 88,
+      "types": [
+        "poison"
+      ]
     },
     {
       "id": "111",
       "name": "Rhyhorn",
-      "hp": 12,
-      "attack": 7,
-      "defense": 8,
-      "speed": 3,
-      "precision": 6,
-      "types": ["ground", "rock"]
+      "hp": 80,
+      "attack": 85,
+      "defense": 95,
+      "speed": 25,
+      "precision": 88,
+      "types": [
+        "ground",
+        "rock"
+      ]
     },
     {
       "id": "112",
       "name": "Rhydon",
-      "hp": 12,
-      "attack": 9,
-      "defense": 9,
-      "speed": 4,
-      "precision": 6,
-      "types": ["ground", "rock"]
+      "hp": 105,
+      "attack": 130,
+      "defense": 120,
+      "speed": 40,
+      "precision": 88,
+      "types": [
+        "ground",
+        "rock"
+      ]
     },
     {
       "id": "113",
       "name": "Chansey",
-      "hp": 12,
-      "attack": 2,
-      "defense": 2,
-      "speed": 5,
-      "precision": 6,
-      "types": ["normal"]
+      "hp": 250,
+      "attack": 5,
+      "defense": 5,
+      "speed": 50,
+      "precision": 88,
+      "types": [
+        "normal"
+      ]
     },
     {
       "id": "114",
       "name": "Tangela",
-      "hp": 12,
-      "attack": 6,
-      "defense": 7,
-      "speed": 5,
-      "precision": 6,
-      "types": ["grass"]
+      "hp": 65,
+      "attack": 55,
+      "defense": 115,
+      "speed": 60,
+      "precision": 90,
+      "types": [
+        "grass"
+      ]
     },
     {
       "id": "115",
       "name": "Kangaskhan",
-      "hp": 12,
-      "attack": 7,
-      "defense": 7,
-      "speed": 6,
-      "precision": 6,
-      "types": ["normal"]
+      "hp": 105,
+      "attack": 95,
+      "defense": 80,
+      "speed": 90,
+      "precision": 90,
+      "types": [
+        "normal"
+      ]
     },
     {
       "id": "116",
       "name": "Horsea",
-      "hp": 12,
-      "attack": 6,
-      "defense": 6,
-      "speed": 6,
-      "precision": 6,
-      "types": ["water"]
+      "hp": 30,
+      "attack": 40,
+      "defense": 70,
+      "speed": 60,
+      "precision": 90,
+      "types": [
+        "water"
+      ]
     },
     {
       "id": "117",
       "name": "Seadra",
-      "hp": 12,
-      "attack": 7,
-      "defense": 7,
-      "speed": 7,
-      "precision": 6,
-      "types": ["water"]
+      "hp": 55,
+      "attack": 65,
+      "defense": 95,
+      "speed": 85,
+      "precision": 90,
+      "types": [
+        "water"
+      ]
     },
     {
       "id": "118",
       "name": "Goldeen",
-      "hp": 12,
-      "attack": 6,
-      "defense": 5,
-      "speed": 6,
-      "precision": 6,
-      "types": ["water"]
+      "hp": 45,
+      "attack": 67,
+      "defense": 60,
+      "speed": 63,
+      "precision": 90,
+      "types": [
+        "water"
+      ]
     },
     {
       "id": "119",
       "name": "Seaking",
-      "hp": 12,
-      "attack": 7,
-      "defense": 6,
-      "speed": 6,
-      "precision": 6,
-      "types": ["water"]
+      "hp": 80,
+      "attack": 92,
+      "defense": 65,
+      "speed": 68,
+      "precision": 90,
+      "types": [
+        "water"
+      ]
     },
     {
       "id": "120",
       "name": "Staryu",
-      "hp": 12,
-      "attack": 5,
-      "defense": 5,
-      "speed": 8,
-      "precision": 6,
-      "types": ["water"]
+      "hp": 30,
+      "attack": 45,
+      "defense": 55,
+      "speed": 85,
+      "precision": 98,
+      "types": [
+        "water"
+      ]
     },
     {
       "id": "121",
       "name": "Starmie",
-      "hp": 12,
-      "attack": 6,
-      "defense": 6,
-      "speed": 9,
-      "precision": 6,
-      "types": ["water", "psychic"]
+      "hp": 60,
+      "attack": 75,
+      "defense": 85,
+      "speed": 115,
+      "precision": 98,
+      "types": [
+        "water",
+        "psychic"
+      ]
     },
     {
       "id": "122",
       "name": "Mr. Mime",
-      "hp": 12,
-      "attack": 4,
-      "defense": 6,
-      "speed": 7,
-      "precision": 6,
-      "types": ["psychic", "fairy"]
+      "hp": 40,
+      "attack": 45,
+      "defense": 65,
+      "speed": 90,
+      "precision": 90,
+      "types": [
+        "psychic",
+        "fairy"
+      ]
     },
     {
       "id": "123",
       "name": "Scyther",
-      "hp": 12,
-      "attack": 8,
-      "defense": 6,
-      "speed": 9,
-      "precision": 6,
-      "types": ["bug", "flying"]
+      "hp": 70,
+      "attack": 110,
+      "defense": 80,
+      "speed": 105,
+      "precision": 98,
+      "types": [
+        "bug",
+        "flying"
+      ]
     },
     {
       "id": "124",
       "name": "Jynx",
-      "hp": 12,
-      "attack": 6,
-      "defense": 4,
-      "speed": 7,
-      "precision": 6,
-      "types": ["ice", "psychic"]
+      "hp": 65,
+      "attack": 50,
+      "defense": 35,
+      "speed": 95,
+      "precision": 90,
+      "types": [
+        "ice",
+        "psychic"
+      ]
     },
     {
       "id": "125",
       "name": "Electabuzz",
-      "hp": 12,
-      "attack": 7,
-      "defense": 5,
-      "speed": 9,
-      "precision": 6,
-      "types": ["electric"]
+      "hp": 65,
+      "attack": 83,
+      "defense": 57,
+      "speed": 105,
+      "precision": 90,
+      "types": [
+        "electric"
+      ]
     },
     {
       "id": "126",
       "name": "Magmar",
-      "hp": 12,
-      "attack": 7,
-      "defense": 5,
-      "speed": 8,
-      "precision": 6,
-      "types": ["fire"]
+      "hp": 65,
+      "attack": 95,
+      "defense": 57,
+      "speed": 93,
+      "precision": 90,
+      "types": [
+        "fire"
+      ]
     },
     {
       "id": "127",
       "name": "Pinsir",
-      "hp": 12,
-      "attack": 9,
-      "defense": 7,
-      "speed": 6,
-      "precision": 6,
-      "types": ["bug"]
+      "hp": 65,
+      "attack": 125,
+      "defense": 100,
+      "speed": 85,
+      "precision": 90,
+      "types": [
+        "bug"
+      ]
     },
     {
       "id": "128",
       "name": "Tauros",
-      "hp": 12,
-      "attack": 8,
-      "defense": 7,
-      "speed": 8,
-      "precision": 6,
-      "types": ["normal"]
+      "hp": 75,
+      "attack": 100,
+      "defense": 95,
+      "speed": 110,
+      "precision": 98,
+      "types": [
+        "normal"
+      ]
     },
     {
       "id": "129",
       "name": "Magikarp",
-      "hp": 12,
-      "attack": 2,
-      "defense": 3,
-      "speed": 7,
-      "precision": 6,
-      "types": ["water"]
+      "hp": 20,
+      "attack": 10,
+      "defense": 55,
+      "speed": 80,
+      "precision": 85,
+      "types": [
+        "water"
+      ]
     },
     {
       "id": "130",
       "name": "Gyarados",
-      "hp": 12,
-      "attack": 9,
-      "defense": 7,
-      "speed": 7,
-      "precision": 6,
-      "types": ["water", "flying"]
+      "hp": 95,
+      "attack": 125,
+      "defense": 79,
+      "speed": 81,
+      "precision": 98,
+      "types": [
+        "water",
+        "flying"
+      ]
     },
     {
       "id": "131",
       "name": "Lapras",
-      "hp": 12,
-      "attack": 7,
-      "defense": 7,
-      "speed": 6,
-      "precision": 6,
-      "types": ["water", "ice"]
+      "hp": 130,
+      "attack": 85,
+      "defense": 80,
+      "speed": 60,
+      "precision": 98,
+      "types": [
+        "water",
+        "ice"
+      ]
     },
     {
       "id": "132",
       "name": "Ditto",
-      "hp": 12,
-      "attack": 5,
-      "defense": 5,
-      "speed": 5,
-      "precision": 6,
-      "types": ["normal"]
+      "hp": 48,
+      "attack": 48,
+      "defense": 48,
+      "speed": 48,
+      "precision": 90,
+      "types": [
+        "normal"
+      ]
     },
     {
       "id": "133",
       "name": "Eevee",
-      "hp": 12,
-      "attack": 6,
-      "defense": 5,
-      "speed": 6,
-      "precision": 6,
-      "types": ["normal"]
+      "hp": 55,
+      "attack": 55,
+      "defense": 50,
+      "speed": 55,
+      "precision": 90,
+      "types": [
+        "normal"
+      ]
     },
     {
       "id": "134",
       "name": "Vaporeon",
-      "hp": 12,
-      "attack": 7,
-      "defense": 6,
-      "speed": 6,
-      "precision": 6,
-      "types": ["water"]
+      "hp": 130,
+      "attack": 65,
+      "defense": 60,
+      "speed": 65,
+      "precision": 98,
+      "types": [
+        "water"
+      ]
     },
     {
       "id": "135",
       "name": "Jolteon",
-      "hp": 12,
-      "attack": 6,
-      "defense": 5,
-      "speed": 10,
-      "precision": 6,
-      "types": ["electric"]
+      "hp": 65,
+      "attack": 65,
+      "defense": 60,
+      "speed": 130,
+      "precision": 98,
+      "types": [
+        "electric"
+      ]
     },
     {
       "id": "136",
       "name": "Flareon",
-      "hp": 12,
-      "attack": 8,
-      "defense": 6,
-      "speed": 6,
-      "precision": 6,
-      "types": ["fire"]
+      "hp": 65,
+      "attack": 130,
+      "defense": 60,
+      "speed": 65,
+      "precision": 98,
+      "types": [
+        "fire"
+      ]
     },
     {
       "id": "137",
       "name": "Porygon",
-      "hp": 12,
-      "attack": 6,
-      "defense": 6,
-      "speed": 5,
-      "precision": 6,
-      "types": ["normal"]
+      "hp": 65,
+      "attack": 60,
+      "defense": 70,
+      "speed": 40,
+      "precision": 90,
+      "types": [
+        "normal"
+      ]
     },
     {
       "id": "138",
       "name": "Omanyte",
-      "hp": 12,
-      "attack": 5,
-      "defense": 8,
-      "speed": 4,
-      "precision": 6,
-      "types": ["rock", "water"]
+      "hp": 35,
+      "attack": 40,
+      "defense": 100,
+      "speed": 35,
+      "precision": 90,
+      "types": [
+        "rock",
+        "water"
+      ]
     },
     {
       "id": "139",
       "name": "Omastar",
-      "hp": 12,
-      "attack": 6,
-      "defense": 9,
-      "speed": 5,
-      "precision": 6,
-      "types": ["rock", "water"]
+      "hp": 70,
+      "attack": 60,
+      "defense": 125,
+      "speed": 55,
+      "precision": 88,
+      "types": [
+        "rock",
+        "water"
+      ]
     },
     {
       "id": "140",
       "name": "Kabuto",
-      "hp": 12,
-      "attack": 6,
-      "defense": 7,
-      "speed": 5,
-      "precision": 6,
-      "types": ["rock", "water"]
+      "hp": 30,
+      "attack": 80,
+      "defense": 90,
+      "speed": 55,
+      "precision": 90,
+      "types": [
+        "rock",
+        "water"
+      ]
     },
     {
       "id": "141",
       "name": "Kabutops",
-      "hp": 12,
-      "attack": 8,
-      "defense": 7,
-      "speed": 7,
-      "precision": 6,
-      "types": ["rock", "water"]
+      "hp": 60,
+      "attack": 115,
+      "defense": 105,
+      "speed": 80,
+      "precision": 90,
+      "types": [
+        "rock",
+        "water"
+      ]
     },
     {
       "id": "142",
       "name": "Aerodactyl",
-      "hp": 12,
-      "attack": 8,
-      "defense": 6,
-      "speed": 10,
-      "precision": 6,
-      "types": ["rock", "flying"]
+      "hp": 80,
+      "attack": 105,
+      "defense": 65,
+      "speed": 130,
+      "precision": 98,
+      "types": [
+        "rock",
+        "flying"
+      ]
     },
     {
       "id": "143",
       "name": "Snorlax",
-      "hp": 12,
-      "attack": 8,
-      "defense": 7,
-      "speed": 3,
-      "precision": 6,
-      "types": ["normal"]
+      "hp": 160,
+      "attack": 110,
+      "defense": 65,
+      "speed": 30,
+      "precision": 88,
+      "types": [
+        "normal"
+      ]
     },
     {
       "id": "144",
       "name": "Articuno",
-      "hp": 12,
-      "attack": 7,
-      "defense": 9,
-      "speed": 8,
-      "precision": 6,
-      "types": ["ice", "flying"]
+      "hp": 90,
+      "attack": 85,
+      "defense": 100,
+      "speed": 85,
+      "precision": 100,
+      "types": [
+        "ice",
+        "flying"
+      ]
     },
     {
       "id": "145",
       "name": "Zapdos",
-      "hp": 12,
-      "attack": 8,
-      "defense": 8,
-      "speed": 10,
-      "precision": 6,
-      "types": ["electric", "flying"]
+      "hp": 90,
+      "attack": 90,
+      "defense": 85,
+      "speed": 100,
+      "precision": 100,
+      "types": [
+        "electric",
+        "flying"
+      ]
     },
     {
       "id": "146",
       "name": "Moltres",
-      "hp": 12,
-      "attack": 9,
-      "defense": 7,
-      "speed": 9,
-      "precision": 6,
-      "types": ["fire", "flying"]
+      "hp": 90,
+      "attack": 100,
+      "defense": 90,
+      "speed": 90,
+      "precision": 100,
+      "types": [
+        "fire",
+        "flying"
+      ]
     },
     {
       "id": "147",
       "name": "Dratini",
-      "hp": 12,
-      "attack": 6,
-      "defense": 5,
-      "speed": 5,
-      "precision": 6,
-      "types": ["dragon"]
+      "hp": 41,
+      "attack": 64,
+      "defense": 45,
+      "speed": 50,
+      "precision": 90,
+      "types": [
+        "dragon"
+      ]
     },
     {
       "id": "148",
       "name": "Dragonair",
-      "hp": 12,
-      "attack": 7,
-      "defense": 6,
-      "speed": 6,
-      "precision": 6,
-      "types": ["dragon"]
+      "hp": 61,
+      "attack": 84,
+      "defense": 65,
+      "speed": 70,
+      "precision": 92,
+      "types": [
+        "dragon"
+      ]
     },
     {
       "id": "149",
       "name": "Dragonite",
-      "hp": 12,
-      "attack": 9,
-      "defense": 8,
-      "speed": 8,
-      "precision": 6,
-      "types": ["dragon", "flying"]
+      "hp": 91,
+      "attack": 134,
+      "defense": 95,
+      "speed": 80,
+      "precision": 98,
+      "types": [
+        "dragon",
+        "flying"
+      ]
     },
     {
       "id": "150",
       "name": "Mewtwo",
-      "hp": 12,
-      "attack": 10,
-      "defense": 9,
-      "speed": 10,
-      "precision": 6,
-      "types": ["psychic"]
+      "hp": 106,
+      "attack": 110,
+      "defense": 90,
+      "speed": 130,
+      "precision": 100,
+      "types": [
+        "psychic"
+      ]
     },
     {
       "id": "151",
       "name": "Mew",
-      "hp": 12,
-      "attack": 9,
-      "defense": 9,
-      "speed": 9,
-      "precision": 6,
-      "types": ["psychic"]
+      "hp": 100,
+      "attack": 100,
+      "defense": 100,
+      "speed": 100,
+      "precision": 100,
+      "types": [
+        "psychic"
+      ]
+    },
+    {
+      "id": "196",
+      "name": "Espeon",
+      "hp": 65,
+      "attack": 65,
+      "defense": 60,
+      "speed": 110,
+      "precision": 98,
+      "types": [
+        "psychic"
+      ]
+    },
+    {
+      "id": "197",
+      "name": "Umbreon",
+      "hp": 95,
+      "attack": 65,
+      "defense": 110,
+      "speed": 65,
+      "precision": 88,
+      "types": [
+        "dark"
+      ]
+    },
+    {
+      "id": "470",
+      "name": "Leafeon",
+      "hp": 65,
+      "attack": 110,
+      "defense": 130,
+      "speed": 95,
+      "precision": 98,
+      "types": [
+        "grass"
+      ]
+    },
+    {
+      "id": "471",
+      "name": "Glaceon",
+      "hp": 65,
+      "attack": 60,
+      "defense": 110,
+      "speed": 65,
+      "precision": 98,
+      "types": [
+        "ice"
+      ]
     }
   ]
 }
-
