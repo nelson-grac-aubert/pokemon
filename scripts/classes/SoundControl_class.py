@@ -51,4 +51,4 @@ class SoundControl:
         sound.set_volume(volume)
         sound.play()
 
-
+sound_control = SoundControl()

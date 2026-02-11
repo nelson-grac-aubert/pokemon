@@ -1,8 +1,12 @@
 import pygame
 from scripts.logic.assets_management import load_image
 from scripts.graphic.pokedex_menu import run_pokedex
+from scripts.graphic.menu import sound_control
 
 def overworld_game_loop(screen, clock, starter_pokemon, player_pokedex):
+
+    sound_control.play_music("assets/music/road_1.mp3")
+
     width, height = screen.get_size()
 
     # Load and scale the background map
