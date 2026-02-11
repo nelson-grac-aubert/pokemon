@@ -3,7 +3,7 @@ import random
 from scripts.logic.assets_management import load_gif, load_image, load_font
 from scripts.classes.Pokedex_class import Pokedex, kanto_pokedex, easy_pokedex
 from scripts.classes.PokemonDisplay_class import PokemonDisplay
-from scripts.logic.json_management import load_pokemons_from_json, load_types_from_json
+from scripts.logic.json_management import load_pokemons_from_json, load_types_from_json, save_pokemons_to_json
 
 class Combat:
     def __init__(self, pokedex):
@@ -100,6 +100,7 @@ class Combat:
             print("🎉 You won the battle!")
             self.__player_pokedex.add_pokemon(self.__adversary)
             self.__player_pokemon.set_hp(100)
+            save_pokemons_to_json(self.__player_pokedex.get_pokemons(), "assets/data/player_pokemons.json")
             self.running = False
             return True
 

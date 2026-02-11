@@ -67,3 +67,31 @@ def load_pokemons_from_json(path: str, type_dict: dict[str, PokemonType]) -> lis
         pokemons.append(pokemon)
 
     return pokemons
+
+import json
+
+def save_pokemons_to_json(pokemons: list[Pokemon], output_path: str) -> None:
+    """
+    Sauvegarde une liste d'objets Pokemon dans un fichier JSON
+    au même format que celui utilisé par load_pokemons_from_json().
+    """
+
+    data = {"pokemons": []}
+
+    for p in pokemons:
+        entry = {
+            "id": p.get_id(),
+            "name": p.get_name(),
+            "hp": p.get_hp(),
+            "attack": p.get_attack(),
+            "defense": p.get_level(),
+            "speed": p.get_speed(),
+            "precision": p.get_precision(),
+            "types": [t.get_name() for t in p.get_types()]  # Convert object to their names
+        }
+
+        data["pokemons"].append(entry)
+
+    # Write in file
+    with open(output_path, "w", encoding="utf-8") as file:
+        json.dump(data, file, indent=4, ensure_ascii=False)
