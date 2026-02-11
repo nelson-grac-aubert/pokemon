@@ -30,8 +30,8 @@ pokedex.set_pokemons(load_pokemons_from_json("assets/data/all_pokemons.json",
                         load_types_from_json("assets/data/all_types.json")))
 
 # Animated pikachu on main menu 
-pikachu_display = PokemonDisplay(pokedex.get_pokemons()[24], scale=2.0, is_front=True)
-pikachu_display.set_position(width // 2, 200)
+pikachu_display = PokemonDisplay(pokedex.get_pokemons()[24], scale=2.3, is_front=True)
+pikachu_display.set_position(width // 2, 235)
 
 button_img = load_image("assets/images/pokedex.png").convert_alpha()
 button_img = pygame.transform.scale(button_img, (140, 120))  # adapte la taille 
