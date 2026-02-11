@@ -1,6 +1,7 @@
 import pygame
 from scripts.classes.PokemonDisplay_class import PokemonDisplay
 from scripts.graphic.colors import BEIGE
+from scripts.logic.assets_management import load_font
 
 # Duration of the intro animation (10 seconds)
 INTRO_DURATION = 10000  
@@ -30,7 +31,7 @@ def run_intro(screen, clock, pokedex):
     skip_requested = False  # <-- NEW
 
     # Font for skip text
-    skip_font = pygame.font.Font(None, 24)
+    skip_font = load_font("assets/font/Pokemon_GB.ttf", 18)
 
     running = True
     while running:
