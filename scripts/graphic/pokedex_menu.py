@@ -3,17 +3,14 @@ from scripts.classes.Pokedex_class import Pokedex
 from scripts.classes.PokedexDisplay_class import PokedexDisplay
 from scripts.logic.json_management import load_pokemons_from_json, load_types_from_json
 
-def run_pokedex():
+def run_pokedex(player_pokedex):
     pygame.init()
 
-    screen = pygame.display.set_mode((900, 600))
+    screen = pygame.display.set_mode((800, 600))
     pygame.display.set_caption("Pokédex")
 
-    pokedex = Pokedex()
-    pokedex.set_pokemons(load_pokemons_from_json("assets/data/all_pokemons.json", 
-                        load_types_from_json("assets/data/all_types.json")))
-
-    pokedex_display = PokedexDisplay(pokedex, screen)
+    # Use the player's current Pokédex instead of loading the full one
+    pokedex_display = PokedexDisplay(player_pokedex, screen)
 
     clock = pygame.time.Clock()
     running = True
@@ -29,5 +26,9 @@ def run_pokedex():
         pokedex_display.draw()
         pygame.display.flip()
         clock.tick(60)
+
+        # Back to overworld
+        if pokedex_display.request_exit:
+            return
 
     pygame.quit()

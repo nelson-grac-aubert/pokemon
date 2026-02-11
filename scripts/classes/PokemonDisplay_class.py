@@ -11,11 +11,16 @@ class PokemonDisplay:
         self.frame_index = 0
         self.frame_timer = 0
         self.frame_speed = 3
-
+        
         self.x = 0
         self.y = 0
 
         self.load_sprites()
+        if self.frames:
+            first_frame = self.frames[0]
+            self.rect = first_frame.get_rect(center=(self.x, self.y))
+        else:
+            self.rect = pygame.Rect(0, 0, 0, 0)
 
     # Load sprites
 
@@ -56,6 +61,8 @@ class PokemonDisplay:
     def set_position(self, x, y):
         self.x = x
         self.y = y
+        self.rect.center = (x, y)
+
 
     def _scale_frame(self, frame):
         if self.scale == 1.0:

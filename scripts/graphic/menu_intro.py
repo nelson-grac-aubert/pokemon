@@ -1,5 +1,6 @@
 import pygame
 from scripts.classes.PokemonDisplay_class import PokemonDisplay
+from scripts.graphic.colors import BEIGE
 
 # Duration of the intro animation (10 seconds)
 INTRO_DURATION = 10000  
@@ -49,7 +50,7 @@ def run_intro(screen, clock, pokedex):
                 skip_requested = True  # <-- NEW
 
         # Background color
-        screen.fill((235, 235, 235))
+        screen.fill((BEIGE))
 
         # Animate Pokémon movement
         for direction, poke in animated_pokemons:

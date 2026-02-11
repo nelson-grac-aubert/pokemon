@@ -7,7 +7,7 @@ from scripts.classes.PokemonDisplay_class import PokemonDisplay
 from scripts.classes.PixelButton_class import PixelButton
 from scripts.graphic.colors import * 
 from scripts.graphic.pokedex_menu import run_pokedex
-from scripts.classes.SoundControl_class import SoundControl
+from scripts.classes.SoundControl_class import sound_control
 from scripts.graphic.menu_intro import run_intro
 from scripts.graphic.game_intro import run_game_intro
 
@@ -21,7 +21,6 @@ pygame.display.set_caption("PokePixel")
 title_font = load_font("assets/font/Pokemon_GB.ttf", 48)
 
 # Sounds 
-sound_control = SoundControl()
 sound_control.play_music("assets/music/opening.mp3")
 
 # Load Pokedex for gif display on menu 
@@ -30,8 +29,8 @@ pokedex.set_pokemons(load_pokemons_from_json("assets/data/all_pokemons.json",
                         load_types_from_json("assets/data/all_types.json")))
 
 # Animated pikachu on main menu 
-pikachu_display = PokemonDisplay(pokedex.get_pokemons()[24], scale=2.0, is_front=True)
-pikachu_display.set_position(width // 2, 200)
+pikachu_display = PokemonDisplay(pokedex.get_pokemons()[24], scale=2.3, is_front=True)
+pikachu_display.set_position(width // 2, 235)
 
 button_img = load_image("assets/images/pokedex.png").convert_alpha()
 button_img = pygame.transform.scale(button_img, (140, 120))  # adapte la taille 
@@ -42,11 +41,8 @@ button_target_scale = 1.0
 button_click_cooldown = 0
 
 # Buttons functions 
-def open_pokedex():
-    run_pokedex()
 
 def new_game():
-
     player_pokedex, starter = run_game_intro(screen, clock, pokedex)
     return player_pokedex
 
@@ -108,7 +104,7 @@ def main_menu():
         # Click
                 if button_img_rect.collidepoint(mouse_pos):
                     button_click_cooldown = 5
-                    run_pokedex()
+                    run_pokedex(pokedex)
 
         for btn in buttons:
             btn.update(mouse_pos, mouse_click)
