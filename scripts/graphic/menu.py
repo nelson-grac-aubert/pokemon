@@ -72,7 +72,10 @@ def main_menu():
         screen.fill(BEIGE)
 
         # Title
-        title = title_font.render("POKEMON", True, BLACK)
+        title = load_image("assets/images/logo.png")
+        size = (500, 500)
+        title = pygame.transform.scale(title, size)
+
         title_rect = title.get_rect(center=(width//2, 100))
         screen.blit(title, title_rect)
 
