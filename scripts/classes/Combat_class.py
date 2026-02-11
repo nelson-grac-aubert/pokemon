@@ -1,7 +1,8 @@
 import pygame
 import random
 from scripts.logic.assets_management import load_gif, load_image, load_font
-from scripts.classes.Pokedex_class import Pokedex
+from scripts.classes.Pokedex_class import Pokedex, kanto_pokedex
+from scripts.classes.PokemonDisplay_class import PokemonDisplay
 from scripts.logic.json_management import load_pokemons_from_json, load_types_from_json
 
 class Combat:
@@ -10,8 +11,7 @@ class Combat:
         Combat system between the player's Pokémon and a random wild Pokémon.
         :param pokedex: The player's Pokedex (contains their Pokémon)
         """
-        self.__kanto_pokedex =  Pokedex()
-        self.__kanto_pokedex.set_pokemons(load_pokemons_from_json("assets/data/all_pokemons.json", load_types_from_json("assets/data/all_types.json")))
+
         self.__player_pokedex = pokedex
         self.__player_pokemon = pokedex.get_pokemons()[0]  # TEMP: first Pokémon
         self.__adversary = self.generate_random_adversary()
@@ -28,7 +28,7 @@ class Combat:
 
     def generate_random_adversary(self):
         """Creates a random wild Pokémon for the encounter."""
-        return random.choice(self.__kanto_pokedex.get_pokemons())
+        return random.choice(kanto_pokedex.get_pokemons())
 
     def compute_damage(self, attacker, defender):
         """Basic Pokémon-like damage formula."""
@@ -50,6 +50,12 @@ class Combat:
     #  Main combat loop
     def run(self, screen, clock):
         """Main combat loop."""
+
+        player_display = PokemonDisplay(self.__player_pokemon, 3.5, False)
+        player_display.set_position(200,520)
+        adversary_display = PokemonDisplay(self.__adversary, 3.5, True)
+        adversary_display.set_position(600,435)
+
         while self.running:
 
             for event in pygame.event.get():
@@ -68,6 +74,12 @@ class Combat:
             # Draw
             screen.blit(self.background, (0, 0))
             self.draw_pokemon_stats(screen)
+
+            # Animate pokemons sprites
+            player_display.update()
+            player_display.draw(screen)
+            adversary_display.update()
+            adversary_display.draw(screen)
 
             pygame.display.flip()
             clock.tick(60)

@@ -30,7 +30,7 @@ class PokemonDisplay:
         if self.is_front:
             path = f"assets/sprites/{pid}.gif"
         else:
-            path = f"assets/sprites/{pid}_back.gif"
+            path = f"assets/sprites/{pid}b.gif"
 
         raw_frames = load_gif(path)
         self.frames = [self._scale_frame(f) for f in raw_frames]

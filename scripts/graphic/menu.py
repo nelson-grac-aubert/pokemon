@@ -2,7 +2,7 @@ import pygame
 import sys
 from scripts.logic.assets_management import load_font, load_image
 from scripts.logic.json_management import *
-from scripts.classes.Pokedex_class import Pokedex
+from scripts.classes.Pokedex_class import Pokedex, kanto_pokedex
 from scripts.classes.PokemonDisplay_class import PokemonDisplay
 from scripts.classes.PixelButton_class import PixelButton
 from scripts.graphic.colors import * 
@@ -22,11 +22,6 @@ title_font = load_font("assets/font/Pokemon_GB.ttf", 48)
 
 # Sounds 
 sound_control.play_music("assets/music/opening.mp3")
-
-# Load Pokedex for gif display on menu 
-kanto_pokedex = Pokedex()
-kanto_pokedex.set_pokemons(load_pokemons_from_json("assets/data/all_pokemons.json", 
-                        load_types_from_json("assets/data/all_types.json")))
 
 # Animated pikachu on main menu 
 pikachu_display = PokemonDisplay(kanto_pokedex.get_pokemons()[24], scale=2.3, is_front=True)

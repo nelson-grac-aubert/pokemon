@@ -1,4 +1,5 @@
 from scripts.classes.Pokemon_class import Pokemon
+from scripts.logic.json_management import load_pokemons_from_json, load_types_from_json
 
 class Pokedex : 
     def __init__(self) : 
@@ -17,3 +18,7 @@ class Pokedex :
         :type new_pokemon: Pokemon
         """
         self.get_pokemons().append(new_pokemon)
+
+kanto_pokedex = Pokedex()
+kanto_pokedex.set_pokemons(load_pokemons_from_json("assets/data/all_pokemons.json", 
+load_types_from_json("assets/data/all_types.json")))
