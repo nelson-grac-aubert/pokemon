@@ -87,7 +87,7 @@ oddish      = make_pokemon("043", "Oddish",         [grass, poison], (45, 50, 55
 gloom       = make_pokemon("044", "Gloom",          [grass, poison], (60, 65, 70, 40, "intermediate"))
 vileplume   = make_pokemon("045", "Vileplume",      [grass, poison], (75, 80, 85, 50, "final"))
 
-paras       = make_pokemon("046", "Paras",          [bug, grass],    ("base_mid"))
+paras       = make_pokemon("046", "Paras",          [bug, grass],    (35, 70, 55, 25, "base_mid"))
 parasect    = make_pokemon("047", "Parasect",       [bug, grass],    ("base_mid"))
 
 venonat     = make_pokemon("048", "Venonat",        [bug, poison],   ("base_mid"))
@@ -246,8 +246,8 @@ dratini     = make_pokemon("147", "Dratini",        [dragon],        ("base_mid"
 dragonair   = make_pokemon("148", "Dragonair",      [dragon],        ("intermediate"))
 dragonite   = make_pokemon("149", "Dragonite",      [dragon, flying],("final"))
 
-mewtwo      = make_pokemon("150", "Mewtwo",         [psychic],       "legend")
-mew         = make_pokemon("151", "Mew",            [psychic],       "legend")
+mewtwo      = make_pokemon("150", "Mewtwo",         [psychic],       ("legend"))
+mew         = make_pokemon("151", "Mew",            [psychic],       ("legend"))
 
 # kanto_pokemons = [
 #     bulbasaur, ivysaur, venusaur,charmander, charmeleon, charizard,squirtle, wartortle, blastoise,
