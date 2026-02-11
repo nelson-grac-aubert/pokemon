@@ -1,0 +1,105 @@
+{
+  "pokemons": [
+    {
+      "id": "010",
+      "name": "Caterpie",
+      "hp": 45,
+      "attack": 30,
+      "defense": 35,
+      "speed": 45,
+      "precision": 85,
+      "types": [
+        "bug"
+      ]
+    },
+     {
+      "id": "011",
+      "name": "Metapod",
+      "hp": 50,
+      "attack": 20,
+      "defense": 55,
+      "speed": 30,
+      "precision": 85,
+      "types": [
+        "bug"
+      ]
+    },
+    {
+      "id": "013",
+      "name": "Weedle",
+      "hp": 40,
+      "attack": 35,
+      "defense": 30,
+      "speed": 50,
+      "precision": 85,
+      "types": [
+        "bug",
+        "poison"
+      ]
+    },
+    {
+      "id": "014",
+      "name": "Kakuna",
+      "hp": 45,
+      "attack": 25,
+      "defense": 50,
+      "speed": 35,
+      "precision": 85,
+      "types": [
+        "bug",
+        "poison"
+      ]
+    },
+    {
+      "id": "016",
+      "name": "Pidgey",
+      "hp": 40,
+      "attack": 45,
+      "defense": 40,
+      "speed": 56,
+      "precision": 85,
+      "types": [
+        "normal",
+        "flying"
+      ]
+    },
+    {
+      "id": "019",
+      "name": "Rattata",
+      "hp": 30,
+      "attack": 56,
+      "defense": 35,
+      "speed": 72,
+      "precision": 85,
+      "types": [
+        "normal"
+      ]
+    },
+    {
+      "id": "021",
+      "name": "Spearow",
+      "hp": 40,
+      "attack": 60,
+      "defense": 30,
+      "speed": 70,
+      "precision": 85,
+      "types": [
+        "normal",
+        "flying"
+      ]
+    },
+    {
+      "id": "041",
+      "name": "Zubat",
+      "hp": 40,
+      "attack": 45,
+      "defense": 35,
+      "speed": 55,
+      "precision": 85,
+      "types": [
+        "poison",
+        "flying"
+      ]
+    }
+  ]
+}

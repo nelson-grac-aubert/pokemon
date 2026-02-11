@@ -1,7 +1,7 @@
 import pygame
 import random
 from scripts.logic.assets_management import load_gif, load_image, load_font
-from scripts.classes.Pokedex_class import Pokedex, kanto_pokedex
+from scripts.classes.Pokedex_class import Pokedex, kanto_pokedex, easy_pokedex
 from scripts.classes.PokemonDisplay_class import PokemonDisplay
 from scripts.logic.json_management import load_pokemons_from_json, load_types_from_json
 
@@ -28,7 +28,7 @@ class Combat:
 
     def generate_random_adversary(self):
         """Creates a random wild Pokémon for the encounter."""
-        return random.choice(kanto_pokedex.get_pokemons())
+        return random.choice(easy_pokedex.get_pokemons())
 
     def compute_damage(self, attacker, defender):
         """Basic Pokémon-like damage formula."""
@@ -51,9 +51,9 @@ class Combat:
     def run(self, screen, clock):
         """Main combat loop."""
 
-        player_display = PokemonDisplay(self.__player_pokemon, 3.5, False)
+        player_display = PokemonDisplay(self.__player_pokemon, 4, False)
         player_display.set_position(200,520)
-        adversary_display = PokemonDisplay(self.__adversary, 3.5, True)
+        adversary_display = PokemonDisplay(self.__adversary, 3, True)
         adversary_display.set_position(600,435)
 
         while self.running:
