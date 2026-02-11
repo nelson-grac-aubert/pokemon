@@ -186,68 +186,68 @@ weezing     = make_pokemon("110", "Weezing",        [poison],        ("tank"))
 rhyhorn     = make_pokemon("111", "Rhyhorn",        [ground, rock],  ("tank"))
 rhydon      = make_pokemon("112", "Rhydon",         [ground, rock],  ("tank"))
 
-chansey     = make_pokemon("113", "Chansey",        [normal],        ("tank"))
+chansey     = make_pokemon("113", "Chansey",        [normal],        (250, 5, 5, 50, "tank"))
 
-tangela     = make_pokemon("114", "Tangela",        [grass],         ("base_mid"))
+tangela     = make_pokemon("114", "Tangela",        [grass],         (65, 55, 115, 60, "base_mid"))
 
-kangaskhan  = make_pokemon("115", "Kangaskhan",     [normal],        ("base_mid"))
+kangaskhan  = make_pokemon("115", "Kangaskhan",     [normal],        (105, 95, 80, 90, "base_mid"))
 
-horsea      = make_pokemon("116", "Horsea",         [water],         ("base_mid"))
-seadra      = make_pokemon("117", "Seadra",         [water],         ("base_mid"))
+horsea      = make_pokemon("116", "Horsea",         [water],         (30, 40, 70, 60, "base_mid"))
+seadra      = make_pokemon("117", "Seadra",         [water],         (55, 65, 95, 85, "base_mid"))
 
-goldeen     = make_pokemon("118", "Goldeen",        [water],         ("base_mid"))
-seaking     = make_pokemon("119", "Seaking",        [water],         ("base_mid"))
+goldeen     = make_pokemon("118", "Goldeen",        [water],         (45, 67, 60, 63, "base_mid"))
+seaking     = make_pokemon("119", "Seaking",        [water],         (80, 92, 65, 68, "base_mid"))
 
-staryu      = make_pokemon("120", "Staryu",         [water],         ("fast"))
-starmie     = make_pokemon("121", "Starmie",        [water, psychic],("fast"))
+staryu      = make_pokemon("120", "Staryu",         [water],         (30, 45, 55, 85, "fast"))
+starmie     = make_pokemon("121", "Starmie",        [water, psychic],(60, 75, 85, 115, "fast"))
 
-mr_mime     = make_pokemon("122", "Mr. Mime",       [psychic, fairy],("base_mid"))
+mr_mime     = make_pokemon("122", "Mr. Mime",       [psychic, fairy],(40, 45, 65, 90, "base_mid"))
 
-scyther     = make_pokemon("123", "Scyther",        [bug, flying],   ("fast"))
+scyther     = make_pokemon("123", "Scyther",        [bug, flying],   (70, 110, 80, 105, "fast"))
 
-jynx        = make_pokemon("124", "Jynx",           [ice, psychic],  ("base_mid"))
+jynx        = make_pokemon("124", "Jynx",           [ice, psychic],  (65, 50, 35, 95, "base_mid"))
 
-electabuzz  = make_pokemon("125", "Electabuzz",     [electric],      ("base_mid"))
-magmar      = make_pokemon("126", "Magmar",         [fire],          ("base_mid"))
+electabuzz  = make_pokemon("125", "Electabuzz",     [electric],      (65, 83, 57, 105, "base_mid"))
+magmar      = make_pokemon("126", "Magmar",         [fire],          (65, 95, 57, 93, "base_mid"))
 
-pinsir      = make_pokemon("127", "Pinsir",         [bug],           ("base_mid"))
+pinsir      = make_pokemon("127", "Pinsir",         [bug],           (65, 125, 100, 85, "base_mid"))
 
-tauros      = make_pokemon("128", "Tauros",         [normal],        ("fast"))
+tauros      = make_pokemon("128", "Tauros",         [normal],        (75, 100, 95, 110, "fast"))
 
-magikarp    = make_pokemon("129", "Magikarp",       [water],         ())
-gyarados    = make_pokemon("130", "Gyarados",       [water, flying], ("final"))
+magikarp    = make_pokemon("129", "Magikarp",       [water],         (20, 10, 55, 80, "base_weak"))
+gyarados    = make_pokemon("130", "Gyarados",       [water, flying], (95, 125, 79, 81, "final"))
 
-lapras      = make_pokemon("131", "Lapras",         [water, ice],    ("final"))
+lapras      = make_pokemon("131", "Lapras",         [water, ice],    (130, 85, 80, 60, "final"))
 
-ditto       = make_pokemon("132", "Ditto",          [normal],        ("base_mid"))
+ditto       = make_pokemon("132", "Ditto",          [normal],        (48, 48, 48, 48, "base_mid"))
 
-eevee       = make_pokemon("133", "Eevee",          [normal],        ("base_mid"))
-vaporeon    = make_pokemon("134", "Vaporeon",       [water],         ("final"))
-jolteon     = make_pokemon("135", "Jolteon",        [electric],      ("fast"))
-flareon     = make_pokemon("136", "Flareon",        [fire],          ("final"))
+eevee       = make_pokemon("133", "Eevee",          [normal],        (55, 55, 50, 55, "base_mid"))
+vaporeon    = make_pokemon("134", "Vaporeon",       [water],         (130, 65, 60, 65, "final"))
+jolteon     = make_pokemon("135", "Jolteon",        [electric],      (65, 65, 60, 130, "fast"))
+flareon     = make_pokemon("136", "Flareon",        [fire],          (65, 130, 60, 65, "final"))
 
-porygon     = make_pokemon("137", "Porygon",        [normal],        ("base_mid"))
+porygon     = make_pokemon("137", "Porygon",        [normal],        (65, 60, 70, 40, "base_mid"))
 
-omanyte     = make_pokemon("138", "Omanyte",        [rock, water],   ("base_mid"))
-omastar     = make_pokemon("139", "Omastar",        [rock, water],   ("tank"))
+omanyte     = make_pokemon("138", "Omanyte",        [rock, water],   (35, 40, 100, 35, "base_mid"))
+omastar     = make_pokemon("139", "Omastar",        [rock, water],   (70, 60, 125, 55, "tank"))
 
-kabuto      = make_pokemon("140", "Kabuto",         [rock, water],   ("base_mid"))
-kabutops    = make_pokemon("141", "Kabutops",       [rock, water],   ("base_mid"))
+kabuto      = make_pokemon("140", "Kabuto",         [rock, water],   (30, 80, 90, 55, "base_mid"))
+kabutops    = make_pokemon("141", "Kabutops",       [rock, water],   (60, 115, 105, 80, "base_mid"))
 
-aerodactyl  = make_pokemon("142", "Aerodactyl",     [rock, flying],  ("fast"))
+aerodactyl  = make_pokemon("142", "Aerodactyl",     [rock, flying],  (80, 105, 65, 130, "fast"))
 
-snorlax     = make_pokemon("143", "Snorlax",        [normal],        ("tank"))
+snorlax     = make_pokemon("143", "Snorlax",        [normal],        (160, 110, 65, 30, "tank"))
 
-articuno    = make_pokemon("144", "Articuno",       [ice, flying],   "legend")
-zapdos      = make_pokemon("145", "Zapdos",         [electric, flying],"legend")
-moltres     = make_pokemon("146", "Moltres",        [fire, flying],  "legend")
+articuno    = make_pokemon("144", "Articuno",       [ice, flying],   (90, 85, 100, 85, "legend"))
+zapdos      = make_pokemon("145", "Zapdos",         [electric, flying],(90, 90, 85, 100, "legend"))
+moltres     = make_pokemon("146", "Moltres",        [fire, flying],  (90, 100, 90, 90, "legend"))
 
-dratini     = make_pokemon("147", "Dratini",        [dragon],        ("base_mid"))
-dragonair   = make_pokemon("148", "Dragonair",      [dragon],        ("intermediate"))
-dragonite   = make_pokemon("149", "Dragonite",      [dragon, flying],("final"))
+dratini     = make_pokemon("147", "Dratini",        [dragon],        (41, 64, 45, 50, "base_mid"))
+dragonair   = make_pokemon("148", "Dragonair",      [dragon],        (61, 84, 65, 70, "intermediate"))
+dragonite   = make_pokemon("149", "Dragonite",      [dragon, flying],(91, 134, 95, 80, "final"))
 
-mewtwo      = make_pokemon("150", "Mewtwo",         [psychic],       ("legend"))
-mew         = make_pokemon("151", "Mew",            [psychic],       ("legend"))
+mewtwo      = make_pokemon("150", "Mewtwo",         [psychic],       (106, 110, 90, 130,"legend"))
+mew         = make_pokemon("151", "Mew",            [psychic],       (100, 100,	100, 100, "legend"))
 
 # kanto_pokemons = [
 #     bulbasaur, ivysaur, venusaur,charmander, charmeleon, charizard,squirtle, wartortle, blastoise,
