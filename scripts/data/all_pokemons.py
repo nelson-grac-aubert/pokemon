@@ -88,103 +88,103 @@ gloom       = make_pokemon("044", "Gloom",          [grass, poison], (60, 65, 70
 vileplume   = make_pokemon("045", "Vileplume",      [grass, poison], (75, 80, 85, 50, "final"))
 
 paras       = make_pokemon("046", "Paras",          [bug, grass],    (35, 70, 55, 25, "base_mid"))
-parasect    = make_pokemon("047", "Parasect",       [bug, grass],    ("base_mid"))
+parasect    = make_pokemon("047", "Parasect",       [bug, grass],    (60, 95, 80, 30, "base_mid"))
 
-venonat     = make_pokemon("048", "Venonat",        [bug, poison],   ("base_mid"))
-venomoth    = make_pokemon("049", "Venomoth",       [bug, poison],   ("fast"))
+venonat     = make_pokemon("048", "Venonat",        [bug, poison],   (60, 55, 50, 45, "base_mid"))
+venomoth    = make_pokemon("049", "Venomoth",       [bug, poison],   (70, 65, 60, 90, "fast"))
 
-diglett     = make_pokemon("050", "Diglett",        [ground],        ("fast"))
-dugtrio     = make_pokemon("051", "Dugtrio",        [ground],        ("fast"))
+diglett     = make_pokemon("050", "Diglett",        [ground],        (10, 55, 25, 95, "fast"))
+dugtrio     = make_pokemon("051", "Dugtrio",        [ground],        (35,100, 50, 120, "fast"))
 
-meowth      = make_pokemon("052", "Meowth",         [normal],        ("base_mid"))
-persian     = make_pokemon("053", "Persian",        [normal],        ("fast"))
+meowth      = make_pokemon("052", "Meowth",         [normal],        (40, 45, 35, 90, "base_mid"))
+persian     = make_pokemon("053", "Persian",        [normal],        (65, 70, 60, 115, "fast"))
 
-psyduck     = make_pokemon("054", "Psyduck",        [water],         ("base_mid"))
-golduck     = make_pokemon("055", "Golduck",        [water],         ("base_mid"))
+psyduck     = make_pokemon("054", "Psyduck",        [water],         (50, 52, 48, 55, "base_mid"))
+golduck     = make_pokemon("055", "Golduck",        [water],         (80, 82, 78, 85, "base_mid"))
 
-mankey      = make_pokemon("056", "Mankey",         [fighting],      ("base_mid"))
-primeape    = make_pokemon("057", "Primeape",       [fighting],      ("base_mid"))
+mankey      = make_pokemon("056", "Mankey",         [fighting],      (40, 80, 35, 70, "base_mid"))
+primeape    = make_pokemon("057", "Primeape",       [fighting],      (65, 105, 60, 95, "base_mid"))
 
-growlithe   = make_pokemon("058", "Growlithe",      [fire],          ("base_mid"))
-arcanine    = make_pokemon("059", "Arcanine",       [fire],          ("final"))
+growlithe   = make_pokemon("058", "Growlithe",      [fire],          (55, 70, 45, 60, "base_mid"))
+arcanine    = make_pokemon("059", "Arcanine",       [fire],          (90, 110, 80, 95, "final"))
 
-poliwag     = make_pokemon("060", "Poliwag",        [water],         ("base_mid"))
-poliwhirl   = make_pokemon("061", "Poliwhirl",      [water],         ("intermediate"))
-poliwrath   = make_pokemon("062", "Poliwrath",      [water, fighting],("final"))
+poliwag     = make_pokemon("060", "Poliwag",        [water],         (40, 50, 40, 90, "base_mid"))
+poliwhirl   = make_pokemon("061", "Poliwhirl",      [water],         (65, 65, 65, 90, "intermediate"))
+poliwrath   = make_pokemon("062", "Poliwrath",      [water, fighting],(90, 95, 95, 70, "final"))
 
-abra        = make_pokemon("063", "Abra",           [psychic],       ())
-kadabra     = make_pokemon("064", "Kadabra",        [psychic],       ("intermediate"))
-alakazam    = make_pokemon("065", "Alakazam",       [psychic],       ("fast"))
+abra        = make_pokemon("063", "Abra",           [psychic],       (25, 20, 15, 90, "base_weak"))
+kadabra     = make_pokemon("064", "Kadabra",        [psychic],       (40, 35, 30, 105, "intermediate"))
+alakazam    = make_pokemon("065", "Alakazam",       [psychic],       (55, 50, 45, 120, "fast"))
 
-machop      = make_pokemon("066", "Machop",         [fighting],      ("base_mid"))
-machoke     = make_pokemon("067", "Machoke",        [fighting],      ("intermediate"))
-machamp     = make_pokemon("068", "Machamp",        [fighting],      ("final"))
+machop      = make_pokemon("066", "Machop",         [fighting],      (70, 80, 50, 35, "base_mid"))
+machoke     = make_pokemon("067", "Machoke",        [fighting],      (80, 100, 70, 45, "intermediate"))
+machamp     = make_pokemon("068", "Machamp",        [fighting],      (90, 130, 80, 55, "final"))
 
-bellsprout  = make_pokemon("069", "Bellsprout",     [grass, poison], ("base_mid"))
-weepinbell  = make_pokemon("070", "Weepinbell",     [grass, poison], ("intermediate"))
-victreebel  = make_pokemon("071", "Victreebel",     [grass, poison], ("final"))
+bellsprout  = make_pokemon("069", "Bellsprout",     [grass, poison], (50, 75, 35, 40, "base_mid"))
+weepinbell  = make_pokemon("070", "Weepinbell",     [grass, poison], (65, 90, 50, 55, "intermediate"))
+victreebel  = make_pokemon("071", "Victreebel",     [grass, poison], (80, 105, 65, 70, "final"))
 
-tentacool   = make_pokemon("072", "Tentacool",      [water, poison], ("base_mid"))
-tentacruel  = make_pokemon("073", "Tentacruel",     [water, poison], ("base_mid"))
+tentacool   = make_pokemon("072", "Tentacool",      [water, poison], (40, 40, 35, 70, "base_mid"))
+tentacruel  = make_pokemon("073", "Tentacruel",     [water, poison], (80, 70, 65, 100, "base_mid"))
 
-geodude     = make_pokemon("074", "Geodude",        [rock, ground],  ("tank"))
-graveler    = make_pokemon("075", "Graveler",       [rock, ground],  ("tank"))
-golem       = make_pokemon("076", "Golem",          [rock, ground],  ("tank"))
+geodude     = make_pokemon("074", "Geodude",        [rock, ground],  (40, 80, 100, 20, "tank"))
+graveler    = make_pokemon("075", "Graveler",       [rock, ground],  (55, 95, 115, 35, "tank"))
+golem       = make_pokemon("076", "Golem",          [rock, ground],  (80, 120, 130, 45, "tank"))
 
-ponyta      = make_pokemon("077", "Ponyta",         [fire],          ("fast"))
-rapidash    = make_pokemon("078", "Rapidash",       [fire],          ("fast"))
+ponyta      = make_pokemon("077", "Ponyta",         [fire],          (50, 85, 55, 90, "fast"))
+rapidash    = make_pokemon("078", "Rapidash",       [fire],          (65, 100, 70, 105, "fast"))
 
-slowpoke    = make_pokemon("079", "Slowpoke",       [water, psychic],("base_mid"))
-slowbro     = make_pokemon("080", "Slowbro",        [water, psychic],("tank"))
+slowpoke    = make_pokemon("079", "Slowpoke",       [water, psychic],(90, 65, 65, 15, "base_mid"))
+slowbro     = make_pokemon("080", "Slowbro",        [water, psychic],(95, 75, 110, 30, "tank"))
 
-magnemite   = make_pokemon("081", "Magnemite",      [electric, steel],("base_mid"))
-magneton    = make_pokemon("082", "Magneton",       [electric, steel],("base_mid"))
+magnemite   = make_pokemon("081", "Magnemite",      [electric, steel],(25, 35, 70, 45, "base_mid"))
+magneton    = make_pokemon("082", "Magneton",       [electric, steel],(50, 60, 95, 70, "base_mid"))
 
-farfetchd   = make_pokemon("083", "Farfetch'd",     [normal, flying],("base_mid"))
+farfetchd   = make_pokemon("083", "Farfetch'd",     [normal, flying],(52, 90, 55, 60, "base_mid"))
 
-doduo       = make_pokemon("084", "Doduo",          [normal, flying],("base_mid"))
-dodrio      = make_pokemon("085", "Dodrio",         [normal, flying],("fast"))
+doduo       = make_pokemon("084", "Doduo",          [normal, flying],(35, 85, 45, 75, "base_mid"))
+dodrio      = make_pokemon("085", "Dodrio",         [normal, flying],(60, 110, 70, 110, "fast"))
 
-seel        = make_pokemon("086", "Seel",           [water],         ("base_mid"))
-dewgong     = make_pokemon("087", "Dewgong",        [water, ice],    ("base_mid"))
+seel        = make_pokemon("086", "Seel",           [water],         (65, 45, 55, 45, "base_mid"))
+dewgong     = make_pokemon("087", "Dewgong",        [water, ice],    (90, 70, 80, 70, "base_mid"))
 
-grimer      = make_pokemon("088", "Grimer",         [poison],        ("base_mid"))
-muk         = make_pokemon("089", "Muk",            [poison],        ("tank"))
+grimer      = make_pokemon("088", "Grimer",         [poison],        (80, 80, 50, 25, "base_mid"))
+muk         = make_pokemon("089", "Muk",            [poison],        (105, 105, 75, 50, "tank"))
 
-shellder    = make_pokemon("090", "Shellder",       [water],         ("base_mid"))
-cloyster    = make_pokemon("091", "Cloyster",       [water, ice],    ("tank"))
+shellder    = make_pokemon("090", "Shellder",       [water],         (30, 65, 100, 40, "base_mid"))
+cloyster    = make_pokemon("091", "Cloyster",       [water, ice],    (50, 95, 180, 70, "tank"))
 
-gastly      = make_pokemon("092", "Gastly",         [ghost, poison], ("base_mid"))
-haunter     = make_pokemon("093", "Haunter",        [ghost, poison], ("intermediate"))
-gengar      = make_pokemon("094", "Gengar",         [ghost, poison], ("final"))
+gastly      = make_pokemon("092", "Gastly",         [ghost, poison], (30, 35, 30, 80, "base_mid"))
+haunter     = make_pokemon("093", "Haunter",        [ghost, poison], (45, 50, 45, 95, "intermediate"))
+gengar      = make_pokemon("094", "Gengar",         [ghost, poison], (60, 65, 60, 110, "final"))
 
-onix        = make_pokemon("095", "Onix",           [rock, ground],  ("tank"))
+onix        = make_pokemon("095", "Onix",           [rock, ground],  (35, 45, 160, 70, "tank"))
 
-drowzee     = make_pokemon("096", "Drowzee",        [psychic],       ("base_mid"))
-hypno       = make_pokemon("097", "Hypno",          [psychic],       ("base_mid"))
+drowzee     = make_pokemon("096", "Drowzee",        [psychic],       (60, 48, 45, 42, "base_mid"))
+hypno       = make_pokemon("097", "Hypno",          [psychic],       (85, 73, 70, 67, "base_mid"))
 
-krabby      = make_pokemon("098", "Krabby",         [water],         ("base_mid"))
-kingler     = make_pokemon("099", "Kingler",        [water],         ("base_mid"))
+krabby      = make_pokemon("098", "Krabby",         [water],         (30, 105, 90, 50, "base_mid"))
+kingler     = make_pokemon("099", "Kingler",        [water],         (55, 130, 115, 75, "base_mid"))
 
-voltorb     = make_pokemon("100", "Voltorb",        [electric],      ("fast"))
-electrode   = make_pokemon("101", "Electrode",      [electric],      ("fast"))
+voltorb     = make_pokemon("100", "Voltorb",        [electric],      (40, 30, 50, 100, "fast"))
+electrode   = make_pokemon("101", "Electrode",      [electric],      (60, 50, 70, 150, "fast"))
 
-exeggcute   = make_pokemon("102", "Exeggcute",      [grass, psychic],("base_mid"))
-exeggutor   = make_pokemon("103", "Exeggutor",      [grass, psychic],("final"))
+exeggcute   = make_pokemon("102", "Exeggcute",      [grass, psychic],(60, 40, 80, 40, "base_mid"))
+exeggutor   = make_pokemon("103", "Exeggutor",      [grass, psychic],(95, 95, 85, 55, "final"))
 
-cubone      = make_pokemon("104", "Cubone",         [ground],        ("base_mid"))
-marowak     = make_pokemon("105", "Marowak",        [ground],        ("base_mid"))
+cubone      = make_pokemon("104", "Cubone",         [ground],        (50, 50, 95, 35, "base_mid"))
+marowak     = make_pokemon("105", "Marowak",        [ground],        (60, 80, 110, 45, "base_mid"))
 
-hitmonlee   = make_pokemon("106", "Hitmonlee",      [fighting],      ("base_mid"))
-hitmonchan  = make_pokemon("107", "Hitmonchan",     [fighting],      ("base_mid"))
+hitmonlee   = make_pokemon("106", "Hitmonlee",      [fighting],      (50, 120, 53, 87, "base_mid"))
+hitmonchan  = make_pokemon("107", "Hitmonchan",     [fighting],      (50, 105, 79, 76, "base_mid"))
 
-lickitung   = make_pokemon("108", "Lickitung",      [normal],        ("base_mid"))
+lickitung   = make_pokemon("108", "Lickitung",      [normal],        (90, 55, 75, 30, "base_mid"))
 
-koffing     = make_pokemon("109", "Koffing",        [poison],        ("base_mid"))
-weezing     = make_pokemon("110", "Weezing",        [poison],        ("tank"))
+koffing     = make_pokemon("109", "Koffing",        [poison],        (40, 65, 95, 35, "base_mid"))
+weezing     = make_pokemon("110", "Weezing",        [poison],        (65, 90, 120, 60, "tank"))
 
-rhyhorn     = make_pokemon("111", "Rhyhorn",        [ground, rock],  ("tank"))
-rhydon      = make_pokemon("112", "Rhydon",         [ground, rock],  ("tank"))
+rhyhorn     = make_pokemon("111", "Rhyhorn",        [ground, rock],  (80, 85, 95, 25, "tank"))
+rhydon      = make_pokemon("112", "Rhydon",         [ground, rock],  (105, 130, 120, 40, "tank"))
 
 chansey     = make_pokemon("113", "Chansey",        [normal],        (250, 5, 5, 50, "tank"))
 
