@@ -69,7 +69,7 @@ def overworld_game_loop(screen, clock, starter_pokemon, player_pokedex):
         if moving:
             walking_time += dt
             if walking_time >= next_encounter_time:
-                print("⚔️ Combat triggered!")
+                sound_control.play_music("assets/music/battle.mp3")
                 walking_time = 0
                 next_encounter_time = random.uniform(4, 5)
 
