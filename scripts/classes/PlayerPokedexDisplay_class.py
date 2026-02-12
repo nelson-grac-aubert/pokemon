@@ -5,6 +5,9 @@ class PlayerPokedexDisplay(PokedexDisplay) :
     def __init__(self, screen) : 
         super().__init__(self, screen)
 
+    def draw_chose_button(self) : 
+        pass
+
     def draw_abandon_button(self) : 
         abandon_button_rect = pygame.Rect(self.screen.get_width() - 400, self.screen.get_height() - 60, 180, 40)
         abandon_button_text = self.font.render("Abandon", True, (255, 255, 255))
@@ -16,4 +19,5 @@ class PlayerPokedexDisplay(PokedexDisplay) :
     def draw_right_panel(self):
         super().draw_right_panel()
         self.draw_abandon_button()
+        self.draw_chose_button()
 

@@ -3,5 +3,8 @@ from scripts.classes.Pokedex_class import Pokedex
 
 class PlayerPokedex(Pokedex) : 
     
+    def chose_as_combat_pokemon(self, chosent_pokemon : Pokemon) : 
+        pass 
+    
     def abandon_pokemon(self, abandonned_pokemon : Pokemon) : 
         self.get_pokemons().remove(abandonned_pokemon)
