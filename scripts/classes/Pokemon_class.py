@@ -24,11 +24,13 @@ class Pokemon :
         self.__id = id
         self.__name = name
         self.__hp = hp
+        self.__current_hp = hp
         self.__attack = attack
         self.__defense = defense
         self.__speed = speed
         self.__precision = precision
         self.__level = 1
+        self.__exp = 0
         self.__types = types 
 
         # Gif animation variables
@@ -67,6 +69,14 @@ class Pokemon :
         if not isinstance(new_hp, int):
             raise TypeError("HP must be an integer.")
         self.__hp = new_hp
+
+
+    def get_current_hp(self):
+        return self.__current_hp
+    def set_current_hp(self, new_current_hp):
+        if not isinstance(new_current_hp, int):
+            raise TypeError("Current HP must be an integer.")
+        self.__hp = new_current_hp
 
 
     def get_attack(self):
@@ -113,7 +123,18 @@ class Pokemon :
             raise TypeError("Level must be an integer.")
         if new_level < 1:
             raise ValueError("Level must be at least 1.")
+        self.stats_calculation(new_level)
         self.__level = new_level
+
+    def get_exp(self):
+        return self.__exp
+    def set_exp(self, new_exp):
+        if not isinstance(new_exp, int):
+            raise TypeError("Level must be an integer.")
+        if new_exp < 1:
+            raise ValueError("Level must be at least 1.")
+        self.__exp = new_exp
+        self.check_levelup()
 
 
     def get_types(self):
@@ -128,3 +149,18 @@ class Pokemon :
         self.__types = new_types
 
     # End of getters and setters ---------------------------------------------------------------------------------------
+
+    def check_levelup(self):
+        required_exp = pow(1.03,2*self.__level) + self.__level + 31
+        if self.__exp > required_exp:
+            self.set_exp(self.__exp - required_exp)
+            self.set_level(self.__level + 1)
+            self.check_levelup()
+
+    def stats_calculation(self, new_level):
+        for loop in range(self.__level,new_level):
+            self.set_hp(self.__hp + self.__hp/50)
+            self.set_current_hp(self.get_hp)
+            self.set_attack(self.__attack + self.__attack/50)
+            self.set_defense(self.__defense + self.__defense/50)
+            self.set_speed(self.__speed + self.__speed/50)
