@@ -3,7 +3,7 @@ from scripts.classes.PokemonType_class import PokemonType
 from scripts.logic.assets_management import load_gif
 
 class Pokemon : 
-    def __init__(self, id : str, name : str, max_hp : int, attack : int, defense : int, speed : int, precision : int, types : list) : 
+    def __init__(self, name : str, hp : int, attack : int, defense : int, speed : int, precision : int, types : list, id : str) : 
         """
         Docstring for __init__
         
@@ -23,8 +23,8 @@ class Pokemon :
 
         self.__id = id
         self.__name = name
-        self.__max_hp = max_hp
-        self.__hp = max_hp
+        self.__max_hp = hp
+        self.__hp = hp
         self.__attack = attack
         self.__defense = defense
         self.__speed = speed

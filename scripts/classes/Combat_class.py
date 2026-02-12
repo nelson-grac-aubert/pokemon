@@ -106,7 +106,7 @@ class Combat:
 
     def enemy_attack(self):
         dmg = self.compute_damage(self.__adversary, self.__player_pokemon)
-        self.__player_pokemon.set_hp(self.__player_pokemon.get_hp() - (dmg//10))
+        self.__player_pokemon.set_hp(self.__player_pokemon.get_hp() - dmg)
 
     # End conditions
     def check_end(self):
