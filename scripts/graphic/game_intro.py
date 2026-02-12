@@ -73,7 +73,7 @@ def run_game_intro(screen, clock, pokedex):
 
     # Dialog sequence
     for text in dialogs:
-        screen.blit(background, (0, 0))  # Draw background
+        screen.blit(background, (0, -50))  # Draw background
         draw_dialog_box(screen, font, text)
         pygame.display.flip()
         wait_for_click()
@@ -82,7 +82,8 @@ def run_game_intro(screen, clock, pokedex):
     starters_id = [0, 3, 6]  # Bulbasaur, Charmander, Squirtle
 
     starter_displays = []
-    positions = [(width // 4, height // 2), (width // 2, height // 2), (3 * width // 4, height // 2)]
+    starters_y_position = height // 2 + 50
+    positions = [(width // 4, starters_y_position), (width // 2, starters_y_position), (3 * width // 4, starters_y_position)]
 
     for idx, pos in zip(starters_id, positions):
         p = PokemonDisplay(pokedex.get_pokemons()[idx], scale=3.0, is_front=True)
