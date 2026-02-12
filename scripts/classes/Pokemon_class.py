@@ -7,28 +7,30 @@ class Pokemon :
         """
         Docstring for __init__
         
+        :param id: The id of that pokemon in a 3 digit format, used to get the sprites files
+        :type id: str
         :param name: The name of that Pokemon
         :type name: str
-        :param hp: The health points of that Pokemon
-        :type hp: int
+        :param max hp: The maximum health points of that Pokemon
+        :type max hp: int
         :param attack: The attack rating of that Pokemon
         :type attack: int
         :param defense: The defense rating of that Pokemon
         :type defense: int
         :param types: A list of the Types of that Pokemon
         :type types: list
-        :param id: The id of that pokemon in a 3 digit format, used to get the sprites files
-        :type id: str
         """
 
         self.__id = id
         self.__name = name
+        self.__max_hp = hp
         self.__hp = hp
         self.__attack = attack
         self.__defense = defense
         self.__speed = speed
         self.__precision = precision
         self.__level = 1
+        self.__exp = 0
         self.__types = types 
 
         # Gif animation variables
@@ -59,6 +61,14 @@ class Pokemon :
         if new_name.strip() == "":
             raise ValueError("Name cannot be empty.")
         self.__name = new_name
+
+
+    def get_max_hp(self):
+        return self.__max_hp
+    def set_max_hp(self, new_max_hp):
+        if not isinstance(new_max_hp, int):
+            raise TypeError("Max HP must be an integer.")
+        self.__max_hp = new_max_hp
 
 
     def get_hp(self):
@@ -113,7 +123,18 @@ class Pokemon :
             raise TypeError("Level must be an integer.")
         if new_level < 1:
             raise ValueError("Level must be at least 1.")
+        self.stats_calculation(new_level)
         self.__level = new_level
+
+    def get_exp(self):
+        return self.__exp
+    def set_exp(self, new_exp):
+        if not isinstance(new_exp, int):
+            raise TypeError("Level must be an integer.")
+        if new_exp < 1:
+            raise ValueError("Level must be at least 1.")
+        self.__exp = new_exp
+        self.check_levelup()
 
 
     def get_types(self):
@@ -128,3 +149,18 @@ class Pokemon :
         self.__types = new_types
 
     # End of getters and setters ---------------------------------------------------------------------------------------
+
+    def check_levelup(self):
+        required_exp = pow(1.03,2*self.__level) + self.__level + 31
+        if self.__exp > required_exp:
+            self.set_exp(self.__exp - required_exp)
+            self.set_level(self.__level + 1)
+            self.check_levelup()
+
+    def stats_calculation(self, new_level):
+        for loop in range(self.__level,new_level):
+            self.set_max_hp(self.__max_hp + self.__hp//50)
+            self.set_hp(self.get_max_hp())
+            self.set_attack(self.__attack + self.__attack//50)
+            self.set_defense(self.__defense + self.__defense//50)
+            self.set_speed(self.__speed + self.__speed//50)

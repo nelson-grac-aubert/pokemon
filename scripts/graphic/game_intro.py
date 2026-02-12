@@ -63,16 +63,17 @@ def run_game_intro(screen, clock, pokedex):
     background = pygame.transform.scale(background, (width, height))
 
     dialogs = [
-        "Hi! We are the Professors Pellat, Sandoval and Grac.",
-        "Maybe you've seen our fully completed Pokédex on the main screen.",
-        "Your goal in this game is to catch them all, and complete your own Pokédex!",
-        "You will fight wild Pokémon and capture them when they faint, adding them one by one.",
-        "It's dangerous to go alone! Pick a starter Pokémon to begin  your adventure."
+        "Pr. Pellat : Hello, and welcome to Kanto, the best region of the Pokémon universe!",
+        "Pr. Sandoval : Maybe you've seen our fully completed Pokédex on the main screen.",
+        "Pr. Grac-Aubert : Your goal in this game is to catch them all, and complete your own Pokédex!",
+        "Pr. Pellat : You will fight wild Pokémon and capture them when they faint, adding them one by one.",
+        "Pr. Sandoval : There are more than 150 Pokémons to catch!",
+        "Pr. Grac-Aubert : It's dangerous to go alone! Pick a starter Pokémon to begin  your adventure."
     ]
 
     # Dialog sequence
     for text in dialogs:
-        screen.blit(background, (0, 0))  # Draw background
+        screen.blit(background, (0, -50))  # Draw background
         draw_dialog_box(screen, font, text)
         pygame.display.flip()
         wait_for_click()
@@ -81,7 +82,8 @@ def run_game_intro(screen, clock, pokedex):
     starters_id = [0, 3, 6]  # Bulbasaur, Charmander, Squirtle
 
     starter_displays = []
-    positions = [(width // 4, height // 2), (width // 2, height // 2), (3 * width // 4, height // 2)]
+    starters_y_position = height // 2 + 50
+    positions = [(width // 4, starters_y_position), (width // 2, starters_y_position), (3 * width // 4, starters_y_position)]
 
     for idx, pos in zip(starters_id, positions):
         p = PokemonDisplay(pokedex.get_pokemons()[idx], scale=3.0, is_front=True)
@@ -92,7 +94,7 @@ def run_game_intro(screen, clock, pokedex):
     chosen_pokemon = None
 
     while choosing:
-        background = load_image("assets/images/forest_background.jpg")
+        background = load_image("assets/images/starter_background.png")
         background = pygame.transform.scale(background, (width, height))
         screen.blit(background, (0, 0))  # Draw background
 
