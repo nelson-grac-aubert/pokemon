@@ -1,5 +1,6 @@
 import pygame
 import random
+from scripts.classes.SoundControl_class import sound_control
 from scripts.logic.assets_management import load_gif, load_image, load_font
 from scripts.classes.Pokedex_class import Pokedex, kanto_pokedex, easy_pokedex
 from scripts.classes.PokemonDisplay_class import PokemonDisplay
@@ -111,7 +112,7 @@ class Combat:
     # End conditions
     def check_end(self):
         if self.__adversary.get_hp() <= 0:
-            print("🎉 You won the battle!")
+            sound_control.play_music("assets/music/victory.mp3")
 
             # Add vanquished Pokémon to Player Pokédex
             self.__player_pokedex.add_pokemon(self.__adversary)
@@ -127,7 +128,6 @@ class Combat:
             return True
 
         if self.__player_pokemon.get_hp() <= 0:
-            print("💀 Your Pokémon fainted!")
 
             # Fully heal both Pokémons
             self.__player_pokemon.set_hp(self.__player_pokemon.get_max_hp())
