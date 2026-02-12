@@ -1,7 +1,7 @@
 import pygame
 from scripts.classes.PokemonDisplay_class import PokemonDisplay
 from scripts.graphic.colors import BEIGE
-from scripts.logic.assets_management import load_font
+from scripts.logic.assets_management import load_font, load_image
 
 # Duration of the intro animation (10 seconds)
 INTRO_DURATION = 10000  
@@ -14,6 +14,9 @@ def run_intro(screen, clock, pokedex):
     LEGENDARIES = [143, 144, 145] # Example: Articuno, Zapdos, Moltres
 
     animated_pokemons = []
+
+    background = load_image("assets/images/intro_background.png")
+    background = pygame.transform.scale(background, (width, height))
 
     # Create PokemonDisplay objects for starters (moving left → right)
     for i, idx in enumerate(STARTERS):
@@ -50,8 +53,8 @@ def run_intro(screen, clock, pokedex):
             if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
                 skip_requested = True  # <-- NEW
 
-        # Background color
-        screen.fill((BEIGE))
+        # Background 
+        screen.blit(background, (0, 0))  # Draw background
 
         # Animate Pokémon movement
         for direction, poke in animated_pokemons:
