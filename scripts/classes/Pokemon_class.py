@@ -159,8 +159,8 @@ class Pokemon :
 
     def stats_calculation(self, new_level):
         for loop in range(self.__level,new_level):
-            self.set_hp(self.__hp + self.__hp/50)
+            self.set_hp(self.__hp + self.__hp//50)
             self.set_current_hp(self.get_hp)
-            self.set_attack(self.__attack + self.__attack/50)
-            self.set_defense(self.__defense + self.__defense/50)
-            self.set_speed(self.__speed + self.__speed/50)
+            self.set_attack(self.__attack + self.__attack//50)
+            self.set_defense(self.__defense + self.__defense//50)
+            self.set_speed(self.__speed + self.__speed//50)

@@ -3,6 +3,7 @@ import random
 from scripts.logic.assets_management import load_gif, load_image, load_font
 from scripts.classes.Pokedex_class import Pokedex, kanto_pokedex, easy_pokedex
 from scripts.classes.PokemonDisplay_class import PokemonDisplay
+from scripts.classes.PokemonType_class import PokemonType
 from scripts.logic.json_management import load_pokemons_from_json, load_types_from_json, save_pokemons_to_json
 
 class Combat:
@@ -30,10 +31,23 @@ class Combat:
         """Creates a random wild Pokémon for the encounter."""
         return random.choice(easy_pokedex.get_pokemons())
 
+    def apply_types(self, attacker_types, defender_types):
+        """Define attacker's types efficiency against defender."""
+        efficiency = 1
+        for attype in attacker_types:
+            for deftype in defender_types:
+                if deftype in attype.get_weaknesses():
+                    efficiency *= 0.5
+                if deftype in attype.get_strenghts():
+                    efficiency *= 2
+                if deftype in attype.get_useless():
+                    efficiency *= 0
+        return efficiency
+
     def compute_damage(self, attacker, defender):
-        """Basic Pokémon-like damage formula."""
-        base = attacker.get_attack() - defender.get_defense() // 2
-        return max(1, base)
+        """Pokémon-like damage formula."""
+        damage = (((2 * attacker.get_level() / 5) * (attacker.get_attack() / defender.get_defense())) / 25 + 10) * 1.5 * self.apply_types(attacker.get_types(), defender.get_types()) * (random.randint(60,100) / 100) // 1
+        return max(1, damage)
 
     def draw_pokemon_stats(self, screen):
         """Draws HP bars and names."""
