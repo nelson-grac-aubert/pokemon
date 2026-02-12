@@ -3,28 +3,28 @@ from scripts.classes.PokemonType_class import PokemonType
 from scripts.logic.assets_management import load_gif
 
 class Pokemon : 
-    def __init__(self, name : str, hp : int, attack : int, defense : int, speed : int, precision : int, types : list, id : str) : 
+    def __init__(self, id : str, name : str, max_hp : int, attack : int, defense : int, speed : int, precision : int, types : list) : 
         """
         Docstring for __init__
         
+        :param id: The id of that pokemon in a 3 digit format, used to get the sprites files
+        :type id: str
         :param name: The name of that Pokemon
         :type name: str
-        :param hp: The health points of that Pokemon
-        :type hp: int
+        :param max hp: The maximum health points of that Pokemon
+        :type max hp: int
         :param attack: The attack rating of that Pokemon
         :type attack: int
         :param defense: The defense rating of that Pokemon
         :type defense: int
         :param types: A list of the Types of that Pokemon
         :type types: list
-        :param id: The id of that pokemon in a 3 digit format, used to get the sprites files
-        :type id: str
         """
 
         self.__id = id
         self.__name = name
-        self.__hp = hp
-        self.__current_hp = hp
+        self.__max_hp = max_hp
+        self.__hp = max_hp
         self.__attack = attack
         self.__defense = defense
         self.__speed = speed
@@ -63,20 +63,20 @@ class Pokemon :
         self.__name = new_name
 
 
+    def get_max_hp(self):
+        return self.__max_hp
+    def set_max_hp(self, new_max_hp):
+        if not isinstance(new_max_hp, int):
+            raise TypeError("Max HP must be an integer.")
+        self.__max_hp = new_max_hp
+
+
     def get_hp(self):
         return self.__hp
     def set_hp(self, new_hp):
         if not isinstance(new_hp, int):
             raise TypeError("HP must be an integer.")
         self.__hp = new_hp
-
-
-    def get_current_hp(self):
-        return self.__current_hp
-    def set_current_hp(self, new_current_hp):
-        if not isinstance(new_current_hp, int):
-            raise TypeError("Current HP must be an integer.")
-        self.__hp = new_current_hp
 
 
     def get_attack(self):
@@ -159,8 +159,8 @@ class Pokemon :
 
     def stats_calculation(self, new_level):
         for loop in range(self.__level,new_level):
-            self.set_hp(self.__hp + self.__hp//50)
-            self.set_current_hp(self.get_hp)
+            self.set_max_hp(self.__max_hp + self.__hp//50)
+            self.set_hp(self.get_max_hp())
             self.set_attack(self.__attack + self.__attack//50)
             self.set_defense(self.__defense + self.__defense//50)
             self.set_speed(self.__speed + self.__speed//50)

@@ -46,8 +46,8 @@ class Combat:
 
     def compute_damage(self, attacker, defender):
         """Pokémon-like damage formula."""
-        damage = (((2 * attacker.get_level() / 5) * (attacker.get_attack() / defender.get_defense())) / 25 + 10) * 1.5 * self.apply_types(attacker.get_types(), defender.get_types()) * (random.randint(60,100) / 100) // 1
-        return max(1, damage)
+        damage = (((2 * attacker.get_level() / 5) * (attacker.get_attack() / defender.get_defense())) / 25 + 10) * 1.5 * self.apply_types(attacker.get_types(), defender.get_types()) * (random.randint(60,100) / 100)
+        return int(max(1, damage))
 
     def draw_pokemon_stats(self, screen):
         """Draws HP bars and names."""
@@ -113,14 +113,14 @@ class Combat:
         if self.__adversary.get_hp() <= 0:
             print("🎉 You won the battle!")
             self.__player_pokedex.add_pokemon(self.__adversary)
-            self.__player_pokemon.set_hp(100)
+            self.__player_pokemon.set_hp(self.__player_pokemon.get_max_hp())
             save_pokemons_to_json(self.__player_pokedex.get_pokemons(), "assets/data/player_pokemons.json")
             self.running = False
             return True
 
         if self.__player_pokemon.get_hp() <= 0:
             print("💀 Your Pokémon fainted!")
-            self.__player_pokemon.set_hp(100)
+            self.__player_pokemon.set_hp(self.__player_pokemon.get_max_hp())
             self.running = False
             return True
 
