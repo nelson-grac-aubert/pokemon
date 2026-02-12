@@ -112,15 +112,27 @@ class Combat:
     def check_end(self):
         if self.__adversary.get_hp() <= 0:
             print("🎉 You won the battle!")
+
+            # Add vanquished Pokémon to Player Pokédex
             self.__player_pokedex.add_pokemon(self.__adversary)
+
+            # Fully heal both Pokémons
             self.__player_pokemon.set_hp(self.__player_pokemon.get_max_hp())
+            self.__adversary.set_hp(self.__adversary.get_max_hp())
+
+            # Save
             save_pokemons_to_json(self.__player_pokedex.get_pokemons(), "assets/data/player_pokemons.json")
+
             self.running = False
             return True
 
         if self.__player_pokemon.get_hp() <= 0:
             print("💀 Your Pokémon fainted!")
+
+            # Fully heal both Pokémons
             self.__player_pokemon.set_hp(self.__player_pokemon.get_max_hp())
+            self.__adversary.set_hp(self.__adversary.get_max_hp())
+            
             self.running = False
             return True
 
