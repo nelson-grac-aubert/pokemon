@@ -26,7 +26,7 @@ def load_image(path: str) -> pygame.Surface:
         raise FileNotFoundError(f"Can't load image : {full_path}\n{e}")
 
 
-def load_gif(path: str) -> list[pygame.Surface]:
+def load_gif(path: str, size: tuple[int, int] | None = None) -> list[pygame.Surface]:
     """ Load all frames of a gif through ressource_path, PyInstaller compatible """
     full_path = resource_path(path)
     pil_img = Image.open(full_path)
@@ -35,11 +35,13 @@ def load_gif(path: str) -> list[pygame.Surface]:
     try:
         while True:
             frame = pil_img.convert("RGBA")
-            mode = frame.mode
-            size = frame.size
-            data = frame.tobytes()
 
-            surface = pygame.image.fromstring(data, size, mode)
+            if size is not None:
+                frame = frame.resize(size, Image.NEAREST)
+
+            mode = frame.mode
+            data = frame.tobytes()
+            surface = pygame.image.fromstring(data, frame.size, mode)
             frames.append(surface)
 
             pil_img.seek(pil_img.tell() + 1)
@@ -47,6 +49,7 @@ def load_gif(path: str) -> list[pygame.Surface]:
         pass
 
     return frames
+
 
 
 def load_music(path: str) -> None:

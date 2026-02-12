@@ -1,6 +1,6 @@
 import pygame
 import sys
-from scripts.logic.assets_management import load_font, load_image
+from scripts.logic.assets_management import load_font, load_image, load_gif
 from scripts.logic.json_management import *
 from scripts.classes.Pokedex_class import Pokedex, kanto_pokedex
 from scripts.classes.PokemonDisplay_class import PokemonDisplay
@@ -62,8 +62,19 @@ def draw_animated_button(surface, image, rect, scale):
 def main_menu():
     run_intro(screen, clock, kanto_pokedex)
 
+    background_frames = load_gif("assets/images/bmenu.gif", size=(width, height))
+    current_frame = 0
+    frame_delay = 5  
+    frame_counter = 0
+
     while True:
-        screen.fill(BEIGE)
+        # Animation du GIF
+        frame_counter += 1
+        if frame_counter >= frame_delay:
+            current_frame = (current_frame + 1) % len(background_frames)
+            frame_counter = 0
+
+        screen.blit(background_frames[current_frame], (0, 0))
 
         # Title
         title = load_image("assets/images/logo.png")
@@ -112,7 +123,7 @@ def main_menu():
 
         draw_animated_button(screen, button_img, button_img_rect, button_hover_scale)
 
-        btn.draw(screen, mouse_pos)
+       
 
         pygame.display.flip()
         clock.tick(fps)
