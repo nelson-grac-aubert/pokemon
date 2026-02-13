@@ -61,44 +61,6 @@ class Combat:
         e = self.__adversary
         text2 = self.font.render(f"{e.get_name()}  HP: {e.get_hp()}", True, (255, 255, 255))
         screen.blit(text2, (400, 40))
-
-    #  Main combat loop
-    def run(self, screen, clock):
-        """Main combat loop."""
-
-        player_display = PokemonDisplay(self.__player_pokemon, 4, False)
-        player_display.set_position(200,520)
-        adversary_display = PokemonDisplay(self.__adversary, 3, True)
-        adversary_display.set_position(600,435)
-
-        while self.running:
-
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    self.running = False
-
-                # Player attacks when pressing SPACE
-                if event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
-                    self.player_attack()
-                    if self.check_end():
-                        break
-
-                    self.enemy_attack()
-                    self.check_end()
-
-            # Draw
-            screen.blit(self.background, (0, 0))
-            self.draw_pokemon_stats(screen)
-
-            # Animate pokemons sprites
-            player_display.update()
-            player_display.draw(screen)
-            adversary_display.update()
-            adversary_display.draw(screen)
-
-            pygame.display.flip()
-            clock.tick(60)
-
     #  ATTACKS
     def player_attack(self):
         dmg = self.compute_damage(self.__player_pokemon, self.__adversary)
@@ -137,3 +99,41 @@ class Combat:
             return True
 
         return False
+    
+    #  Main combat loop
+    def run(self, screen, clock):
+        """Main combat loop."""
+
+        player_display = PokemonDisplay(self.__player_pokemon, 4, False)
+        player_display.set_position(200,520)
+        adversary_display = PokemonDisplay(self.__adversary, 3, True)
+        adversary_display.set_position(600,435)
+
+        while self.running:
+
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    self.running = False
+
+                # Player attacks when pressing SPACE
+                if event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
+                    self.player_attack()
+                    if self.check_end():
+                        break
+
+                    self.enemy_attack()
+                    self.check_end()
+
+            # Draw
+            screen.blit(self.background, (0, 0))
+            self.draw_pokemon_stats(screen)
+
+            # Animate pokemons sprites
+            player_display.update()
+            player_display.draw(screen)
+            adversary_display.update()
+            adversary_display.draw(screen)
+
+            pygame.display.flip()
+            clock.tick(60)
+

@@ -5,9 +5,9 @@ from scripts.logic.json_management import *
 from scripts.classes.Pokedex_class import kanto_pokedex
 from scripts.classes.PokemonDisplay_class import PokemonDisplay
 from scripts.classes.PixelButton_class import PixelButton
+from scripts.classes.SoundControl_class import sound_control
 from scripts.graphic.colors import * 
 from scripts.graphic.pokedex_menu import run_pokedex
-from scripts.classes.SoundControl_class import sound_control
 from scripts.graphic.menu_intro import run_intro
 from scripts.graphic.game_intro import run_game_intro
 
