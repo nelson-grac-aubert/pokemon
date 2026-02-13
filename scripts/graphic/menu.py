@@ -64,7 +64,7 @@ def main_menu():
     run_intro(screen, clock, kanto_pokedex)
 
     # Animated menu background
-    background_frames = load_gif("assets/images/bmenu.gif", size=(width, height))
+    background_frames = load_gif("assets/images/bmenu2.gif", size=(width, height))
     current_frame = 0
     frame_delay = 5  
     frame_counter = 0
