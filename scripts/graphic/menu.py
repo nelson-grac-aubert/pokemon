@@ -2,7 +2,7 @@ import pygame
 import sys
 from scripts.logic.assets_management import load_font, load_image, load_gif
 from scripts.logic.json_management import *
-from scripts.classes.Pokedex_class import Pokedex, kanto_pokedex
+from scripts.classes.Pokedex_class import kanto_pokedex
 from scripts.classes.PokemonDisplay_class import PokemonDisplay
 from scripts.classes.PixelButton_class import PixelButton
 from scripts.graphic.colors import * 
