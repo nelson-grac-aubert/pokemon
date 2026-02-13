@@ -39,7 +39,7 @@ button_click_cooldown = 0
 # Buttons functions 
 
 def new_game():
-    player_pokedex, starter = run_game_intro(screen, clock, kanto_pokedex)
+    player_pokedex = run_game_intro(screen, clock, kanto_pokedex)
     return player_pokedex
 
 def resume_game():
@@ -49,10 +49,13 @@ def quit_game():
     pygame.quit()
     sys.exit()
 
+def options() : 
+    pass
+
 
 buttons = [PixelButton("NEW GAME", width//2 - 175, 300, 350, 60, DARKBLUE, new_game),
         PixelButton("RESUME GAME", width//2 - 175, 370, 350, 60, DARKGREEN, resume_game),
-        PixelButton("OPTIONS", width//2 - 175, 440, 350, 60, DARKTEAL, quit_game),
+        PixelButton("OPTIONS", width//2 - 175, 440, 350, 60, DARKTEAL, options),
         PixelButton("QUIT", width//2 - 175, 510, 350, 60, SAGEGREEN, quit_game)]
 
 def draw_animated_button(surface, image, rect, scale):

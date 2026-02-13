@@ -6,7 +6,7 @@ pygame.init()
 FONT = load_font("assets/font/Pokemon_GB.ttf", 22)
 
 class PixelButton:
-    def __init__(self, text : str, x : int, y : int, width : int, height : int, color : tuple, callback : function):
+    def __init__(self, text : str, x : int, y : int, width : int, height : int, color : tuple, callback):
         """
         Intantiate an interactable, modular button with the Pokemon font 
         
