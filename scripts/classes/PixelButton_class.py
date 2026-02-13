@@ -6,16 +6,35 @@ pygame.init()
 FONT = load_font("assets/font/Pokemon_GB.ttf", 22)
 
 class PixelButton:
-    def __init__(self, text : str, x : int, y : int, w : int, h, color : tuple, callback):
+    def __init__(self, text : str, x : int, y : int, width : int, height : int, color : tuple, callback : function):
+        """
+        Intantiate an interactable, modular button with the Pokemon font 
+        
+        :param text: Text to be displayed on the button
+        :type text: str
+        :param x: Horizontal position
+        :type x: int
+        :param y: Vertical position
+        :type y: int
+        :param width: Width of the button
+        :type width: int
+        :param height: Height of the button
+        :type height: int
+        :param color: RGB color of the button
+        :type color: tuple
+        :param callback: Function called by the button click
+        :type callback: function
+        """
+
         self.text = text
-        self.rect = pygame.Rect(x, y, w, h)
-        self.base_rect = pygame.Rect(x, y, w, h)
+        self.rect = pygame.Rect(x, y, width, height)
+        self.base_rect = pygame.Rect(x, y, width, height)
         self.color = color
         self.hover_color = tuple(min(255, c + 25) for c in color)
         self.callback = callback
 
         self.scale = 1.0           # For hover effect
-        self.pressed = False
+        self.pressed = False       # True when clicked 
 
     def draw(self, surface : pygame.Surface, mouse_pos : tuple):
         """
@@ -39,7 +58,7 @@ class PixelButton:
         if self.pressed:
             self.scale = max(0.95, self.scale - 0.1)
 
-        # 
+        # Update size
         new_w = int(self.base_rect.width * self.scale)
         new_h = int(self.base_rect.height * self.scale)
         self.rect = pygame.Rect(
