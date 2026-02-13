@@ -1,11 +1,11 @@
 import pygame
 import random
+import time
 from scripts.classes.SoundControl_class import sound_control
-from scripts.logic.assets_management import load_gif, load_image, load_font
-from scripts.classes.Pokedex_class import Pokedex, kanto_pokedex, easy_pokedex
+from scripts.logic.assets_management import load_image, load_font
+from scripts.classes.Pokedex_class import easy_pokedex
 from scripts.classes.PokemonDisplay_class import PokemonDisplay
-from scripts.classes.PokemonType_class import PokemonType
-from scripts.logic.json_management import load_pokemons_from_json, load_types_from_json, save_pokemons_to_json
+from scripts.logic.json_management import save_pokemons_to_json
 
 class Combat:
     def __init__(self, pokedex):

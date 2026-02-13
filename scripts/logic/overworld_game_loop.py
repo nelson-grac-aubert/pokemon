@@ -25,7 +25,7 @@ def overworld_game_loop(screen, clock, starter_pokemon, player_pokedex):
 
     # --- Pokédex button ---
     pokedex_button = load_image("assets/images/pokedex.png").convert_alpha()
-    pokedex_button = pygame.transform.scale(pokedex_button, (120, 100))
+    pokedex_button = pygame.transform.scale(pokedex_button, (90, 120))
     pokedex_rect = pokedex_button.get_rect()
     pokedex_rect.topright = (width - 20, 20)
 

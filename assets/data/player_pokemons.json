@@ -3,7 +3,7 @@
         {
             "id": "004",
             "name": "Charmander",
-            "hp": 100,
+            "hp": 39,
             "attack": 52,
             "defense": 1,
             "speed": 65,
@@ -13,28 +13,16 @@
             ]
         },
         {
-            "id": "010",
-            "name": "Caterpie",
-            "hp": -5,
-            "attack": 30,
+            "id": "013",
+            "name": "Weedle",
+            "hp": 40,
+            "attack": 35,
             "defense": 1,
-            "speed": 45,
+            "speed": 50,
             "precision": 85,
             "types": [
-                "bug"
-            ]
-        },
-        {
-            "id": "021",
-            "name": "Spearow",
-            "hp": -9,
-            "attack": 60,
-            "defense": 1,
-            "speed": 70,
-            "precision": 85,
-            "types": [
-                "normal",
-                "flying"
+                "bug",
+                "poison"
             ]
         }
     ]
