@@ -27,6 +27,7 @@ sound_control.play_music("assets/music/opening.mp3")
 pikachu_display = PokemonDisplay(kanto_pokedex.get_pokemons()[24], scale=2.3, is_front=True)
 pikachu_display.set_position(width // 2, 235)
 
+# Pokedex button
 button_img = load_image("assets/images/pokedex.png").convert_alpha()
 button_img = pygame.transform.scale(button_img, (140, 120))  # adapte la taille 
 button_img_rect = button_img.get_rect()
@@ -62,13 +63,14 @@ def draw_animated_button(surface, image, rect, scale):
 def main_menu():
     run_intro(screen, clock, kanto_pokedex)
 
+    # Animated menu background
     background_frames = load_gif("assets/images/bmenu.gif", size=(width, height))
     current_frame = 0
     frame_delay = 5  
     frame_counter = 0
 
     while True:
-        # Animation du GIF
+        # Animate background
         frame_counter += 1
         if frame_counter >= frame_delay:
             current_frame = (current_frame + 1) % len(background_frames)
@@ -122,8 +124,6 @@ def main_menu():
            button_click_cooldown -= 1
 
         draw_animated_button(screen, button_img, button_img_rect, button_hover_scale)
-
-       
 
         pygame.display.flip()
         clock.tick(fps)
