@@ -7,6 +7,11 @@ GREEN = (100, 160, 100)
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
 
+DARKBLUE = (12, 57, 61)
+DARKGREEN = (13, 74, 73)
+DARKTEAL = (27, 118, 107)
+SAGEGREEN = (57, 151, 109)
+
 TYPE_COLORS = {
     "normal":   (168, 168, 120),
     "fire":     (240, 128, 48),

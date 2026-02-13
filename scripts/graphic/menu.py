@@ -29,9 +29,9 @@ pikachu_display.set_position(width // 2, 235)
 
 # Pokedex button
 button_img = load_image("assets/images/pokedex.png").convert_alpha()
-button_img = pygame.transform.scale(button_img, (140, 120))  # adapte la taille 
+button_img = pygame.transform.scale(button_img, (90, 120))  # Resize pokedex image
 button_img_rect = button_img.get_rect()
-button_img_rect.topright = (width - 20, 20)  # position en haut à droite
+button_img_rect.topright = (width - 10, 10)  # Top-right
 button_hover_scale = 1.0
 button_target_scale = 1.0
 button_click_cooldown = 0
@@ -50,9 +50,10 @@ def quit_game():
     sys.exit()
 
 
-buttons = [PixelButton("NEW GAME", width//2 - 175, 300, 350, 60, RED, new_game),
-        PixelButton("RESUME GAME", width//2 - 175, 380, 350, 60, BLUE, resume_game),
-        PixelButton("QUIT", width//2 - 175, 460, 350, 60, GREEN, quit_game)]
+buttons = [PixelButton("NEW GAME", width//2 - 175, 300, 350, 60, DARKBLUE, new_game),
+        PixelButton("RESUME GAME", width//2 - 175, 370, 350, 60, DARKGREEN, resume_game),
+        PixelButton("OPTIONS", width//2 - 175, 440, 350, 60, DARKTEAL, quit_game),
+        PixelButton("QUIT", width//2 - 175, 510, 350, 60, SAGEGREEN, quit_game)]
 
 def draw_animated_button(surface, image, rect, scale):
     w, h = image.get_size()
