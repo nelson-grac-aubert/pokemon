@@ -37,7 +37,6 @@ button_target_scale = 1.0
 button_click_cooldown = 0
 
 # Buttons functions 
-
 def new_game():
     player_pokedex = run_game_intro(screen, clock, kanto_pokedex)
     return player_pokedex
@@ -52,13 +51,13 @@ def quit_game():
 def options() : 
     pass
 
-
+# UI Buttons
 buttons = [PixelButton("NEW GAME", width//2 - 175, 300, 350, 60, DARKBLUE, new_game),
         PixelButton("RESUME GAME", width//2 - 175, 370, 350, 60, DARKGREEN, resume_game),
         PixelButton("OPTIONS", width//2 - 175, 440, 350, 60, DARKTEAL, options),
         PixelButton("QUIT", width//2 - 175, 510, 350, 60, SAGEGREEN, quit_game)]
 
-def draw_animated_button(surface, image, rect, scale):
+def draw_pokedex_button(surface, image, rect, scale):
     w, h = image.get_size()
     scaled_img = pygame.transform.scale(image, (int(w * scale), int(h * scale)))
     new_rect = scaled_img.get_rect(center=rect.center)
@@ -100,7 +99,7 @@ def main_menu():
 
         global button_hover_scale, button_target_scale, button_click_cooldown
 
-        # Hover
+        # Hover pokedex button
         if button_img_rect.collidepoint(mouse_pos):
             button_target_scale = 1.15  # zoom 
         else:
@@ -113,7 +112,7 @@ def main_menu():
             if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
                 mouse_click = True
 
-        # Click
+        # Click pokedex button
                 if button_img_rect.collidepoint(mouse_pos):
                     button_click_cooldown = 5
                     run_pokedex(kanto_pokedex)
@@ -122,12 +121,13 @@ def main_menu():
             btn.update(mouse_pos, mouse_click)
             btn.draw(screen, mouse_pos)
         
+        # Resize pokedex button on hover
         button_hover_scale += (button_target_scale - button_hover_scale) * 0.15 
         if button_click_cooldown > 0 :
            button_hover_scale = 0.9
            button_click_cooldown -= 1
 
-        draw_animated_button(screen, button_img, button_img_rect, button_hover_scale)
+        draw_pokedex_button(screen, button_img, button_img_rect, button_hover_scale)
 
         pygame.display.flip()
         clock.tick(fps)
