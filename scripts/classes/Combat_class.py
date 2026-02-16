@@ -104,13 +104,32 @@ class Combat:
     def run(self, screen, clock):
         """Main combat loop."""
 
+        # Pokemon sprites animations
         player_display = PokemonDisplay(self.__player_pokemon, 4, False)
-        player_display.set_position(200,520)
+        player_display.set_position(200, 520)
+        player_display.start_entry_animation(from_left=True)
+
         adversary_display = PokemonDisplay(self.__adversary, 3, True)
-        adversary_display.set_position(600,435)
+        adversary_display.set_position(600, 435)
+        adversary_display.start_entry_animation(from_left=False)
 
         while self.running:
+            
+            if player_display.current_animation or adversary_display.current_animation:
+                # Update animations only
+                player_display.update()
+                adversary_display.update()
 
+                # Draw
+                screen.blit(self.background, (0, 0))
+                self.draw_pokemon_stats(screen)
+                player_display.draw(screen)
+                adversary_display.draw(screen)
+
+                pygame.display.flip()
+                clock.tick(60)
+                continue  # On saute le reste tant que l'entrée n'est pas finie
+            
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     self.running = False
@@ -136,4 +155,6 @@ class Combat:
 
             pygame.display.flip()
             clock.tick(60)
+
+
 
