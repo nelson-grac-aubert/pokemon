@@ -1,28 +1,27 @@
 {
     "pokemons": [
         {
-            "id": "004",
-            "name": "Charmander",
-            "hp": 39,
-            "attack": 52,
+            "id": "007",
+            "name": "Squirtle",
+            "hp": 44,
+            "attack": 48,
             "defense": 1,
-            "speed": 65,
+            "speed": 43,
             "precision": 90,
             "types": [
-                "fire"
+                "water"
             ]
         },
         {
-            "id": "013",
-            "name": "Weedle",
-            "hp": 40,
-            "attack": 35,
+            "id": "011",
+            "name": "Metapod",
+            "hp": 50,
+            "attack": 20,
             "defense": 1,
-            "speed": 50,
+            "speed": 30,
             "precision": 85,
             "types": [
-                "bug",
-                "poison"
+                "bug"
             ]
         }
     ]

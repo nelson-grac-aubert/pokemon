@@ -70,6 +70,25 @@ class PokemonDisplay:
                     self.current_animation = None
 
             self.rect.center = (self.x, self.y)
+        
+        # KO animation 
+        elif self.current_animation == "ko":
+            data = self.animation_data
+
+            # Phase 1 : petit bond vers le haut
+            if data["phase"] == "jump":
+                self.y -= 6  # vitesse du saut
+                if self.y <= data["peak_y"]:
+                    data["phase"] = "fall"
+
+            # Phase 2 : chute vers le bas
+            elif data["phase"] == "fall":
+                self.y += data["fall_speed"]
+                if self.y > 900:  # en dehors de l'écran
+                    self.current_animation = None  # animation terminée
+
+            self.rect.center = (self.x, self.y)
+
 
     def draw(self, surface):
         """ Draw the animated Pokemon sprite on screen"""
@@ -113,3 +132,14 @@ class PokemonDisplay:
             self.x = 1000  # à adapter à ta résolution
 
         self.rect.center = (self.x, self.y)
+
+    def start_ko_animation(self, jump_height=40, fall_speed=5):
+        """ Defeat animation : Pokemon makes a small jump then disappears from screen """
+        self.current_animation = "ko"
+        self.animation_data = {
+            "phase": "jump",
+            "jump_height": jump_height,
+            "fall_speed": fall_speed,
+            "start_y": self.y,
+            "peak_y": self.y - jump_height
+    }
