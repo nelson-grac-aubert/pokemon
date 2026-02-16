@@ -13,16 +13,15 @@
             ]
         },
         {
-            "id": "014",
-            "name": "Kakuna",
-            "hp": 45,
-            "attack": 25,
+            "id": "011",
+            "name": "Metapod",
+            "hp": 50,
+            "attack": 20,
             "defense": 1,
-            "speed": 35,
+            "speed": 30,
             "precision": 85,
             "types": [
-                "bug",
-                "poison"
+                "bug"
             ]
         }
     ]
