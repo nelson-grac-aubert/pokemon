@@ -78,3 +78,31 @@ def load_font(path: str, size: int) -> pygame.font.Font:
     except Exception as e:
         raise FileNotFoundError(f"Can't load font : {full_path}\n{e}")
     
+def draw_music_button(screen, music_muted, music_image, music_muted_image, rect):
+    """ Draw music on/off button """
+
+    screen.blit(music_muted_image if music_muted else music_image, rect)
+
+def draw_sound_button(screen, sound_muted, sound_mute_icon, sound_unmute_icon, rect):
+    """ Draw sound on/off button """
+    screen.blit(sound_mute_icon if sound_muted else sound_unmute_icon, rect)
+
+
+def button_music_click(event, rect, music_muted):
+    """ Mute/unmute music behavior """
+
+    if event.type == pygame.MOUSEBUTTONDOWN and rect.collidepoint(event.pos):
+        music_muted = not music_muted
+        if music_muted:
+            pygame.mixer.music.pause()
+        else:
+            pygame.mixer.music.unpause()
+    return music_muted
+
+def button_sound_click(event, rect, sound_muted):
+    """ Mute/unmute sound behavior """
+
+    if event.type == pygame.MOUSEBUTTONDOWN and rect.collidepoint(event.pos):
+        sound_muted = not sound_muted
+    return sound_muted
+    
