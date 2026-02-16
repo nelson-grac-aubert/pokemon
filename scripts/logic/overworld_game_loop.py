@@ -23,13 +23,13 @@ def overworld_game_loop(screen, clock, starter_pokemon, player_pokedex):
     player_y = height // 2
     speed = 3
 
-    # --- Pokédex button ---
+    # Pokédex button
     pokedex_button = load_image("assets/images/pokedex.png").convert_alpha()
     pokedex_button = pygame.transform.scale(pokedex_button, (90, 120))
     pokedex_rect = pokedex_button.get_rect()
     pokedex_rect.topright = (width - 20, 20)
 
-    # --- Step counter system ---
+    # Step counter system
     walking_time = 0  # accumulated time spent walking
     next_encounter_time = random.uniform(4, 5)  # random threshold in seconds
 
@@ -65,7 +65,7 @@ def overworld_game_loop(screen, clock, starter_pokemon, player_pokedex):
             player_x += speed
             moving = True
 
-        # --- Step counter logic ---
+        # Step counter logic
         if moving:
             walking_time += dt
             if walking_time >= next_encounter_time:

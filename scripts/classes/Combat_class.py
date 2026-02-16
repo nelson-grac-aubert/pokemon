@@ -191,11 +191,11 @@ class Combat:
     def draw_pokemon_stats(self, screen):
 
         p = self.__player_pokemon
-        text = self.font.render(f"{p.get_name()}  HP: {p.get_hp()}", True, (255, 255, 255))
+        text = self.font.render(f"{p.get_name()}  HP: {p.get_hp()}/{p.get_max_hp()}", True, (255, 255, 255))
         screen.blit(text, (40, 350))
 
         e = self.__adversary
-        text2 = self.font.render(f"{e.get_name()}  HP: {e.get_hp()}", True, (255, 255, 255))
+        text2 = self.font.render(f"{e.get_name()}  HP: {e.get_hp()}/{e.get_max_hp()}", True, (255, 255, 255))
         screen.blit(text2, (400, 40))
 
     def check_end(self):
