@@ -21,7 +21,7 @@ class Combat:
         """
 
         self.__player_pokedex = pokedex
-        self.__player_pokemon = pokedex.get_pokemons()[0]  # TEMP: first Pokémon
+        self.__player_pokemon = pokedex.combat_pokemon  # TEMP: first Pokémon
         self.__adversary = self.generate_random_adversary()
         self.ko_winner = None
         # Background

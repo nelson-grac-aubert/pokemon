@@ -11,7 +11,6 @@ class MessageOverlay:
         self.timer = 0
 
     def show(self, text):
-        # Start displaying a new message
         self.text = text
         self.alpha = 255
         self.active = True
@@ -36,8 +35,24 @@ class MessageOverlay:
         surf = self.font.render(self.text, True, (255, 255, 255))
         surf.set_alpha(self.alpha)
 
-        # Center on screen
+        # Position
         x = (screen.get_width() - surf.get_width()) // 2
         y = 275
 
+        # --- Background rectangle ---
+        padding = 10
+        bg_rect = pygame.Rect(
+            x - padding,
+            y - padding,
+            surf.get_width() + padding * 2,
+            surf.get_height() + padding * 2
+        )
+
+        # Create transparent background surface
+        bg_surf = pygame.Surface((bg_rect.width, bg_rect.height), pygame.SRCALPHA)
+        bg_color = (170, 170, 170, int(self.alpha * 0.6))  # light gray, 60% of text alpha
+        bg_surf.fill(bg_color)
+
+        # Draw background then text
+        screen.blit(bg_surf, (bg_rect.x, bg_rect.y))
         screen.blit(surf, (x, y))
