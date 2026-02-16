@@ -17,6 +17,7 @@ class Combat:
         self.__player_pokedex = pokedex
         self.__player_pokemon = pokedex.get_pokemons()[0]  # TEMP: first Pokémon
         self.__adversary = self.generate_random_adversary()
+        self.ko_winner = None
 
         # Background
         self.background = load_image("assets/images/forest_background.jpg")
@@ -74,37 +75,45 @@ class Combat:
     # End conditions
     def check_end(self):
         if self.__adversary.get_hp() <= 0:
-            sound_control.play_music("assets/music/victory.mp3")
-
-            # Add vanquished Pokémon to Player Pokédex
-            self.__player_pokedex.add_pokemon(self.__adversary)
-
-            # Fully heal both Pokémons
-            self.__player_pokemon.set_hp(self.__player_pokemon.get_max_hp())
-            self.__adversary.set_hp(self.__adversary.get_max_hp())
-
-            # Save
-            save_pokemons_to_json(self.__player_pokedex.get_pokemons(), "assets/data/player_pokemons.json")
-
-            self.running = False
-            return True
+            return "enemy_ko"
 
         if self.__player_pokemon.get_hp() <= 0:
+            return "player_ko"
 
-            # Fully heal both Pokémons
+        return None
+    
+    def finalize_battle(self, winner):
+        
+    # Play victory music and reward the player if they won
+        if winner == "player":
+            sound_control.play_music("assets/music/victory.mp3")
+
+            # Add the defeated Pokémon to the player's Pokédex
+            self.__player_pokedex.add_pokemon(self.__adversary)
+
+            # Restore HP of both Pokémon after the battle
             self.__player_pokemon.set_hp(self.__player_pokemon.get_max_hp())
             self.__adversary.set_hp(self.__adversary.get_max_hp())
-            
-            self.running = False
-            return True
 
-        return False
-    
+            # Save updated Pokédex to JSON file
+            save_pokemons_to_json(
+                self.__player_pokedex.get_pokemons(),
+                "assets/data/player_pokemons.json"
+            )
+
+        else:
+            # Player lost: simply restore HP of both Pokémon
+            self.__player_pokemon.set_hp(self.__player_pokemon.get_max_hp())
+            self.__adversary.set_hp(self.__adversary.get_max_hp())
+
+        # Stop the combat loop
+        self.running = False
+
     #  Main combat loop
     def run(self, screen, clock):
         """Main combat loop."""
 
-        # Pokemon sprites animations
+        # Initialize Pokémon sprite displays
         player_display = PokemonDisplay(self.__player_pokemon, 4, False)
         player_display.set_position(200, 520)
         player_display.start_entry_animation(from_left=True)
@@ -114,13 +123,12 @@ class Combat:
         adversary_display.start_entry_animation(from_left=False)
 
         while self.running:
-            
+
+            # Handle ongoing animations (entry or KO)
             if player_display.current_animation or adversary_display.current_animation:
-                # Update animations only
                 player_display.update()
                 adversary_display.update()
 
-                # Draw
                 screen.blit(self.background, (0, 0))
                 self.draw_pokemon_stats(screen)
                 player_display.draw(screen)
@@ -128,26 +136,39 @@ class Combat:
 
                 pygame.display.flip()
                 clock.tick(60)
-                continue  # On saute le reste tant que l'entrée n'est pas finie
-            
+
+                # If a KO happened and all animations are finished, end the battle
+                if self.ko_winner and not player_display.current_animation and not adversary_display.current_animation:
+                    self.finalize_battle(self.ko_winner)
+
+                continue
+
+            # Handle player input (turn-based combat)
             for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    self.running = False
-
-                # Player attacks when pressing SPACE
                 if event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
+
+                    # Player attacks
                     self.player_attack()
-                    if self.check_end():
-                        break
+                    result = self.check_end()
 
+                    if result == "enemy_ko":
+                        adversary_display.start_ko_animation()
+                        self.ko_winner = "player"
+                        continue
+
+                    # Enemy attacks
                     self.enemy_attack()
-                    self.check_end()
+                    result = self.check_end()
 
-            # Draw
+                    if result == "player_ko":
+                        player_display.start_ko_animation()
+                        self.ko_winner = "enemy"
+                        continue
+
+            # Normal drawing when no animation is active
             screen.blit(self.background, (0, 0))
             self.draw_pokemon_stats(screen)
 
-            # Animate pokemons sprites
             player_display.update()
             player_display.draw(screen)
             adversary_display.update()
