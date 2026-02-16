@@ -2,13 +2,12 @@ import pygame
 import random
 import time
 from enum import Enum  # For simple combat state management (IDLE/BUSY)
-
 from scripts.classes.SoundControl_class import sound_control
 from scripts.logic.assets_management import load_image, load_font
 from scripts.classes.Pokedex_class import easy_pokedex
 from scripts.classes.PokemonDisplay_class import PokemonDisplay
 from scripts.logic.json_management import save_pokemons_to_json
-from scripts.classes.ConfirmationBox_class import ConfirmationBox
+from scripts.classes.MessageOverlay_class import MessageOverlay
 
 class CombatState(Enum):
     IDLE = 0  # No action in progress, player can choose an action
@@ -25,34 +24,28 @@ class Combat:
         self.__player_pokemon = pokedex.get_pokemons()[0]  # TEMP: first Pokémon
         self.__adversary = self.generate_random_adversary()
         self.ko_winner = None
-
         # Background
         self.background = load_image("assets/images/forest_background.jpg")
         self.background = pygame.transform.scale(self.background, (800,600))
-
         # UI fonts
         self.font = load_font("assets/font/Pokemon_GB.ttf", 20)
-
         # Combat state
         self.running = True
-
         # Combat flow state
         self.state = CombatState.IDLE  # Current combat state (IDLE or BUSY)
-
         # Simple timing system for delayed actions/animations
         self.animation_timer = None    # Stores the time when current animation/action should finish
         self.animation_callback = None # Function to call when the timer is reached
-
-        # UI buttons
+        # UI 
         self.button_attack = pygame.Rect(40, 200, 200, 50)  # Attack button area
         self.button_heal   = pygame.Rect(300, 200, 200, 50) # Heal button area
         self.button_run    = pygame.Rect(560, 200, 200, 50) # Run button area
-
-        self.dialog_box = ConfirmationBox(self.font)  # Handles centered messages and click-to-continue
+        self.message_overlay = MessageOverlay(load_font("assets/font/Pokemon_GB.ttf", 30))
 
     def is_busy(self):
         """ Returns True if combat is currently processing an action/animation """
         return self.state == CombatState.BUSY
+    
     def set_idle_state(self):
         """ Set combat back to IDLE state after dialog """
         self.state = CombatState.IDLE
@@ -94,11 +87,11 @@ class Combat:
     def play_animation(self, name, callback):
         # Set a simple non-blocking timer for the action/animation
 
-        durations = {
-            "ATTACK": 400,  # milliseconds
-            "HEAL":   400,
-            "RUN":    300
-        }
+        durations = {"ATTACK": 300,
+                    "HEAL": 300,
+                    "RUN": 300,
+                    "ENEMY_ATTACK_DELAY": 2500,
+                    "RUN_DELAY": 2000}
 
         self.animation_timer = pygame.time.get_ticks() + durations.get(name, 300)
         self.animation_callback = callback
@@ -120,90 +113,64 @@ class Combat:
             self.play_animation("RUN", self.resolve_run)
 
     def resolve_attack(self):
-        # Player attacks first
-        self.player_attack()
-        result = self.check_end()
+        dmg, eff_msg = self.compute_damage(self.__player_pokemon, self.__adversary)
+        self.__adversary.set_hp(self.__adversary.get_hp() - dmg)
 
+        self.message_overlay.show(f"{self.__player_pokemon.get_name()} dealt {dmg} dmg!")
+        if eff_msg:
+            self.message_overlay.show(eff_msg)
+
+        # Check if enemy is KO
+        result = self.check_end()
         if result == "enemy_ko":
-            # Enemy is KO, play KO animation and show message
             self.ko_winner = "player"
-            # We need displays from run(), so we will set them as attributes there
             self.adversary_display.start_ko_animation()
+            return  # IMPORTANT: do NOT schedule enemy_turn
 
-            # Show dialog, then finalize battle when closed
-            self.dialog_box.show(
-                (800, 600),
-                f"{self.__adversary.get_name()} fainted!",
-                callback=lambda: self.finalize_battle("player")
-            )
-            return
+        # If enemy still alive, schedule enemy turn
+        self.play_animation("ENEMY_ATTACK_DELAY", self.enemy_turn)
 
-        # Enemy attacks if still alive
-        self.enemy_attack()
-        result = self.check_end()
-
-        if result == "player_ko":
-            self.ko_winner = "enemy"
-            self.player_display.start_ko_animation()
-
-            self.dialog_box.show(
-                (800, 600),
-                f"{self.__player_pokemon.get_name()} fainted!",
-                callback=lambda: self.finalize_battle("enemy")
-            )
-            return
-
-        # No KO: show a simple message and return to IDLE after dialog
-        self.dialog_box.show(
-            (800, 600),
-            f"{self.__player_pokemon.get_name()} attacked!",
-            callback=self.set_idle_state
-        )
 
     def resolve_heal(self):
-        # Heal 60% of max HP
         p = self.__player_pokemon
-        heal_amount = int(p.get_max_hp() * 0.6)
+        heal_amount = int(p.get_max_hp() * 0.7)
         p.set_hp(min(p.get_max_hp(), p.get_hp() + heal_amount))
 
-        # Enemy attacks after heal
-        self.enemy_attack()
-        result = self.check_end()
+        self.message_overlay.show(f"{p.get_name()} healed {heal_amount} HP!")
 
+        # Delay before enemy attack
+        self.play_animation("ENEMY_ATTACK_DELAY", self.enemy_turn)
+
+    def resolve_run(self):
+        self.message_overlay.show("You ran away safely...")
+        self.play_animation("RUN_DELAY", lambda: self.finalize_battle("enemy"))
+
+    def enemy_turn(self):
+        dmg, eff_msg = self.compute_damage(self.__adversary, self.__player_pokemon)
+        self.__player_pokemon.set_hp(self.__player_pokemon.get_hp() - dmg)
+
+        msg = f"{self.__adversary.get_name()} dealt {dmg} dmg!"
+        if eff_msg:
+            msg += f" {eff_msg}"
+        self.message_overlay.show(msg)
+
+        result = self.check_end()
         if result == "player_ko":
             self.ko_winner = "enemy"
             self.player_display.start_ko_animation()
-
-            self.dialog_box.show(
-                (800, 600),
-                f"{self.__player_pokemon.get_name()} fainted!",
-                callback=lambda: self.finalize_battle("enemy")
-            )
             return
 
-        # Show heal message and go back to IDLE after dialog
-        self.dialog_box.show(
-            (800, 600),
-            f"{p.get_name()} healed!",
-            callback=self.set_idle_state
-        )
-    
-    def resolve_run(self):
-        # Player runs away, end combat immediately
+        self.set_idle_state()
 
-        self.dialog_box.show(
-            (800, 600),
-            "You ran away safely.",
-            callback=lambda: self.finalize_battle("player")  # Or special 'run' result if you prefer
-        )
 
     def generate_random_adversary(self):
         """Creates a random wild Pokémon for the encounter."""
         return random.choice(easy_pokedex.get_pokemons())
 
     def apply_types(self, attacker_types, defender_types):
-        """Define attacker's types efficiency against defender."""
         efficiency = 1
+        message = ""
+
         for attype in attacker_types:
             for deftype in defender_types:
                 if deftype in attype.get_weaknesses():
@@ -212,12 +179,27 @@ class Combat:
                     efficiency *= 2
                 if deftype in attype.get_useless():
                     efficiency *= 0
-        return efficiency
+
+        if efficiency == 0:
+            message = "It has no effect..."
+        elif efficiency < 1:
+            message = "It's not very effective..."
+        elif efficiency > 1:
+            message = "It's super effective!"
+
+        return efficiency, message
 
     def compute_damage(self, attacker, defender):
-        """Pokémon-like damage formula."""
-        damage = (((2 * attacker.get_level() / 5) * (attacker.get_attack() / defender.get_defense())) / 25 + 10) * 1.5 * self.apply_types(attacker.get_types(), defender.get_types()) * (random.randint(60,100) / 100)
-        return int(max(1, damage))
+        eff, msg = self.apply_types(attacker.get_types(), defender.get_types())
+
+        damage = (((2 * attacker.get_level() / 5) *
+                (attacker.get_attack() / defender.get_defense())) / 25 + 10)
+        damage *= 1.5
+        damage *= eff
+        damage *= (random.randint(60, 100) / 100)
+
+        return int(max(1, damage)), msg
+
 
     def draw_pokemon_stats(self, screen):
         """Draws HP bars and names."""
@@ -230,16 +212,6 @@ class Combat:
         e = self.__adversary
         text2 = self.font.render(f"{e.get_name()}  HP: {e.get_hp()}", True, (255, 255, 255))
         screen.blit(text2, (400, 40))
-
-    #  ATTACKS
-    def player_attack(self):
-        dmg = self.compute_damage(self.__player_pokemon, self.__adversary)
-        self.__adversary.set_hp(self.__adversary.get_hp() - dmg)
-        print(f"{self.__player_pokemon.get_name()} dealt {dmg} damage!")
-
-    def enemy_attack(self):
-        dmg = self.compute_damage(self.__adversary, self.__player_pokemon)
-        self.__player_pokemon.set_hp(self.__player_pokemon.get_hp() - dmg)
 
     # End conditions
     def check_end(self):
@@ -294,14 +266,15 @@ class Combat:
         player_display = self.player_display
         adversary_display = self.adversary_display
 
-
         while self.running:
 
             if self.animation_timer and pygame.time.get_ticks() >= self.animation_timer:
                 self.animation_timer = None
                 if self.animation_callback:
-                    self.animation_callback()
+                    callback = self.animation_callback
                     self.animation_callback = None
+                    callback()
+                    continue
 
             # Handle ongoing animations (entry or KO)
             if player_display.current_animation or adversary_display.current_animation:
@@ -312,6 +285,8 @@ class Combat:
                 self.draw_pokemon_stats(screen)
                 player_display.draw(screen)
                 adversary_display.draw(screen)
+                self.message_overlay.update()
+                self.message_overlay.draw(screen)
 
                 pygame.display.flip()
                 clock.tick(60)
@@ -328,13 +303,6 @@ class Combat:
                 if event.type == pygame.QUIT:
                     self.running = False
 
-                # If a dialog box is active, clicks are for it only
-                if self.dialog_box.active:
-                    if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
-                        mouse_pos = pygame.mouse.get_pos()
-                        self.dialog_box.handle_click(mouse_pos)
-                    continue  # Skip normal input when dialog is active
-
                 # Mouse click detection for combat buttons
                 if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
                     mouse_pos = pygame.mouse.get_pos()
@@ -350,9 +318,9 @@ class Combat:
             adversary_display.draw(screen)
 
             self.draw_buttons(screen)  # Draw action buttons
+            self.message_overlay.update()
+            self.message_overlay.draw(screen)
 
-            # Draw dialog box on top if active
-            self.dialog_box.draw(screen)
 
             pygame.display.flip()
             clock.tick(60)
