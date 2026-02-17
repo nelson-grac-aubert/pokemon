@@ -108,9 +108,7 @@ class Combat:
         dmg, eff_msg = self.compute_damage(self.__player_pokemon, self.__adversary)
         self.__adversary.set_hp(self.__adversary.get_hp() - dmg)
 
-        self.message_overlay.show(f"{self.__player_pokemon.get_name()} dealt {dmg} dmg!")
-        if eff_msg:
-            self.message_overlay.show(eff_msg)
+        self.message_overlay.show(f"{self.__player_pokemon.get_name()} dealt {dmg} dmg!" if not eff_msg else f"{self.__player_pokemon.get_name()} dealt {dmg} dmg!" + "\n" + eff_msg)
 
         result = self.check_end()
         if result == "enemy_ko":
@@ -139,7 +137,7 @@ class Combat:
 
         msg = f"{self.__adversary.get_name()} dealt {dmg} dmg!"
         if eff_msg:
-            msg += f" {eff_msg}"
+            msg += f"{eff_msg}"
         self.message_overlay.show(msg)
 
         result = self.check_end()
@@ -159,12 +157,13 @@ class Combat:
 
         for attype in attacker_types:
             for deftype in defender_types:
-                if deftype in attype.get_weaknesses():
-                    efficiency *= 0.5
-                if deftype in attype.get_strenghts():
-                    efficiency *= 2
-                if deftype in attype.get_useless():
+                if deftype.get_name() in [t.get_name() for t in attype.get_useless()]:
                     efficiency *= 0
+                elif deftype.get_name() in [t.get_name() for t in attype.get_weaknesses()]:
+                    efficiency *= 0.5
+                elif deftype.get_name() in [t.get_name() for t in attype.get_strenghts()]:
+                    efficiency *= 2
+
 
         if efficiency == 0:
             message = "It has no effect..."
@@ -178,6 +177,11 @@ class Combat:
     def compute_damage(self, attacker, defender):
         eff, msg = self.apply_types(attacker.get_types(), defender.get_types())
 
+        chance = random.randint(0,100)
+        if chance >= attacker.get_precision() : 
+            eff = 0 
+            msg = "The attack missed..." 
+
         # Simplified calculation of the actual Pokémon games
         damage = 1.5 * (((2 * attacker.get_level() / 5) *
                   (attacker.get_attack() / defender.get_defense())) / 25 + 10)
@@ -186,7 +190,7 @@ class Combat:
         # Add some variance
         damage *= (random.randint(60, 100) / 100)
 
-        return int(max(1, damage)), msg
+        return int(damage), msg
 
     def draw_pokemon_stats(self, screen):
 
