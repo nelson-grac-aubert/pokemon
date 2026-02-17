@@ -1,6 +1,6 @@
 import pygame
 import random
-import time
+import copy
 from enum import Enum
 from scripts.classes.SoundControl_class import sound_control
 from scripts.logic.assets_management import load_image, load_font
@@ -211,10 +211,13 @@ class Combat:
 
         if winner == "player":
             sound_control.play_music("assets/music/victory.mp3")
-            self.__player_pokedex.add_pokemon(self.__adversary)
-
+            
+            # Fully heal both Pokémons
             self.__player_pokemon.set_hp(self.__player_pokemon.get_max_hp())
             self.__adversary.set_hp(self.__adversary.get_max_hp())
+            # Capture a copy of the defeated Pokémon
+            captured_pokemon = copy.deepcopy(self.__adversary)
+            self.__player_pokedex.add_pokemon(captured_pokemon)
 
             save_pokemons_to_json(
                 self.__player_pokedex.get_pokemons(),
@@ -226,11 +229,9 @@ class Combat:
             self.__adversary.set_hp(self.__adversary.get_max_hp())
 
         if winner == "player":
-            enemy_name = self.__adversary.get_name()
-            self.dialog.show(f"{enemy_name} has been defeated and added to the Pokédex.")
-        else:
-            player_name = self.__player_pokemon.get_name()
-            self.dialog.show(f"{player_name} has fainted. You took some time to mend his wounds and rest.")
+            self.dialog.show(f"{self.__adversary.get_name()} has been defeated and added to the Pokédex.")
+        elif winner == "adversary":
+            self.dialog.show(f"You took some time to heal {self.__player_pokemon.get_name()} and rest.")
 
         self.state = CombatState.BUSY
         self.waiting_for_dialog_close = True
