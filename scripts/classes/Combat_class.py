@@ -207,6 +207,13 @@ class Combat:
 
         return None
 
+    def capture_pokemon(self) : 
+        captured_pokemon = copy.deepcopy(self.__adversary)
+        self.__player_pokedex.add_pokemon(captured_pokemon)
+
+        save_pokemons_to_json(self.__player_pokedex.get_pokemons(),
+                                "assets/data/player_pokemons.json")
+
     def finalize_battle(self, winner):
 
         if winner == "player":
@@ -216,13 +223,7 @@ class Combat:
             self.__player_pokemon.set_hp(self.__player_pokemon.get_max_hp())
             self.__adversary.set_hp(self.__adversary.get_max_hp())
             # Capture a copy of the defeated Pokémon
-            captured_pokemon = copy.deepcopy(self.__adversary)
-            self.__player_pokedex.add_pokemon(captured_pokemon)
-
-            save_pokemons_to_json(
-                self.__player_pokedex.get_pokemons(),
-                "assets/data/player_pokemons.json"
-            )
+            self.capture_pokemon()
 
         else:
             self.__player_pokemon.set_hp(self.__player_pokemon.get_max_hp())
