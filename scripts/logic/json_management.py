@@ -54,6 +54,7 @@ def load_pokemons_from_json(path: str, type_dict: dict[str, PokemonType]) -> lis
         types = [type_dict[t] for t in entry["types"]]
 
         pokemon = Pokemon(
+            id=entry["id"],
             name=entry["name"],
             hp=entry["hp"],
             attack=entry["attack"],
@@ -61,14 +62,15 @@ def load_pokemons_from_json(path: str, type_dict: dict[str, PokemonType]) -> lis
             speed=entry["speed"],
             precision=entry["precision"],
             types=types,
-            id=entry["id"]
+            can_evolve=entry["can_evolve"],
+            evolution_level=entry["evolution_level"],
+            evolution_pokemon=entry["evolution_pokemon"]
         )
 
         pokemons.append(pokemon)
 
     return pokemons
 
-import json
 
 def save_pokemons_to_json(pokemons: list[Pokemon], output_path: str) -> None:
     """
@@ -87,7 +89,10 @@ def save_pokemons_to_json(pokemons: list[Pokemon], output_path: str) -> None:
             "defense": p.get_level(),
             "speed": p.get_speed(),
             "precision": p.get_precision(),
-            "types": [t.get_name() for t in p.get_types()]  # Convert object to their names
+            "types": [t.get_name() for t in p.get_types()],  # Convert object to their names
+            "can_evolve": p.get_can_evolve(),
+            "evolution_level": p.get_evolution_level(),
+            "evolution_pokemon": p.get_evolution_pokemon()
         }
 
         data["pokemons"].append(entry)

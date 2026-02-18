@@ -1,9 +1,11 @@
 import pygame
+import random
 from scripts.classes.PokemonType_class import PokemonType
 from scripts.logic.assets_management import load_gif
+from scripts.logic.json_management import load_pokemons_from_json
 
 class Pokemon : 
-    def __init__(self, name : str, hp : int, attack : int, defense : int, speed : int, precision : int, types : list, id : str) : 
+    def __init__(self, id : str, name : str, hp : int, attack : int, defense : int, speed : int, precision : int, types : list, can_evolve : bool, evolution_level : int, evolution_pokemon : list) : 
         """
         Docstring for __init__
         
@@ -19,6 +21,12 @@ class Pokemon :
         :type defense: int
         :param types: A list of the Types of that Pokemon
         :type types: list
+        :param can_evolve: A boolean defining if that Pokemon can evolve
+        :type can_evolve: bool
+        :param evolution_level: The level at which that Pokemon can evolve
+        :type evolution_level: int
+        :param evolution_pokemon: The pokemons in which that Pokemon can evolve
+        :type evolution_pokemon: list
         """
 
         self.__id = id
@@ -31,7 +39,10 @@ class Pokemon :
         self.__precision = precision
         self.__level = 1
         self.__exp = 0
-        self.__types = types 
+        self.__types = types
+        self.__can_evolve = can_evolve
+        self.__evolution_level = evolution_level
+        self.__evolution_pokemon = evolution_pokemon
 
         # Gif animation variables
         self.front_frames = []
@@ -68,6 +79,8 @@ class Pokemon :
     def set_max_hp(self, new_max_hp):
         if not isinstance(new_max_hp, int):
             raise TypeError("Max HP must be an integer.")
+        if new_max_hp < 0:
+            raise ValueError("Max HP cannot be negative.")
         self.__max_hp = new_max_hp
 
 
@@ -76,6 +89,8 @@ class Pokemon :
     def set_hp(self, new_hp):
         if not isinstance(new_hp, int):
             raise TypeError("HP must be an integer.")
+        if new_hp < 0:
+            raise ValueError("Attack cannot be negative.")
         self.__hp = new_hp
 
 
@@ -85,7 +100,7 @@ class Pokemon :
         if not isinstance(new_attack, int):
             raise TypeError("Attack must be an integer.")
         if new_attack < 0:
-            raise ValueError("Attack cannot be negative.")
+            new_attack = 0
         self.__attack = new_attack
 
 
@@ -102,18 +117,18 @@ class Pokemon :
         return self.__speed
     def set_speed(self, new_speed):
         if not isinstance(new_speed, int):
-            raise TypeError("speed must be an integer.")
+            raise TypeError("Speed must be an integer.")
         if new_speed < 0:
-            raise ValueError("speed cannot be negative.")
+            raise ValueError("Speed cannot be negative.")
         self.__speed = new_speed
 
     def get_precision(self):
         return self.__precision
     def set_precision(self, new_precision):
         if not isinstance(new_precision, int):
-            raise TypeError("precision must be an integer.")
+            raise TypeError("Precision must be an integer.")
         if new_precision < 0:
-            raise ValueError("precision cannot be negative.")
+            raise ValueError("Precision cannot be negative.")
         self.__precision = new_precision
 
     def get_level(self):
@@ -123,16 +138,16 @@ class Pokemon :
             raise TypeError("Level must be an integer.")
         if new_level < 1:
             raise ValueError("Level must be at least 1.")
-        self.stats_calculation(new_level)
+        self.stats_calculation(self.get_level(), new_level)
         self.__level = new_level
 
     def get_exp(self):
         return self.__exp
     def set_exp(self, new_exp):
         if not isinstance(new_exp, int):
-            raise TypeError("Level must be an integer.")
-        if new_exp < 1:
-            raise ValueError("Level must be at least 1.")
+            raise TypeError("Exp must be an integer.")
+        if new_exp < 0:
+            raise ValueError("Exp cannot be negative.")
         self.__exp = new_exp
         self.check_levelup()
 
@@ -148,7 +163,37 @@ class Pokemon :
             raise ValueError("A Pokémon must have at least one type.")
         self.__types = new_types
 
-    # End of getters and setters ---------------------------------------------------------------------------------------
+
+    def get_can_evolve(self):
+        return self.__can_evolve
+    def set_can_evolve(self, new_can_evolve):
+        if not isinstance(new_can_evolve, bool):
+            raise TypeError("Exp must be a boolean.")
+        self.__can_evolve = new_can_evolve
+
+    def get_evolution_level(self):
+        return self.__evolution_level
+    def set_evolution_level(self, new_evolution_level):
+        if not isinstance(new_evolution_level, int):
+            raise TypeError("Evolution Level must be an integer.")
+        if new_evolution_level < 0:
+            raise ValueError("Evolution Level cannot be negative.")
+        self.__evolution_level = new_evolution_level
+        self.check_evolution()
+
+    def get_evolution_pokemon(self):
+        return self.__evolution_pokemon
+    def set_evolution_pokemon(self, new_evolution_pokemon):
+        if not isinstance(new_evolution_pokemon, list):
+            raise TypeError("Evolution Pokemon must be a list.")
+        if not all(isinstance(t, str) for t in new_evolution_pokemon):
+            raise ValueError("Each evolution must be a Str object.")
+        self.__evolution_pokemon = new_evolution_pokemon
+
+
+    # End of getters and setters ----------------------------------------------------------------------------------------
+
+    # Level-related methods ---------------------------------------------------------------------------------------------
 
     def check_levelup(self):
         required_exp = pow(1.03,2*self.__level) + self.__level + 31
@@ -157,10 +202,37 @@ class Pokemon :
             self.set_level(self.__level + 1)
             self.check_levelup()
 
-    def stats_calculation(self, new_level):
-        for loop in range(self.__level,new_level):
+
+    def stats_calculation(self, original_level, new_level):
+        for loop in range(original_level,new_level):
             self.set_max_hp(self.__max_hp + self.__hp//50)
             self.set_hp(self.get_max_hp())
             self.set_attack(self.__attack + self.__attack//50)
             self.set_defense(self.__defense + self.__defense//50)
             self.set_speed(self.__speed + self.__speed//50)
+        self.check_evolution()
+
+    def check_evolution(self):
+        if self.get_can_evolve() == True:
+            if self.get_level() >= self.get_evolution_level():
+                evolution_ids = self.get_evolution_pokemon()
+                new_pokemon = random.choice(self.filter_pokemons_by_ids(evolution_ids))
+                self.set_id(new_pokemon.get_id())
+                self.set_name(new_pokemon.get_name())
+                self.set_max_hp(new_pokemon.get_max_hp())
+                self.set_hp(new_pokemon.get_max_hp())
+                self.set_attack(new_pokemon.get_attack())
+                self.set_defense(new_pokemon.get_defense())
+                self.set_speed(new_pokemon.get_speed())
+                self.set_precision(new_pokemon.get_precision())
+                self.set_can_evolve(new_pokemon.get_can_evolve())
+                self.set_evolution_level(new_pokemon.get_evolution_level())
+                self.set_evolution_pokemon(new_pokemon.get_evolution_pokemon())
+                self.stats_calculation(1, self.get_max_hp())
+        self.check_evolution()
+
+
+    def filter_pokemons_by_ids(ids: list[str]) -> list[Pokemon]:
+        """Returns only the pokemons who have IDs of the ids list parameter"""
+        all_pokemons = load_pokemons_from_json("assets/data/all_pokemons.json")
+        return [p for p in all_pokemons if p.get_id() in ids]
