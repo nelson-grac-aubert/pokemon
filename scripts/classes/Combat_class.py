@@ -71,10 +71,8 @@ class Combat:
 
         if self.button_attack.collidepoint(pos):
             self.start_action("ATTACK")
-
         elif self.button_heal.collidepoint(pos):
             self.start_action("HEAL")
-
         elif self.button_run.collidepoint(pos):
             self.start_action("RUN")
 
@@ -110,9 +108,7 @@ class Combat:
         dmg, eff_msg = self.compute_damage(self.__player_pokemon, self.__adversary)
         self.__adversary.set_hp(self.__adversary.get_hp() - dmg)
 
-        self.message_overlay.show(f"{self.__player_pokemon.get_name()} dealt {dmg} dmg!")
-        if eff_msg:
-            self.message_overlay.show(eff_msg)
+        self.message_overlay.show(f"{self.__player_pokemon.get_name()} dealt {dmg} dmg!" if not eff_msg else f"{self.__player_pokemon.get_name()} dealt {dmg} dmg!" + "\n" + eff_msg)
 
         result = self.check_end()
         if result == "enemy_ko":
@@ -141,7 +137,7 @@ class Combat:
 
         msg = f"{self.__adversary.get_name()} dealt {dmg} dmg!"
         if eff_msg:
-            msg += f" {eff_msg}"
+            msg += f"{eff_msg}"
         self.message_overlay.show(msg)
 
         result = self.check_end()
@@ -161,12 +157,13 @@ class Combat:
 
         for attype in attacker_types:
             for deftype in defender_types:
-                if deftype in attype.get_weaknesses():
-                    efficiency *= 0.5
-                if deftype in attype.get_strenghts():
-                    efficiency *= 2
-                if deftype in attype.get_useless():
+                if deftype.get_name() in [t.get_name() for t in attype.get_useless()]:
                     efficiency *= 0
+                elif deftype.get_name() in [t.get_name() for t in attype.get_weaknesses()]:
+                    efficiency *= 0.5
+                elif deftype.get_name() in [t.get_name() for t in attype.get_strenghts()]:
+                    efficiency *= 2
+
 
         if efficiency == 0:
             message = "It has no effect..."
@@ -180,13 +177,20 @@ class Combat:
     def compute_damage(self, attacker, defender):
         eff, msg = self.apply_types(attacker.get_types(), defender.get_types())
 
-        damage = (((2 * attacker.get_level() / 5) *
+        chance = random.randint(0,100)
+        if chance >= attacker.get_precision() : 
+            eff = 0 
+            msg = "The attack missed..." 
+
+        # Simplified calculation of the actual Pokémon games
+        damage = 1.5 * (((2 * attacker.get_level() / 5) *
                   (attacker.get_attack() / defender.get_defense())) / 25 + 10)
-        damage *= 1.5
+        # Apply types
         damage *= eff
+        # Add some variance
         damage *= (random.randint(60, 100) / 100)
 
-        return int(max(1, damage)), msg
+        return int(damage), msg
 
     def draw_pokemon_stats(self, screen):
 
@@ -216,26 +220,23 @@ class Combat:
 
     def finalize_battle(self, winner):
 
+        self.__player_pokemon.set_hp(self.__player_pokemon.get_max_hp())
+        self.__adversary.set_hp(self.__adversary.get_max_hp())
+
         if winner == "player":
             sound_control.play_music("assets/music/victory.mp3")
-            
-            # Fully heal both Pokémons
-            self.__player_pokemon.set_hp(self.__player_pokemon.get_max_hp())
-            self.__adversary.set_hp(self.__adversary.get_max_hp())
-            # Capture a copy of the defeated Pokémon
             self.capture_pokemon()
-
+            self.dialog.show(f"Your {self.__player_pokemon.get_name()} wins! Enemy {self.__adversary.get_name()} has been defeated and added to the Pokédex.")
+            self.state = CombatState.BUSY
+            self.waiting_for_dialog_close = True
+            return self.__player_pokemon.get_name()
+        
         else:
-            self.__player_pokemon.set_hp(self.__player_pokemon.get_max_hp())
-            self.__adversary.set_hp(self.__adversary.get_max_hp())
-
-        if winner == "player":
-            self.dialog.show(f"{self.__adversary.get_name()} has been defeated and added to the Pokédex.")
-        elif winner == "adversary":
-            self.dialog.show(f"You took some time to heal {self.__player_pokemon.get_name()} and rest.")
-
-        self.state = CombatState.BUSY
-        self.waiting_for_dialog_close = True
+            self.dialog.show(f"Enemy {self.__adversary.get_name()} wins! You took some time to heal {self.__player_pokemon.get_name()} and rest.")
+            self.state = CombatState.BUSY
+            self.waiting_for_dialog_close = True
+            return self.__player_pokemon.get_name()
+        
 
     def run(self, screen, clock):
 
@@ -262,15 +263,15 @@ class Combat:
 
             if player_display.current_animation or adversary_display.current_animation:
 
+                screen.blit(self.background, (0, 0))
                 player_display.update()
                 adversary_display.update()
-
-                screen.blit(self.background, (0, 0))
                 self.draw_pokemon_stats(screen)
                 player_display.draw(screen)
                 adversary_display.draw(screen)
                 self.message_overlay.update()
                 self.message_overlay.draw(screen)
+                self.dialog.draw()
 
                 pygame.display.flip()
                 clock.tick(60)
@@ -299,10 +300,10 @@ class Combat:
             if self.waiting_for_dialog_close:
 
                 screen.blit(self.background, (0, 0))
-                self.draw_pokemon_stats(screen)
                 player_display.update()
-                player_display.draw(screen)
                 adversary_display.update()
+                self.draw_pokemon_stats(screen)
+                player_display.draw(screen)
                 adversary_display.draw(screen)
                 self.message_overlay.update()
                 self.message_overlay.draw(screen)
@@ -318,12 +319,10 @@ class Combat:
 
             screen.blit(self.background, (0, 0))
             self.draw_pokemon_stats(screen)
-
             player_display.update()
             player_display.draw(screen)
             adversary_display.update()
             adversary_display.draw(screen)
-
             self.draw_buttons(screen)
             self.message_overlay.update()
             self.message_overlay.draw(screen)

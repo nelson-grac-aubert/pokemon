@@ -78,10 +78,10 @@ def draw_pokedex_button(surface, image, rect, scale):
 def main_menu():
     global button_hover_scale, button_target_scale, button_click_cooldown, MENU_STATE
 
+    sound_control.play_music("assets/music/opening.mp3")
     run_intro(screen, clock, kanto_pokedex)
 
     # --- MUSIC ---
-    sound_control.play_music("assets/music/opening.mp3")
     music_img = load_image("assets/images/music.png").convert_alpha()
     music_muted_img = load_image("assets/images/music_off.png").convert_alpha()
     music_muted = False
