@@ -71,6 +71,11 @@ def load_pokemons_from_json(path: str, type_dict: dict[str, PokemonType]) -> lis
 
     return pokemons
 
+        
+def filter_pokemons_by_ids(ids: list[str]) -> list[Pokemon]:
+    """Returns only the pokemons who have IDs of the ids list parameter"""
+    all_pokemons = load_pokemons_from_json("assets/data/all_pokemons.json")
+    return [p for p in all_pokemons if p.get_id() in ids]
 
 def save_pokemons_to_json(pokemons: list[Pokemon], output_path: str) -> None:
     """

@@ -2,7 +2,7 @@ import pygame
 import random
 from scripts.classes.PokemonType_class import PokemonType
 from scripts.logic.assets_management import load_gif
-from scripts.logic.json_management import load_pokemons_from_json
+
 
 class Pokemon : 
     def __init__(self, id : str, name : str, hp : int, attack : int, defense : int, speed : int, precision : int, types : list, can_evolve : bool, evolution_level : int, evolution_pokemon : list) : 
@@ -213,8 +213,10 @@ class Pokemon :
         self.check_evolution()
 
     def check_evolution(self):
+        from scripts.logic.json_management import load_pokemons_from_json, filter_pokemons_by_ids
+
         if self.get_can_evolve() == True:
-            if self.get_level() >= self.get_evolution_level():
+            while self.get_level() >= self.get_evolution_level():
                 evolution_ids = self.get_evolution_pokemon()
                 new_pokemon = random.choice(self.filter_pokemons_by_ids(evolution_ids))
                 self.set_id(new_pokemon.get_id())
@@ -229,10 +231,5 @@ class Pokemon :
                 self.set_evolution_level(new_pokemon.get_evolution_level())
                 self.set_evolution_pokemon(new_pokemon.get_evolution_pokemon())
                 self.stats_calculation(1, self.get_max_hp())
-        self.check_evolution()
+        
 
-
-    def filter_pokemons_by_ids(ids: list[str]) -> list[Pokemon]:
-        """Returns only the pokemons who have IDs of the ids list parameter"""
-        all_pokemons = load_pokemons_from_json("assets/data/all_pokemons.json")
-        return [p for p in all_pokemons if p.get_id() in ids]
