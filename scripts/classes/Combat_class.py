@@ -4,7 +4,7 @@ import copy
 from enum import Enum
 from scripts.classes.SoundControl_class import sound_control
 from scripts.logic.assets_management import load_image, load_font
-from scripts.classes.Pokedex_class import easy_pokedex
+from scripts.classes.Pokedex_class import kanto_pokedex
 from scripts.classes.PokemonDisplay_class import PokemonDisplay
 from scripts.logic.json_management import save_pokemons_to_json
 from scripts.classes.MessageOverlay_class import MessageOverlay
@@ -149,7 +149,7 @@ class Combat:
         self.set_idle_state()
 
     def generate_random_adversary(self):
-        return random.choice(easy_pokedex.get_pokemons())
+        return random.choice(kanto_pokedex.get_pokemons())
 
     def apply_types(self, attacker_types, defender_types):
         efficiency = 1

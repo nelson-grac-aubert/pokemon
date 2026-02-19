@@ -23,6 +23,3 @@ kanto_pokedex = Pokedex()
 kanto_pokedex.set_pokemons(load_pokemons_from_json("assets/data/all_pokemons.json", 
 load_types_from_json("assets/data/all_types.json")))
 
-easy_pokedex = Pokedex()
-easy_pokedex.set_pokemons(load_pokemons_from_json("assets/data/easy_pokemons.json", 
-load_types_from_json("assets/data/all_types.json")))

@@ -50,7 +50,17 @@ def load_pokemons_from_json(path: str, type_dict: dict[str, PokemonType]) -> lis
     data = load_json(path)
     pokemons = []
 
+    required_keys = [
+    "id", "name", "hp", "attack", "defense", "speed",
+    "precision", "types", "can_evolve",
+    "evolution_level", "evolution_pokemon"
+]
+
     for entry in data.get("pokemons", []):
+        for key in required_keys:
+            if key not in entry:
+                raise ValueError(f"Missing key '{key}' in Pokémon entry: {entry}")
+
         types = [type_dict[t] for t in entry["types"]]
 
         pokemon = Pokemon(
@@ -72,9 +82,8 @@ def load_pokemons_from_json(path: str, type_dict: dict[str, PokemonType]) -> lis
     return pokemons
 
         
-def filter_pokemons_by_ids(ids: list[str]) -> list[Pokemon]:
-    """Returns only the pokemons who have IDs of the ids list parameter"""
-    all_pokemons = load_pokemons_from_json("assets/data/all_pokemons.json")
+def filter_pokemons_by_ids(ids: list[str], type_dict: dict[str, PokemonType]) -> list[Pokemon]:
+    all_pokemons = load_pokemons_from_json("assets/data/all_pokemons.json", type_dict)
     return [p for p in all_pokemons if p.get_id() in ids]
 
 def save_pokemons_to_json(pokemons: list[Pokemon], output_path: str) -> None:

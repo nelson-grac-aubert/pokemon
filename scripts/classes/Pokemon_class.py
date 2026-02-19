@@ -89,8 +89,6 @@ class Pokemon :
     def set_hp(self, new_hp):
         if not isinstance(new_hp, int):
             raise TypeError("HP must be an integer.")
-        if new_hp < 0:
-            raise ValueError("Attack cannot be negative.")
         self.__hp = new_hp
 
 
@@ -212,24 +210,44 @@ class Pokemon :
             self.set_speed(self.__speed + self.__speed//50)
         self.check_evolution()
 
-    def check_evolution(self):
-        from scripts.logic.json_management import load_pokemons_from_json, filter_pokemons_by_ids
+def check_evolution(self):
 
-        if self.get_can_evolve() == True:
-            while self.get_level() >= self.get_evolution_level():
-                evolution_ids = self.get_evolution_pokemon()
-                new_pokemon = random.choice(self.filter_pokemons_by_ids(evolution_ids))
-                self.set_id(new_pokemon.get_id())
-                self.set_name(new_pokemon.get_name())
-                self.set_max_hp(new_pokemon.get_max_hp())
-                self.set_hp(new_pokemon.get_max_hp())
-                self.set_attack(new_pokemon.get_attack())
-                self.set_defense(new_pokemon.get_defense())
-                self.set_speed(new_pokemon.get_speed())
-                self.set_precision(new_pokemon.get_precision())
-                self.set_can_evolve(new_pokemon.get_can_evolve())
-                self.set_evolution_level(new_pokemon.get_evolution_level())
-                self.set_evolution_pokemon(new_pokemon.get_evolution_pokemon())
-                self.stats_calculation(1, self.get_max_hp())
+    from scripts.logic.json_management import filter_pokemons_by_ids, load_types_from_json
+
+    # Check if evolution is possible
+    if not self.get_can_evolve():
+        return
+    
+    if self.get_level() < self.get_evolution_level():
+        return
+
+    # Load types
+    type_dict = load_types_from_json("assets/data/types.json")
+
+    # Get possible evolutions IDs
+    evolution_ids = self.get_evolution_pokemon()
+
+    # Create the matching Pokémons
+    candidates = filter_pokemons_by_ids(evolution_ids, type_dict)
+
+    # Chose a Pokémon
+    new_pokemon = random.choice(candidates)
+
+    # Appliquer l'évolution
+    self.set_id(new_pokemon.get_id())
+    self.set_name(new_pokemon.get_name())
+    self.set_max_hp(new_pokemon.get_max_hp())
+    self.set_hp(new_pokemon.get_max_hp())
+    self.set_attack(new_pokemon.get_attack())
+    self.set_defense(new_pokemon.get_defense())
+    self.set_speed(new_pokemon.get_speed())
+    self.set_precision(new_pokemon.get_precision())
+    self.set_can_evolve(new_pokemon.get_can_evolve())
+    self.set_evolution_level(new_pokemon.get_evolution_level())
+    self.set_evolution_pokemon(new_pokemon.get_evolution_pokemon())
+
+    # Recalcul des stats
+    self.stats_calculation(1, self.get_max_hp())
+
         
 
