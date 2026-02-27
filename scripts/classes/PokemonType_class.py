@@ -31,28 +31,33 @@ class PokemonType :
 
     def get_weaknesses(self) : 
         return self.__weaknesses
-    def set_weaknesses(self, new_weaknesses) :
+    def set_weaknesses(self, new_weaknesses):
         if not isinstance(new_weaknesses, list):
             raise TypeError("Weaknesses must be a list.")
         if not all(isinstance(t, PokemonType) for t in new_weaknesses):
             raise ValueError("Each type must be a Type object.")
+        self.__weaknesses = new_weaknesses
 
-    
+
     def get_strenghts(self) : 
         return self.__strenghts
-    def set_strenghts(self, new_strenghts) :
+    def set_strenghts(self, new_strenghts):
         if not isinstance(new_strenghts, list):
             raise TypeError("strenghts must be a list.")
         if not all(isinstance(t, PokemonType) for t in new_strenghts):
             raise ValueError("Each type must be a Type object.")
+        self.__strenghts = new_strenghts
+
     
     
     def get_useless(self) : 
         return self.__useless
-    def set_useless(self, new_useless) :
+    def set_useless(self, new_useless):
         if not isinstance(new_useless, list):
             raise TypeError("useless must be a list.")
         if not all(isinstance(t, PokemonType) for t in new_useless):
             raise ValueError("Each type must be a Type object.")
+        self.__useless = new_useless
+
 
     # End of getters and setters ---------------------------------------------------------------------------------------
