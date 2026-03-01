@@ -1,0 +1,22 @@
+[
+    {
+        "id": "001",
+        "name": "Bulbasaur",
+        "encounters": 1
+    },
+    {
+        "id": "004",
+        "name": "Charmander",
+        "encounters": 1
+    },
+    {
+        "id": "007",
+        "name": "Squirtle",
+        "encounters": 1
+    },
+    {
+        "id": "137",
+        "name": "Porygon",
+        "encounters": 1
+    }
+]

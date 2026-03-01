@@ -133,7 +133,7 @@ def run_game_intro(screen, clock, pokedex):
     # Create registered pokedex and register starters
     registered_pokedex = RegisteredPokedex()
     for starter in [p.pokemon for p in starter_displays]:
-        registered_pokedex.register_encounter(starter)
+        registered_pokedex.register_encounter(starter, True)
 
     overworld_game_loop(screen, clock, new_pokedex, registered_pokedex)
 
