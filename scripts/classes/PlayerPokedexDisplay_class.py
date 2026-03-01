@@ -1,11 +1,18 @@
 import pygame
 from scripts.classes.PokedexDisplay_class import PokedexDisplay
-from scripts.classes.DialogBox_class import DialogBox
+from scripts.classes.DialogBox import DialogBox
 
 class PlayerPokedexDisplay(PokedexDisplay):
 
     def __init__(self, pokedex, screen):
         super().__init__(pokedex, screen)
+
+        # Registered button
+        bx = self.back_button_rect.x
+        by = self.back_button_rect.y - 60
+        bw = self.back_button_rect.width
+        bh = self.back_button_rect.height
+        self.registered_button_rect = pygame.Rect(bx, by, bw, bh)
 
         # Action buttons
         base_x = self.left_width + 20
@@ -17,27 +24,30 @@ class PlayerPokedexDisplay(PokedexDisplay):
 
         self.action_button_color = (255, 150, 170)
 
-        # Dialog box
+        # Dialog
         self.dialog = DialogBox(screen, self.font)
 
     def draw_right_panel(self):
-        
         super().draw_right_panel()
-        
+
+        # Registered button
+        pygame.draw.rect(self.screen, (200, 50, 50), self.registered_button_rect)
+        reg_txt = self.font.render("Pokédex", True, (255, 255, 255))
+        self.screen.blit(reg_txt, reg_txt.get_rect(center=self.registered_button_rect.center))
+
+        # Choose
         pygame.draw.rect(self.screen, self.action_button_color, self.choose_button_rect)
         choose_txt = self.font.render("Choose", True, (0, 0, 0))
         self.screen.blit(choose_txt, choose_txt.get_rect(center=self.choose_button_rect.center))
 
+        # Abandon
         pygame.draw.rect(self.screen, self.action_button_color, self.abandon_button_rect)
         abandon_txt = self.font.render("Abandon", True, (0, 0, 0))
         self.screen.blit(abandon_txt, abandon_txt.get_rect(center=self.abandon_button_rect.center))
 
-        # Draw dialog
         self.dialog.draw()
 
     def handle_event(self, event):
-
-        # If dialog is open, it handles the click and blocks everything else
         if self.dialog.is_open():
             self.dialog.handle_event(event)
             return

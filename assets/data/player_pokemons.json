@@ -1,34 +1,35 @@
 {
     "pokemons": [
         {
-            "id": "004",
-            "name": "Charmander",
-            "hp": 39,
-            "attack": 52,
-            "defense": 43,
-            "speed": 65,
+            "id": "001",
+            "name": "Bulbasaur",
+            "hp": 47,
+            "attack": 51,
+            "defense": 51,
+            "speed": 47,
             "precision": 90,
             "types": [
-                "fire"
+                "grass",
+                "poison"
             ],
             "can_evolve": true,
             "evolution_level": 16,
             "evolution_pokemon": [
-                "005"
+                "002"
             ],
-            "level": 5,
-            "xp": 0
+            "level": 16,
+            "xp": 30
         },
         {
-            "id": "036",
-            "name": "Clefable",
-            "hp": 95,
-            "attack": 70,
-            "defense": 73,
-            "speed": 60,
-            "precision": 98,
+            "id": "099",
+            "name": "Kingler",
+            "hp": 55,
+            "attack": 130,
+            "defense": 115,
+            "speed": 75,
+            "precision": 90,
             "types": [
-                "fairy"
+                "water"
             ],
             "can_evolve": false,
             "evolution_level": 0,

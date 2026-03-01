@@ -8,7 +8,7 @@ from scripts.classes.Pokedex_class import kanto_pokedex
 from scripts.classes.PokemonDisplay_class import PokemonDisplay
 from scripts.logic.json_management import save_pokemons_to_json
 from scripts.classes.MessageOverlay_class import MessageOverlay
-from scripts.classes.DialogBox_class import DialogBox
+from scripts.classes.DialogBox import DialogBox
 
 
 class CombatState(Enum):

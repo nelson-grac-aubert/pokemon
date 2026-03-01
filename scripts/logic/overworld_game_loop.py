@@ -6,7 +6,7 @@ from scripts.graphic.pokedex_menu import run_pokedex
 from scripts.graphic.menu import sound_control
 from scripts.classes.Combat import Combat
 from scripts.graphic.EvolutionScreen import EvolutionScreen
-from scripts.classes.DialogBox_class import DialogBox
+from scripts.classes.DialogBox import DialogBox
 
 
 def open_evolution_screen(screen, old_pokemon, new_pokemon):
@@ -84,7 +84,7 @@ def handle_evolution(screen, background, player_sprite, pokedex_button, pokedex_
         screen.blit(background, (0, 0))
         player_rect = player_sprite.get_rect(center=(player_x, player_y))
         screen.blit(player_sprite, player_rect)
-        screen.blit(pokedex_button, pokedex_button.get_rect(topleft=pokedex_button.get_rect().topleft))
+        screen.blit(pokedex_button, pokedex_rect)
 
         dialog.draw()
         pygame.display.flip()
