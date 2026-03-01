@@ -34,7 +34,7 @@ class DialogBox:
 
         w, h = self.width, self.height
         x = (self.screen.get_width() - w) // 2
-        y = (self.screen.get_height() - h) // 2
+        y = 100
         rect = pygame.Rect(x, y, w, h)
 
         # Background

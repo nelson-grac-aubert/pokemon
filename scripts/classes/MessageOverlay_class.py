@@ -31,28 +31,39 @@ class MessageOverlay:
         if not self.active:
             return
 
-        # Render text
-        surf = self.font.render(self.text, True, (255, 255, 255))
-        surf.set_alpha(self.alpha)
+        # Split lines
+        lines = self.text.split("\n")
+
+        # Render all lines
+        rendered = [self.font.render(line, True, (255, 255, 255)) for line in lines]
+
+        # Compute total height
+        total_height = sum(s.get_height() for s in rendered) + (len(lines) - 1) * 5
 
         # Position
-        x = (screen.get_width() - surf.get_width()) // 2
-        y = 275
+        x = (screen.get_width() - max(s.get_width() for s in rendered)) // 2
+        y = 100
 
-        # --- Background rectangle ---
+        # Background rectangle
         padding = 10
         bg_rect = pygame.Rect(
             x - padding,
             y - padding,
-            surf.get_width() + padding * 2,
-            surf.get_height() + padding * 2
+            max(s.get_width() for s in rendered) + padding * 2,
+            total_height + padding * 2
         )
 
-        # Create transparent background surface
+        # Background surface
         bg_surf = pygame.Surface((bg_rect.width, bg_rect.height), pygame.SRCALPHA)
-        bg_color = (170, 170, 170, int(self.alpha * 0.6))  # light gray, 60% of text alpha
+        bg_color = (170, 170, 170, int(self.alpha * 0.6))
         bg_surf.fill(bg_color)
 
-        # Draw background then text
+        # Draw background
         screen.blit(bg_surf, (bg_rect.x, bg_rect.y))
-        screen.blit(surf, (x, y))
+
+        # Draw each line with spacing
+        current_y = y
+        for surf in rendered:
+            surf.set_alpha(self.alpha)
+            screen.blit(surf, (x, current_y))
+            current_y += surf.get_height() + 5

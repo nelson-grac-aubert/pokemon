@@ -127,6 +127,6 @@ def run_game_intro(screen, clock, pokedex):
     new_pokedex.add_pokemon(chosen_pokemon)
     new_pokedex.choose_as_combat_pokemon(chosen_pokemon)
 
-    overworld_game_loop(screen, clock, chosen_pokemon, new_pokedex)
+    overworld_game_loop(screen, clock, new_pokedex)
 
     return new_pokedex

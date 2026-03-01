@@ -1,15 +1,20 @@
 {
     "pokemons": [
         {
-            "id": "007",
-            "name": "Squirtle",
-            "hp": 44,
-            "attack": 48,
+            "id": "004",
+            "name": "Charmander",
+            "hp": 39,
+            "attack": 52,
             "defense": 1,
-            "speed": 43,
+            "speed": 65,
             "precision": 90,
             "types": [
-                "water"
+                "fire"
+            ],
+            "can_evolve": true,
+            "evolution_level": 16,
+            "evolution_pokemon": [
+                "005"
             ]
         },
         {
@@ -22,6 +27,11 @@
             "precision": 85,
             "types": [
                 "bug"
+            ],
+            "can_evolve": true,
+            "evolution_level": 10,
+            "evolution_pokemon": [
+                "012"
             ]
         }
     ]

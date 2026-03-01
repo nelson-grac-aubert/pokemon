@@ -5,7 +5,7 @@ from scripts.graphic.pokedex_menu import run_pokedex
 from scripts.graphic.menu import sound_control
 from scripts.classes.Combat_class import Combat
 
-def overworld_game_loop(screen, clock, starter_pokemon, player_pokedex):
+def overworld_game_loop(screen, clock, player_pokedex):
 
     sound_control.play_music("assets/music/road_1.mp3")
 
@@ -75,6 +75,8 @@ def overworld_game_loop(screen, clock, starter_pokemon, player_pokedex):
 
                 combat = Combat(player_pokedex)
                 combat.run(screen, clock)
+
+                sound_control.play_music("assets/music/road_1.mp3")
 
         # UI
         screen.blit(background, (0, 0))

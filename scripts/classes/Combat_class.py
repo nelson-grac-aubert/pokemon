@@ -37,11 +37,11 @@ class Combat:
 
         self.waiting_for_dialog_close = False
 
-        self.button_attack = pygame.Rect(40, 200, 200, 50)
-        self.button_heal = pygame.Rect(300, 200, 200, 50)
-        self.button_run = pygame.Rect(560, 200, 200, 50)
+        self.button_attack = pygame.Rect(40, 25, 200, 50)
+        self.button_heal = pygame.Rect(300, 25, 200, 50)
+        self.button_run = pygame.Rect(560, 25, 200, 50)
 
-        self.message_overlay = MessageOverlay(load_font("assets/font/Pokemon_GB.ttf", 30))
+        self.message_overlay = MessageOverlay(load_font("assets/font/Pokemon_GB.ttf", 25))
         self.dialog = DialogBox(pygame.display.get_surface(), self.font)
 
     def is_busy(self):
@@ -166,11 +166,11 @@ class Combat:
 
 
         if efficiency == 0:
-            message = "It has no effect..."
+            message = "\nIt has no effect..."
         elif efficiency < 1:
-            message = "It's not very effective..."
+            message = "\nIt's not very effective..."
         elif efficiency > 1:
-            message = "It's super effective!"
+            message = "\nIt's super effective!"
 
         return efficiency, message
 
@@ -180,7 +180,7 @@ class Combat:
         chance = random.randint(0,100)
         if chance >= attacker.get_precision() : 
             eff = 0 
-            msg = "The attack missed..." 
+            msg = "\nThe attack missed..." 
 
         # Simplified calculation of the actual Pokémon games
         damage = 1.5 * (((2 * attacker.get_level() / 5) *
@@ -200,7 +200,7 @@ class Combat:
 
         e = self.__adversary
         text2 = self.font.render(f"{e.get_name()}  HP: {e.get_hp()}/{e.get_max_hp()}", True, (255, 255, 255))
-        screen.blit(text2, (400, 40))
+        screen.blit(text2, (400, 280))
 
     def check_end(self):
         if self.__adversary.get_hp() <= 0:
@@ -210,6 +210,10 @@ class Combat:
             return "player_ko"
 
         return None
+        
+    def identify_pokemon(self) : 
+        pass
+
 
     def capture_pokemon(self) : 
         captured_pokemon = copy.deepcopy(self.__adversary)
