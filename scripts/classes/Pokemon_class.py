@@ -5,7 +5,7 @@ from scripts.logic.assets_management import load_gif
 
 
 class Pokemon : 
-    def __init__(self, id : str, name : str, hp : int, attack : int, defense : int, speed : int, precision : int, types : list, can_evolve : bool, evolution_level : int, evolution_pokemon : list) : 
+    def __init__(self, id : str, name : str, hp : int, attack : int, defense : int, speed : int, precision : int, types : list, can_evolve : bool, evolution_level : int, evolution_pokemon : list, level=5, xp=0) : 
         """
         Docstring for __init__
         
@@ -43,6 +43,10 @@ class Pokemon :
         self.__can_evolve = can_evolve
         self.__evolution_level = evolution_level
         self.__evolution_pokemon = evolution_pokemon
+
+        self.level = level
+        self.xp = xp
+
 
         # Gif animation variables
         self.front_frames = []
@@ -187,6 +191,18 @@ class Pokemon :
         if not all(isinstance(t, str) for t in new_evolution_pokemon):
             raise ValueError("Each evolution must be a Str object.")
         self.__evolution_pokemon = new_evolution_pokemon
+
+    def get_level(self):
+        return self.level
+    def add_xp(self, amount):
+        self.xp += amount
+
+
+
+    def get_xp(self):
+        return self.xp
+    def set_level(self, lvl):
+        self.level = lvl
 
 
     # End of getters and setters ----------------------------------------------------------------------------------------

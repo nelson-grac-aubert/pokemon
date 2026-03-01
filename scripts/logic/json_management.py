@@ -64,18 +64,20 @@ def load_pokemons_from_json(path: str, type_dict: dict[str, PokemonType]) -> lis
         types = [type_dict[t] for t in entry["types"]]
 
         pokemon = Pokemon(
-            id=entry["id"],
-            name=entry["name"],
-            hp=entry["hp"],
-            attack=entry["attack"],
-            defense=entry["defense"],
-            speed=entry["speed"],
-            precision=entry["precision"],
-            types=types,
-            can_evolve=entry["can_evolve"],
-            evolution_level=entry["evolution_level"],
-            evolution_pokemon=entry["evolution_pokemon"]
-        )
+        id=entry["id"],
+        name=entry["name"],
+        hp=entry["hp"],
+        attack=entry["attack"],
+        defense=entry["defense"],
+        speed=entry["speed"],
+        precision=entry["precision"],
+        types=types,
+        can_evolve=entry["can_evolve"],
+        evolution_level=entry["evolution_level"],
+        evolution_pokemon=entry["evolution_pokemon"],
+        level=entry.get("level", 5),  
+        xp=entry.get("xp", 0)        
+    )
 
         pokemons.append(pokemon)
 
@@ -96,18 +98,21 @@ def save_pokemons_to_json(pokemons: list[Pokemon], output_path: str) -> None:
 
     for p in pokemons:
         entry = {
-            "id": p.get_id(),
-            "name": p.get_name(),
-            "hp": p.get_hp(),
-            "attack": p.get_attack(),
-            "defense": p.get_level(),
-            "speed": p.get_speed(),
-            "precision": p.get_precision(),
-            "types": [t.get_name() for t in p.get_types()],  # Convert object to their names
-            "can_evolve": p.get_can_evolve(),
-            "evolution_level": p.get_evolution_level(),
-            "evolution_pokemon": p.get_evolution_pokemon()
-        }
+        "id": p.get_id(),
+        "name": p.get_name(),
+        "hp": p.get_hp(),
+        "attack": p.get_attack(),
+        "defense": p.get_defense(),   
+        "speed": p.get_speed(),
+        "precision": p.get_precision(),
+        "types": [t.get_name() for t in p.get_types()],
+        "can_evolve": p.get_can_evolve(),
+        "evolution_level": p.get_evolution_level(),
+        "evolution_pokemon": p.get_evolution_pokemon(),
+        "level": p.get_level(),       
+        "xp": p.get_xp()            
+    }
+
 
         data["pokemons"].append(entry)
 

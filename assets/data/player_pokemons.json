@@ -5,7 +5,7 @@
             "name": "Charmander",
             "hp": 39,
             "attack": 52,
-            "defense": 1,
+            "defense": 43,
             "speed": 65,
             "precision": 90,
             "types": [
@@ -15,24 +15,26 @@
             "evolution_level": 16,
             "evolution_pokemon": [
                 "005"
-            ]
+            ],
+            "level": 5,
+            "xp": 0
         },
         {
-            "id": "011",
-            "name": "Metapod",
-            "hp": 50,
-            "attack": 20,
-            "defense": 1,
-            "speed": 30,
-            "precision": 85,
+            "id": "036",
+            "name": "Clefable",
+            "hp": 95,
+            "attack": 70,
+            "defense": 73,
+            "speed": 60,
+            "precision": 98,
             "types": [
-                "bug"
+                "fairy"
             ],
-            "can_evolve": true,
-            "evolution_level": 10,
-            "evolution_pokemon": [
-                "012"
-            ]
+            "can_evolve": false,
+            "evolution_level": 0,
+            "evolution_pokemon": [],
+            "level": 5,
+            "xp": 0
         }
     ]
 }
