@@ -1,54 +1,137 @@
 import pygame
 import random
-from scripts.logic.assets_management import load_image
+import copy
+from scripts.logic.assets_management import load_image, load_font
 from scripts.graphic.pokedex_menu import run_pokedex
 from scripts.graphic.menu import sound_control
-from scripts.classes.Combat_class import Combat
+from scripts.classes.Combat import Combat
+from scripts.graphic.EvolutionScreen import EvolutionScreen
+from scripts.classes.DialogBox_class import DialogBox
+
+
+def open_evolution_screen(screen, old_pokemon, new_pokemon):
+    evolution_screen = EvolutionScreen(screen, old_pokemon, new_pokemon)
+
+    clock = pygame.time.Clock()
+    running = True
+
+    while running:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                running = False
+
+        evolution_screen.update()
+        evolution_screen.draw()
+        pygame.display.flip()
+
+        clock.tick(60)
+
+        if evolution_screen.is_finished():
+            running = False
+
+
+def handle_evolution(screen, background, player_sprite, pokedex_button, pokedex_rect,
+                     dialog, pokemon, player_x, player_y, player_pokedex):
+    """Handle the full evolution sequence outside the overworld loop."""
+
+    # Clone the old Pokémon for the animation
+    old_pokemon = copy.deepcopy(pokemon)
+    old_name = old_pokemon.get_name()
+
+    # PRE-EVOLUTION DIALOG 
+    dialog.show(f"Something is happening to {old_name}!")
+
+    waiting = True
+    while waiting:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                waiting = False
+            dialog.handle_event(event)
+
+        screen.blit(background, (0, 0))
+        player_rect = player_sprite.get_rect(center=(player_x, player_y))
+        screen.blit(player_sprite, player_rect)
+        screen.blit(pokedex_button, pokedex_rect)
+
+        dialog.draw()
+        pygame.display.flip()
+
+        if not dialog.is_open():
+            waiting = False
+
+    # CREATE THE NEW EVOLVED POKÉMON
+
+    new_pokemon = pokemon.evolve()  # returns a NEW Pokémon object
+    new_pokemon.set_level(pokemon.get_level())
+    new_pokemon.set_xp(pokemon.get_xp())
+
+    player_pokedex.replace_combat_pokemon(new_pokemon)
+
+    # EVOLUTION SCREEN
+    sound_control.play_music("assets/music/road_3.mp3")
+    open_evolution_screen(screen, old_pokemon, new_pokemon)
+
+    # POST-EVOLUTION DIALOG
+    dialog.show(f"{old_name} has evolved into {new_pokemon.get_name()}!")
+
+    waiting = True
+    while waiting:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                waiting = False
+            dialog.handle_event(event)
+
+        screen.blit(background, (0, 0))
+        player_rect = player_sprite.get_rect(center=(player_x, player_y))
+        screen.blit(player_sprite, player_rect)
+        screen.blit(pokedex_button, pokedex_button.get_rect(topleft=pokedex_button.get_rect().topleft))
+
+        dialog.draw()
+        pygame.display.flip()
+
+        if not dialog.is_open():
+            waiting = False
+
+    sound_control.play_music("assets/music/road_1.mp3")
 
 def overworld_game_loop(screen, clock, player_pokedex):
 
     sound_control.play_music("assets/music/road_1.mp3")
+    font = load_font("assets/font/Pokemon_GB.ttf", 22)
+    dialog = DialogBox(screen, font)
 
     width, height = screen.get_size()
 
-    # Load and scale the background map
     background = load_image("assets/images/game_map.png")
     background = pygame.transform.scale(background, (width, height))
 
-    # Load the player sprite
     player_sprite = load_image("assets/sprites/player_sprite_single.png")
 
-    # Player position
     player_x = width // 2
     player_y = height // 2
     speed = 3
 
-    # Pokédex button
     pokedex_button = load_image("assets/images/pokedex.png").convert_alpha()
     pokedex_button = pygame.transform.scale(pokedex_button, (90, 120))
     pokedex_rect = pokedex_button.get_rect()
     pokedex_rect.topright = (width - 20, 20)
 
-    # Step counter system
-    walking_time = 0  # accumulated time spent walking
-    next_encounter_time = random.uniform(4, 5)  # random threshold in seconds
+    walking_time = 0
+    next_encounter_time = random.uniform(4, 5)
 
     running = True
     while running:
 
-        dt = clock.get_time() / 1000  # seconds since last frame
+        dt = clock.get_time() / 1000
 
-        # Events
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
 
-            # Click on Pokédex button
             if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
                 if pokedex_rect.collidepoint(event.pos):
                     run_pokedex(player_pokedex)
 
-        # Move player
         keys = pygame.key.get_pressed()
         moving = False
 
@@ -65,7 +148,6 @@ def overworld_game_loop(screen, clock, player_pokedex):
             player_x += speed
             moving = True
 
-        # Step counter logic
         if moving:
             walking_time += dt
             if walking_time >= next_encounter_time:
@@ -74,18 +156,20 @@ def overworld_game_loop(screen, clock, player_pokedex):
                 next_encounter_time = random.uniform(4, 5)
 
                 combat = Combat(player_pokedex)
-                combat.run(screen, clock)
+                winner = combat.run(screen, clock)
 
-                sound_control.play_music("assets/music/road_1.mp3")
+                pokemon = player_pokedex.combat_pokemon
 
-        # UI
+                if pokemon.has_evolved():
+                    handle_evolution(screen, background, player_sprite,
+                    pokedex_button, pokedex_rect, dialog, pokemon,
+                    player_x, player_y, player_pokedex)
+
         screen.blit(background, (0, 0))
 
-        # Draw player centered
         player_rect = player_sprite.get_rect(center=(player_x, player_y))
         screen.blit(player_sprite, player_rect)
 
-        # Draw Pokédex button
         screen.blit(pokedex_button, pokedex_rect)
 
         pygame.display.flip()

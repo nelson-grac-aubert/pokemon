@@ -149,8 +149,11 @@ class PokedexDisplay:
             ("ATK", pokemon.get_attack()),
             ("DEF", pokemon.get_defense()),
             ("SPD", pokemon.get_speed()),
-            ("PREC", pokemon.get_precision())
+            ("PREC", pokemon.get_precision()),
+            ("LVL", pokemon.get_level()),
+            ("XP", f"{pokemon.get_xp()} / {pokemon.xp_required_for_level(pokemon.get_level())}")
         ]
+
 
         for label, value in stats:
             txt = self.font.render(f"{label}: {value}", True, (0, 0, 0))

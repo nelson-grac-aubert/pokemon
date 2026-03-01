@@ -28,7 +28,6 @@ class DialogBox:
             self.hide()
 
     def draw(self):
-        """Draw the dialog box if a message is active."""
         if not self.message:
             return
 
@@ -56,11 +55,12 @@ class DialogBox:
                 current = word + " "
         lines.append(current)
 
-        # Center vertically
-        total_height = len(lines) * self.font.get_height()
+        rendered_lines = [self.font.render(line, True, (0, 0, 0)) for line in lines]
+        total_height = sum(surface.get_height() for surface in rendered_lines)
         start_y = rect.centery - total_height // 2
 
-        for i, line in enumerate(lines):
-            text = self.font.render(line, True, (0, 0, 0))
-            text_rect = text.get_rect(center=(rect.centerx, start_y + i * self.font.get_height()))
-            self.screen.blit(text, text_rect)
+        current_y = start_y
+        for surface in rendered_lines:
+            text_rect = surface.get_rect(center=(rect.centerx, current_y + surface.get_height() // 2))
+            self.screen.blit(surface, text_rect)
+            current_y += surface.get_height()

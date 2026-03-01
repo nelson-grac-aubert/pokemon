@@ -117,6 +117,8 @@ def run_game_intro(screen, clock, pokedex):
                 for p in starter_displays:
                     if p.rect.collidepoint(mx, my):
                         chosen_pokemon = p.pokemon
+                        chosen_pokemon.set_level(15)
+                        chosen_pokemon.set_xp(50)
                         choosing = False
 
         clock.tick(60)

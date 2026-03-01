@@ -106,9 +106,9 @@ class Combat:
 
     def resolve_attack(self):
         dmg, eff_msg = self.compute_damage(self.__player_pokemon, self.__adversary)
-        self.__adversary.set_hp(self.__adversary.get_hp() - dmg)
+        self.__adversary.set_hp(self.__adversary.get_hp() - int(dmg*1.4+5))
 
-        self.message_overlay.show(f"{self.__player_pokemon.get_name()} dealt {dmg} dmg!" if not eff_msg else f"{self.__player_pokemon.get_name()} dealt {dmg} dmg!" + "\n" + eff_msg)
+        self.message_overlay.show(f"{self.__player_pokemon.get_name()} dealt {int(dmg*1.4+5)} dmg!" if not eff_msg else f"{self.__player_pokemon.get_name()} dealt {dmg} dmg!" + eff_msg)
 
         result = self.check_end()
         if result == "enemy_ko":
@@ -133,9 +133,9 @@ class Combat:
 
     def enemy_turn(self):
         dmg, eff_msg = self.compute_damage(self.__adversary, self.__player_pokemon)
-        self.__player_pokemon.set_hp(self.__player_pokemon.get_hp() - dmg)
+        self.__player_pokemon.set_hp(self.__player_pokemon.get_hp() - int(dmg*0.8))
 
-        msg = f"{self.__adversary.get_name()} dealt {dmg} dmg!"
+        msg = f"{self.__adversary.get_name()} dealt {int(dmg*0.8)} dmg!"
         if eff_msg:
             msg += f"{eff_msg}"
         self.message_overlay.show(msg)
@@ -200,7 +200,7 @@ class Combat:
 
         e = self.__adversary
         text2 = self.font.render(f"{e.get_name()}  HP: {e.get_hp()}/{e.get_max_hp()}", True, (255, 255, 255))
-        screen.blit(text2, (400, 280))
+        screen.blit(text2, (350, 280))
 
     def check_end(self):
         if self.__adversary.get_hp() <= 0:
@@ -228,6 +228,11 @@ class Combat:
         self.__adversary.set_hp(self.__adversary.get_max_hp())
 
         if winner == "player":
+
+            # XP gain
+            xp_gain = 50 + self.__adversary.get_level() * 5
+            self.__player_pokemon.gain_xp(xp_gain)
+
             sound_control.play_music("assets/music/victory.mp3")
             self.capture_pokemon()
             self.dialog.show(f"Your {self.__player_pokemon.get_name()} wins! Enemy {self.__adversary.get_name()} has been defeated and added to the Pokédex.")

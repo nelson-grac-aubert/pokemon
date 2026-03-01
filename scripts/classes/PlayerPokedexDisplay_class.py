@@ -21,8 +21,9 @@ class PlayerPokedexDisplay(PokedexDisplay):
         self.dialog = DialogBox(screen, self.font)
 
     def draw_right_panel(self):
+        
         super().draw_right_panel()
-
+        
         pygame.draw.rect(self.screen, self.action_button_color, self.choose_button_rect)
         choose_txt = self.font.render("Choose", True, (0, 0, 0))
         self.screen.blit(choose_txt, choose_txt.get_rect(center=self.choose_button_rect.center))
