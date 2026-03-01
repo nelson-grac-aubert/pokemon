@@ -5,6 +5,13 @@ from scripts.classes.PokemonDisplay_class import PokemonDisplay
 class RegisteredPokedexDisplay(PokedexDisplay):
 
     def __init__(self, pokedex, screen):
+
+        # Sprite scale must be defined before super().__init__()
+        self.sprite_scale = 4.0
+
+        # Disable stats from parent class
+        self.hide_stats = True
+
         super().__init__(pokedex, screen)
 
         # PC button
@@ -17,16 +24,29 @@ class RegisteredPokedexDisplay(PokedexDisplay):
         # Switch flag
         self.request_pc_switch = False
 
-        # Bigger sprite
-        self.sprite_scale = 4.0
-
-        if self.get_pokedex().get_pokemons():
-            self.load_current_pokemon_display()
-
     def load_current_pokemon_display(self):
-        pokemon = self.get_pokedex().get_pokemons()[self.selected_index]
-        self.current_display = PokemonDisplay(pokemon, scale=self.sprite_scale, is_front=True)
-        self.current_display.set_position(self.left_width + 350, 220)
+        pokemons = self.get_pokedex().get_pokemons()
+        if not pokemons:
+            self.current_display = None
+            return
+
+        pokemon = pokemons[self.selected_index]
+
+        # Create display
+        self.current_display = PokemonDisplay(
+            pokemon,
+            scale=self.sprite_scale,
+            is_front=True
+        )
+
+        # Center horizontally in right panel
+        right_panel_width = self.screen.get_width() - self.left_width
+        center_x = self.left_width + right_panel_width // 2
+
+        # Vertical offset
+        center_y = 310
+
+        self.current_display.set_position(center_x, center_y)
 
     def draw_right_panel(self):
         super().draw_right_panel()

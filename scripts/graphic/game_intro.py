@@ -1,9 +1,10 @@
 import pygame
 from scripts.classes.PokemonDisplay_class import PokemonDisplay
-from scripts.classes.Pokedex_class import Pokedex
 from scripts.classes.PlayerPokedex_class import PlayerPokedex
+from scripts.classes.RegisteredPokedex import RegisteredPokedex
 from scripts.logic.assets_management import load_font, load_image
 from scripts.logic.overworld_game_loop import overworld_game_loop
+
 
 # Dialog box settings
 DIALOG_FONT_SIZE = 26
@@ -129,6 +130,11 @@ def run_game_intro(screen, clock, pokedex):
     new_pokedex.add_pokemon(chosen_pokemon)
     new_pokedex.choose_as_combat_pokemon(chosen_pokemon)
 
-    overworld_game_loop(screen, clock, new_pokedex)
+    # Create registered pokedex and register starters
+    registered_pokedex = RegisteredPokedex()
+    for starter in [p.pokemon for p in starter_displays]:
+        registered_pokedex.register_encounter(starter)
+
+    overworld_game_loop(screen, clock, new_pokedex, registered_pokedex)
 
     return new_pokedex

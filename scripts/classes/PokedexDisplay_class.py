@@ -141,7 +141,9 @@ class PokedexDisplay:
             self.draw_type_rectangle(str(t.get_name()), self.left_width + 20, type_y)
             type_y += 40
 
-
+        if hasattr(self, "hide_stats") and self.hide_stats:
+            return
+        
         # Stats
         stats_y = 160
         stats = [

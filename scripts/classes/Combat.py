@@ -10,7 +10,6 @@ from scripts.logic.json_management import save_pokemons_to_json
 from scripts.classes.MessageOverlay_class import MessageOverlay
 from scripts.classes.DialogBox import DialogBox
 
-
 class CombatState(Enum):
     IDLE = 0
     BUSY = 1
@@ -44,6 +43,9 @@ class Combat:
         self.message_overlay = MessageOverlay(load_font("assets/font/Pokemon_GB.ttf", 25))
         self.dialog = DialogBox(pygame.display.get_surface(), self.font)
 
+    def get_adversary(self) : 
+        return self.__adversary
+    
     def is_busy(self):
         return self.state == CombatState.BUSY
 
