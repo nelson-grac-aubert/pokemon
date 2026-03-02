@@ -9,6 +9,10 @@ from scripts.classes.PokemonDisplay import PokemonDisplay
 from scripts.logic.json_management import save_pokemons_to_json
 from scripts.classes.MessageOverlay import MessageOverlay
 from scripts.classes.DialogBox import DialogBox
+from scripts.classes.SoundControl import sound_control
+
+sound_control.load_sound_effect("attack", "assets/music/attack.mp3")
+sound_control.load_sound_effect("potion", "assets/music/potion.mp3")
 
 class CombatState(Enum):
     IDLE = 0
@@ -107,6 +111,9 @@ class Combat:
             self.play_animation("RUN", self.resolve_run)
 
     def resolve_attack(self):
+
+        sound_control.play_sound("attack")
+
         dmg, eff_msg = self.compute_damage(self.__player_pokemon, self.__adversary)
         self.__adversary.set_hp(self.__adversary.get_hp() - int(dmg*1.4+5))
 
@@ -121,6 +128,9 @@ class Combat:
         self.play_animation("ENEMY_ATTACK_DELAY", self.enemy_turn)
 
     def resolve_heal(self):
+
+        sound_control.play_sound("potion")
+
         p = self.__player_pokemon
         heal_amount = int(p.get_max_hp() * 0.7)
         p.set_hp(min(p.get_max_hp(), p.get_hp() + heal_amount))
@@ -134,6 +144,7 @@ class Combat:
         self.play_animation("RUN_DELAY", lambda: self.finalize_battle("enemy"))
 
     def enemy_turn(self):
+        sound_control.play_sound("attack")
         dmg, eff_msg = self.compute_damage(self.__adversary, self.__player_pokemon)
         self.__player_pokemon.set_hp(self.__player_pokemon.get_hp() - int(dmg*0.8))
 
@@ -235,7 +246,7 @@ class Combat:
             xp_gain = 50 + self.__adversary.get_level() * 5
             self.__player_pokemon.gain_xp(xp_gain)
 
-            sound_control.play_music("assets/music/victory.mp3")
+            sound_control.play_music("assets/music/victory.mp3", 0.4)
             self.capture_pokemon()
             self.dialog.show(f"Your {self.__player_pokemon.get_name()} wins! Enemy {self.__adversary.get_name()} has been defeated and added to the Pokédex.")
             self.state = CombatState.BUSY

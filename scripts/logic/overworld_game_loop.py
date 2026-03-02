@@ -61,7 +61,7 @@ def handle_evolution(screen, background, player_sprite, pokedex_button, pokedex_
     registered_pokedex.register_encounter(new_pokemon)
     player_pokedex.replace_combat_pokemon(new_pokemon)
 
-    sound_control.play_music("assets/music/road_3.mp3")
+    sound_control.play_music("assets/music/road_3.mp3", 0.4)
     open_evolution_screen(screen, old_pokemon, new_pokemon)
 
     dialog.show(f"{old_name} has evolved into {new_pokemon.get_name()}!")
@@ -84,11 +84,11 @@ def handle_evolution(screen, background, player_sprite, pokedex_button, pokedex_
         if not dialog.is_open():
             waiting = False
 
-    sound_control.play_music("assets/music/road_1.mp3")
+    sound_control.play_music("assets/music/road_1.mp3", 0.4)
 
 def overworld_game_loop(screen, clock, player_pokedex, registered_pokedex):
 
-    sound_control.play_music("assets/music/road_1.mp3")
+    sound_control.play_music("assets/music/road_1.mp3", 0.4)
     font = load_font("assets/font/Pokemon_GB.ttf", 22)
     dialog = DialogBox(screen, font)
 
@@ -143,7 +143,7 @@ def overworld_game_loop(screen, clock, player_pokedex, registered_pokedex):
         if moving:
             walking_time += dt
             if walking_time >= next_encounter_time:
-                sound_control.play_music("assets/music/battle.mp3")
+                sound_control.play_music("assets/music/battle.mp3", 0.4)
                 walking_time = 0
                 next_encounter_time = random.uniform(4, 5)
 
@@ -161,7 +161,7 @@ def overworld_game_loop(screen, clock, player_pokedex, registered_pokedex):
                     pokedex_button, pokedex_rect, dialog, pokemon,
                     player_x, player_y, player_pokedex, registered_pokedex)
                 
-                sound_control.play_music("assets/music/road_1.mp3")
+                sound_control.play_music("assets/music/road_1.mp3", 0.4)
 
         screen.blit(background, (0, 0))
 

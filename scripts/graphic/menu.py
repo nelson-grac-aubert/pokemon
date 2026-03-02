@@ -62,7 +62,7 @@ back_button = PixelButton("BACK", width//2 - 175, 500, 350, 60, DARKBLUE, back_t
 def main_menu():
     global MENU_STATE
 
-    sound_control.play_music("assets/music/opening.mp3")
+    sound_control.play_music("assets/music/opening.mp3", 0.4)
     run_intro(screen, clock, kanto_pokedex)
 
     # MUSIC
