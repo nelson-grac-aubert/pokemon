@@ -5,7 +5,7 @@ from scripts.logic.assets_management import load_image, load_font
 from scripts.graphic.pokedex_menu import run_pokedex
 from scripts.graphic.menu import sound_control
 from scripts.classes.Combat import Combat
-from scripts.graphic.EvolutionScreen import EvolutionScreen
+from scripts.graphic.evolution_screen import EvolutionScreen
 from scripts.classes.DialogBox import DialogBox
 
 def open_evolution_screen(screen, old_pokemon, new_pokemon):
