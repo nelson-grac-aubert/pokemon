@@ -13,7 +13,8 @@ class Pokedex:
             p._Pokemon__pokedex = self
 
     def get_pokemons(self):
-        return self.__pokemons
+        return sorted(self.__pokemons, key=lambda p: p.get_id())
+
 
     def set_pokemons(self, new_pokemons):
         self.__pokemons = new_pokemons

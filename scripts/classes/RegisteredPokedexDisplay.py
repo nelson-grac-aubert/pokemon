@@ -7,7 +7,7 @@ class RegisteredPokedexDisplay(PokedexDisplay):
     def __init__(self, pokedex, screen):
 
         # Sprite scale must be defined before super().__init__()
-        self.sprite_scale = 4.0
+        self.sprite_scale = 3.8
 
         # Disable stats from parent class
         self.hide_stats = True
@@ -44,7 +44,7 @@ class RegisteredPokedexDisplay(PokedexDisplay):
         center_x = self.left_width + right_panel_width // 2
 
         # Vertical offset
-        center_y = 310
+        center_y = 330
 
         self.current_display.set_position(center_x, center_y)
 

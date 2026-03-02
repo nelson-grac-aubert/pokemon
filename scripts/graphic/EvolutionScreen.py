@@ -30,9 +30,9 @@ class EvolutionScreen:
         self.flash_alpha = 0
 
         # Durations
-        self.alternate_duration = 240   
+        self.alternate_duration = 300  
         self.flash_duration = 20       
-        self.final_duration = 90   
+        self.final_duration = 180   
 
         # Final pulse
         self.pulse_scale = 3.0
