@@ -1,6 +1,6 @@
 import pygame
-from scripts.classes.PokedexDisplay_class import PokedexDisplay
-from scripts.classes.PokemonDisplay_class import PokemonDisplay
+from scripts.classes.PokedexDisplay import PokedexDisplay
+from scripts.classes.PokemonDisplay import PokemonDisplay
 
 class RegisteredPokedexDisplay(PokedexDisplay):
 

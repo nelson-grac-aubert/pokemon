@@ -2,12 +2,12 @@ import pygame
 import random
 import copy
 from enum import Enum
-from scripts.classes.SoundControl_class import sound_control
+from scripts.classes.SoundControl import sound_control
 from scripts.logic.assets_management import load_image, load_font
-from scripts.classes.Pokedex_class import kanto_pokedex
-from scripts.classes.PokemonDisplay_class import PokemonDisplay
+from scripts.classes.Pokedex import kanto_pokedex
+from scripts.classes.PokemonDisplay import PokemonDisplay
 from scripts.logic.json_management import save_pokemons_to_json
-from scripts.classes.MessageOverlay_class import MessageOverlay
+from scripts.classes.MessageOverlay import MessageOverlay
 from scripts.classes.DialogBox import DialogBox
 
 class CombatState(Enum):

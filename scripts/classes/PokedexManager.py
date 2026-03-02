@@ -11,7 +11,7 @@ class PokedexManager:
         self.open_registered()
 
     def open_pc(self):
-        from scripts.classes.PlayerPokedexDisplay_class import PlayerPokedexDisplay
+        from scripts.classes.PlayerPokedexDisplay import PlayerPokedexDisplay
         self.current_display = PlayerPokedexDisplay(self.player_pokedex, self.screen)
 
     def open_registered(self):

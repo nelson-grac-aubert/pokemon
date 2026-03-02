@@ -1,7 +1,7 @@
 import pygame
 from scripts.logic.assets_management import load_font
-from scripts.classes.Pokedex_class import Pokedex
-from scripts.classes.PokemonDisplay_class import PokemonDisplay
+from scripts.classes.Pokedex import Pokedex
+from scripts.classes.PokemonDisplay import PokemonDisplay
 from scripts.graphic.colors import TYPE_COLORS
 
 class PokedexDisplay:

@@ -1,7 +1,7 @@
 import json
 from scripts.logic.assets_management import resource_path
-from scripts.classes.Pokemon_class import Pokemon
-from scripts.classes.PokemonType_class import PokemonType
+from scripts.classes.Pokemon import Pokemon
+from scripts.classes.PokemonType import PokemonType
 
 
 def load_json(relative_path: str) -> dict:

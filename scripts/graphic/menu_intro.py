@@ -1,5 +1,5 @@
 import pygame
-from scripts.classes.PokemonDisplay_class import PokemonDisplay
+from scripts.classes.PokemonDisplay import PokemonDisplay
 from scripts.graphic.colors import BEIGE
 from scripts.logic.assets_management import load_font, load_image
 

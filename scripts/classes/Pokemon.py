@@ -147,5 +147,5 @@ class Pokemon:
 
         self.__evolved = True
 
-        from scripts.classes.Pokedex_class import kanto_pokedex
+        from scripts.classes.Pokedex import kanto_pokedex
         return kanto_pokedex.get_pokemon_by_id(evo_id)

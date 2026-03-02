@@ -1,5 +1,5 @@
-from scripts.classes.Pokemon_class import Pokemon
-from scripts.classes.Pokedex_class import Pokedex
+from scripts.classes.Pokemon import Pokemon
+from scripts.classes.Pokedex import Pokedex
 
 class PlayerPokedex(Pokedex):
 

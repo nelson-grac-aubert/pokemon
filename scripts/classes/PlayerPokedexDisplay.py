@@ -1,5 +1,5 @@
 import pygame
-from scripts.classes.PokedexDisplay_class import PokedexDisplay
+from scripts.classes.PokedexDisplay import PokedexDisplay
 from scripts.classes.DialogBox import DialogBox
 
 class PlayerPokedexDisplay(PokedexDisplay):

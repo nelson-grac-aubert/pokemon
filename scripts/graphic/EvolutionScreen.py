@@ -1,6 +1,6 @@
 import pygame
 import random
-from scripts.classes.PokemonDisplay_class import PokemonDisplay
+from scripts.classes.PokemonDisplay import PokemonDisplay
 
 class EvolutionScreen:
     def __init__(self, screen, old_pokemon, new_pokemon):

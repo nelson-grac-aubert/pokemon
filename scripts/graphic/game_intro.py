@@ -1,6 +1,6 @@
 import pygame
-from scripts.classes.PokemonDisplay_class import PokemonDisplay
-from scripts.classes.PlayerPokedex_class import PlayerPokedex
+from scripts.classes.PokemonDisplay import PokemonDisplay
+from scripts.classes.PlayerPokedex import PlayerPokedex
 from scripts.classes.RegisteredPokedex import RegisteredPokedex
 from scripts.logic.assets_management import load_font, load_image
 from scripts.logic.overworld_game_loop import overworld_game_loop

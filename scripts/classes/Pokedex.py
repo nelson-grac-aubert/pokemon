@@ -1,4 +1,4 @@
-from scripts.classes.Pokemon_class import Pokemon
+from scripts.classes.Pokemon import Pokemon
 from scripts.logic.json_management import load_pokemons_from_json, load_types_from_json
 
 class Pokedex:
